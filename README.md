@@ -1,4 +1,4 @@
-# Lang2Drive
+# Lang2Drive Official
 
 CARLA scenario generation and evaluation toolkit for autonomous-driving edge-case research.
 
