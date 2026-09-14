@@ -65,7 +65,7 @@ Outputs:
 ### Stage 3: Evaluate latest output on macOS
 
 ```bash
-cd "/Users/ashfak/Applications/Sikarugir/CARLA.app/Contents/SharedSupport/prefix/drive_c/Program Files/WindowsNoEditor/VLM-AV"
+cd "Program Files/WindowsNoEditor/VLM-AV"
 ./03_evaluate_latest.sh
 ```
 
