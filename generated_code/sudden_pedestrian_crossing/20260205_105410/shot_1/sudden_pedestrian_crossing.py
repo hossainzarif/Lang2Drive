@@ -1,0 +1,485 @@
+import carla
+import random
+import time
+import argparse
+import os
+import numpy as np
+from PIL import Image
+import threading
+import math
+import queue
+
+images_received = {'front': None, 'front_left': None, 'front_right': None, 'rear': None}
+images_lock = threading.Lock()
+frame_ready = threading.Event()
+image_queue = queue.Queue(maxsize=10)
+
+def save_image_to_disk(image, output_path):
+    """Save CARLA image as RGB PNG"""
+    try:
+        array = np.frombuffer(image.raw_data, dtype=np.uint8)
+        array = array.reshape((image.height, image.width, 4))
+        array = array[:, :, :3][:, :, ::-1]
+        img = Image.fromarray(array)
+        img.save(output_path, 'PNG')
+        return True
+    except Exception as e:
+        print(f"[ERROR] Failed to save image: {e}")
+        return False
+
+def make_camera_callback(camera_name):
+    def callback(image):
+        with images_lock:
+            images_received[camera_name] = image
+            if all(img is not None for img in images_received.values()):
+                frame_ready.set()
+    return callback
+
+def calculate_distance(loc1, loc2):
+    return math.sqrt((loc1.x - loc2.x)**2 + (loc1.y - loc2.y)**2 + (loc1.z - loc2.z)**2)
+
+def main():
+    argparser = argparse.ArgumentParser(description='CARLA Sudden Pedestrian Crossing Scenario')
+    argparser.add_argument('--host', default='127.0.0.1', help='CARLA server host')
+    argparser.add_argument('--port', type=int, default=2000, help='CARLA server port')
+    argparser.add_argument('--duration', type=int, default=25, help='Simulation duration in seconds')
+    argparser.add_argument('--output-dir', default='./scenes/sudden_pedestrian_crossing', help='Output directory')
+    args = argparser.parse_args()
+
+    max_frames = min(int(args.duration * 20), 500)
+
+    client = None
+    world = None
+    original_settings = None
+    actors = []
+    cameras = []
+    log_file = None
+
+    try:
+        client = carla.Client(args.host, args.port)
+        client.set_timeout(60.0)
+        
+        print("[INFO] Connecting to CARLA server...")
+        world = client.get_world()
+        
+        print("[INFO] Loading Town05...")
+        client.load_world('Town05')
+        world = client.get_world()
+        time.sleep(2.0)
+
+        original_settings = world.get_settings()
+        settings = world.get_settings()
+        settings.synchronous_mode = True
+        settings.fixed_delta_seconds = 0.05
+        world.apply_settings(settings)
+        print("[INFO] Synchronous mode enabled at 20 FPS")
+
+        weather = carla.WeatherParameters(
+            cloudiness=10.0,
+            precipitation=0.0,
+            sun_altitude_angle=45.0,
+            fog_density=0.0
+        )
+        world.set_weather(weather)
+        print("[INFO] Weather set to clear daytime")
+
+        blueprint_library = world.get_blueprint_library()
+        spawn_points = world.get_map().get_spawn_points()
+
+        os.makedirs(os.path.join(args.output_dir, 'front'), exist_ok=True)
+        os.makedirs(os.path.join(args.output_dir, 'front_left'), exist_ok=True)
+        os.makedirs(os.path.join(args.output_dir, 'front_right'), exist_ok=True)
+        os.makedirs(os.path.join(args.output_dir, 'rear'), exist_ok=True)
+
+        log_path = os.path.join(args.output_dir, 'sudden_pedestrian_crossing_simulation.log')
+        log_file = open(log_path, 'w')
+        log_file.write("Sudden Pedestrian Crossing Simulation Log\n")
+        log_file.write("=" * 80 + "\n\n")
+
+        ego_bp = blueprint_library.filter('model3')[0]
+        ego_spawn_point = spawn_points[50]
+        ego_vehicle = world.try_spawn_actor(ego_bp, ego_spawn_point)
+        
+        if ego_vehicle is None:
+            for sp in spawn_points[40:80]:
+                ego_vehicle = world.try_spawn_actor(ego_bp, sp)
+                if ego_vehicle:
+                    ego_spawn_point = sp
+                    break
+        
+        if ego_vehicle is None:
+            raise RuntimeError("Failed to spawn ego vehicle")
+        
+        actors.append(ego_vehicle)
+        print(f"[INFO] Spawned ego vehicle at {ego_spawn_point.location}")
+
+        collision_bp = blueprint_library.find('sensor.other.collision')
+        collision_sensor = world.spawn_actor(collision_bp, carla.Transform(), attach_to=ego_vehicle)
+        actors.append(collision_sensor)
+        collision_occurred = {'flag': False, 'velocity': 0.0, 'time': 0.0}
+        
+        def on_collision(event):
+            collision_occurred['flag'] = True
+            collision_occurred['velocity'] = calculate_distance(
+                event.actor.get_velocity(), carla.Vector3D(0, 0, 0)
+            ) * 3.6
+            collision_occurred['time'] = event.timestamp
+            print(f"[COLLISION] Impact at {event.timestamp:.2f}s with velocity {collision_occurred['velocity']:.2f} km/h")
+        
+        collision_sensor.listen(on_collision)
+
+        lane_bp = blueprint_library.find('sensor.other.lane_invasion')
+        lane_sensor = world.spawn_actor(lane_bp, carla.Transform(), attach_to=ego_vehicle)
+        actors.append(lane_sensor)
+        lane_sensor.listen(lambda event: None)
+
+        camera_bp = blueprint_library.find('sensor.camera.rgb')
+        camera_bp.set_attribute('image_size_x', '1280')
+        camera_bp.set_attribute('image_size_y', '720')
+        camera_bp.set_attribute('fov', '110')
+
+        camera_configs = {
+            'front': (carla.Transform(carla.Location(x=0.8, y=0.0, z=1.4), carla.Rotation(pitch=8)), 'front'),
+            'front_left': (carla.Transform(carla.Location(x=-0.1, y=-0.4, z=1.2), carla.Rotation(yaw=-60)), 'front_left'),
+            'front_right': (carla.Transform(carla.Location(x=-0.1, y=0.4, z=1.2), carla.Rotation(yaw=60)), 'front_right'),
+            'rear': (carla.Transform(carla.Location(x=-0.2, y=0.0, z=1.25), carla.Rotation(yaw=180, pitch=5)), 'rear')
+        }
+
+        for cam_name, (transform, _) in camera_configs.items():
+            camera = world.spawn_actor(camera_bp, transform, attach_to=ego_vehicle)
+            camera.listen(make_camera_callback(cam_name))
+            cameras.append(camera)
+            actors.append(camera)
+        
+        print("[INFO] All 4 cameras attached to ego vehicle")
+
+        parked_locations = []
+        forward = ego_spawn_point.rotation.get_forward_vector()
+        right = ego_spawn_point.rotation.get_right_vector()
+        
+        for i in range(4):
+            offset = 15 + i * 10
+            park_loc = carla.Location(
+                x=ego_spawn_point.location.x + forward.x * offset + right.x * 4.0,
+                y=ego_spawn_point.location.y + forward.y * offset + right.y * 4.0,
+                z=ego_spawn_point.location.z
+            )
+            park_rot = ego_spawn_point.rotation
+            parked_bp = random.choice(blueprint_library.filter('vehicle.*'))
+            parked_vehicle = world.try_spawn_actor(parked_bp, carla.Transform(park_loc, park_rot))
+            if parked_vehicle:
+                actors.append(parked_vehicle)
+                parked_locations.append(park_loc)
+        
+        print(f"[INFO] Spawned {len(parked_locations)} parked vehicles")
+
+        ambient_vehicle_bp = blueprint_library.filter('vehicle.*')[0]
+        left_spawn = carla.Transform(
+            carla.Location(
+                x=ego_spawn_point.location.x + forward.x * 20 - right.x * 3.5,
+                y=ego_spawn_point.location.y + forward.y * 20 - right.y * 3.5,
+                z=ego_spawn_point.location.z
+            ),
+            ego_spawn_point.rotation
+        )
+        ambient_left = world.try_spawn_actor(ambient_vehicle_bp, left_spawn)
+        if ambient_left:
+            actors.append(ambient_left)
+            ambient_left.set_autopilot(True)
+            print("[INFO] Spawned ambient vehicle in left lane")
+
+        opposite_spawn = carla.Transform(
+            carla.Location(
+                x=ego_spawn_point.location.x + forward.x * 60 - right.x * 7.0,
+                y=ego_spawn_point.location.y + forward.y * 60 - right.y * 7.0,
+                z=ego_spawn_point.location.z
+            ),
+            carla.Rotation(yaw=ego_spawn_point.rotation.yaw + 180)
+        )
+        opposite_vehicle = world.try_spawn_actor(ambient_vehicle_bp, opposite_spawn)
+        if opposite_vehicle:
+            actors.append(opposite_vehicle)
+            opposite_vehicle.set_autopilot(True)
+            print("[INFO] Spawned opposing traffic vehicle")
+
+        walker_bp = blueprint_library.filter('walker.pedestrian.*')[0]
+        
+        pedestrian_spawn_x = ego_spawn_point.location.x + forward.x * 40 + right.x * 6.0
+        pedestrian_spawn_y = ego_spawn_point.location.y + forward.y * 40 + right.y * 6.0
+        pedestrian_spawn = carla.Transform(
+            carla.Location(x=pedestrian_spawn_x, y=pedestrian_spawn_y, z=ego_spawn_point.location.z + 0.5),
+            carla.Rotation()
+        )
+        
+        jaywalking_pedestrian = world.try_spawn_actor(walker_bp, pedestrian_spawn)
+        if jaywalking_pedestrian is None:
+            jaywalking_pedestrian = world.spawn_actor(walker_bp, pedestrian_spawn)
+        actors.append(jaywalking_pedestrian)
+        print(f"[INFO] Spawned jaywalking pedestrian at {pedestrian_spawn.location}")
+
+        walker_controller_bp = blueprint_library.find('controller.ai.walker')
+        pedestrian_controller = world.spawn_actor(walker_controller_bp, carla.Transform(), jaywalking_pedestrian)
+        actors.append(pedestrian_controller)
+        
+        pedestrian_controller.start()
+        pedestrian_controller.set_max_speed(0.0)
+
+        for i in range(3):
+            ambient_walker_bp = random.choice(blueprint_library.filter('walker.pedestrian.*'))
+            ambient_spawn = carla.Transform(
+                carla.Location(
+                    x=ego_spawn_point.location.x + forward.x * (10 + i * 15) + right.x * 8.0,
+                    y=ego_spawn_point.location.y + forward.y * (10 + i * 15) + right.y * 8.0,
+                    z=ego_spawn_point.location.z + 0.5
+                ),
+                carla.Rotation()
+            )
+            ambient_walker = world.try_spawn_actor(ambient_walker_bp, ambient_spawn)
+            if ambient_walker:
+                actors.append(ambient_walker)
+                ambient_controller = world.spawn_actor(walker_controller_bp, carla.Transform(), ambient_walker)
+                actors.append(ambient_controller)
+                ambient_controller.start()
+                ambient_controller.go_to_location(world.get_random_location_from_navigation())
+                ambient_controller.set_max_speed(1.4)
+        
+        print(f"[INFO] Spawned 3 ambient pedestrians on sidewalk")
+
+        ego_vehicle.set_autopilot(False)
+        
+        print("[INFO] Warming up cameras...")
+        for _ in range(30):
+            world.tick()
+            time.sleep(0.05)
+        
+        with images_lock:
+            images_received['front'] = None
+            images_received['front_left'] = None
+            images_received['front_right'] = None
+            images_received['rear'] = None
+        frame_ready.clear()
+        
+        print("[INFO] Cameras ready")
+
+        frame_number = 0
+        pedestrian_triggered = False
+        emergency_braking = False
+        reaction_delay = random.uniform(0.2, 0.5)
+        pedestrian_trigger_time = None
+        
+        TARGET_SPEED = 50.0 / 3.6
+        
+        log_file.write(f"Frame,Timestamp,Speed(km/h),Acceleration(m/s2),BrakeInput,DistanceToPedestrian(m),TTC(s),Status\n")
+
+        print(f"[INFO] Starting simulation for {max_frames} frames ({args.duration}s)...")
+        
+        simulation_start = time.time()
+        
+        while frame_number < max_frames:
+            world.tick()
+            
+            current_time = frame_number * 0.05
+            
+            vehicle_transform = ego_vehicle.get_transform()
+            vehicle_velocity = ego_vehicle.get_velocity()
+            current_speed = math.sqrt(vehicle_velocity.x**2 + vehicle_velocity.y**2 + vehicle_velocity.z**2)
+            current_speed_kmh = current_speed * 3.6
+            
+            pedestrian_location = jaywalking_pedestrian.get_location()
+            distance_to_pedestrian = calculate_distance(vehicle_transform.location, pedestrian_location)
+            
+            vehicle_acceleration = ego_vehicle.get_acceleration()
+            accel_magnitude = math.sqrt(vehicle_acceleration.x**2 + vehicle_acceleration.y**2 + vehicle_acceleration.z**2)
+            
+            ttc = -1.0
+            if current_speed > 0.1 and distance_to_pedestrian > 0:
+                ttc = distance_to_pedestrian / current_speed
+                if ttc < 2.0 and not emergency_braking:
+                    print(f"[WARNING] TTC = {ttc:.2f}s - Critical!")
+            
+            status = "NORMAL"
+            
+            if not pedestrian_triggered and distance_to_pedestrian < 25.0:
+                pedestrian_trigger_time = current_time
+                pedestrian_triggered = True
+                print(f"[EVENT] Pedestrian crossing triggered at t={current_time:.2f}s, distance={distance_to_pedestrian:.2f}m")
+                status = "PEDESTRIAN_TRIGGERED"
+            
+            if pedestrian_triggered and not emergency_braking:
+                time_since_trigger = current_time - pedestrian_trigger_time
+                
+                if time_since_trigger >= reaction_delay:
+                    crossing_direction = -right
+                    target_location = carla.Location(
+                        x=pedestrian_location.x + crossing_direction.x * 20,
+                        y=pedestrian_location.y + crossing_direction.y * 20,
+                        z=pedestrian_location.z
+                    )
+                    pedestrian_controller.go_to_location(target_location)
+                    pedestrian_controller.set_max_speed(4.5)
+                    
+                    if time_since_trigger < reaction_delay + 0.1:
+                        print(f"[EVENT] Pedestrian starts running at t={current_time:.2f}s (delay={reaction_delay:.2f}s)")
+                        status = "PEDESTRIAN_RUNNING"
+            
+            vehicle_forward = vehicle_transform.rotation.get_forward_vector()
+            to_pedestrian = carla.Vector3D(
+                pedestrian_location.x - vehicle_transform.location.x,
+                pedestrian_location.y - vehicle_transform.location.y,
+                0
+            )
+            
+            dot = vehicle_forward.x * to_pedestrian.x + vehicle_forward.y * to_pedestrian.y
+            lateral_distance = abs(to_pedestrian.x * vehicle_forward.y - to_pedestrian.y * vehicle_forward.x)
+            
+            control = carla.VehicleControl()
+            brake_input = 0.0
+            
+            if pedestrian_triggered and lateral_distance < 4.0 and dot > 0 and distance_to_pedestrian < 30.0:
+                if not emergency_braking:
+                    emergency_braking = True
+                    print(f"[EVENT] Emergency braking initiated at t={current_time:.2f}s, distance={distance_to_pedestrian:.2f}m")
+                    status = "EMERGENCY_BRAKE"
+                
+                control.throttle = 0.0
+                control.brake = 1.0
+                control.hand_brake = False
+                brake_input = 1.0
+            else:
+                if current_speed < TARGET_SPEED:
+                    control.throttle = 0.6
+                else:
+                    control.throttle = 0.3
+                control.brake = 0.0
+                brake_input = 0.0
+            
+            control.steer = 0.0
+            ego_vehicle.apply_control(control)
+            
+            if current_speed < 0.1 and emergency_braking:
+                status = "STOPPED"
+            
+            spectator = world.get_spectator()
+            spectator_transform = carla.Transform(
+                carla.Location(
+                    x=vehicle_transform.location.x - vehicle_forward.x * 10,
+                    y=vehicle_transform.location.y - vehicle_forward.y * 10,
+                    z=vehicle_transform.location.z + 5
+                ),
+                carla.Rotation(pitch=-20, yaw=vehicle_transform.rotation.yaw)
+            )
+            spectator.set_transform(spectator_transform)
+            
+            if frame_ready.wait(timeout=2.0):
+                with images_lock:
+                    if all(img is not None for img in images_received.values()):
+                        front_path = os.path.join(args.output_dir, 'front', f'front_frame_{frame_number+1:08d}.png')
+                        front_left_path = os.path.join(args.output_dir, 'front_left', f'front_left_frame_{frame_number+1:08d}.png')
+                        front_right_path = os.path.join(args.output_dir, 'front_right', f'front_right_frame_{frame_number+1:08d}.png')
+                        rear_path = os.path.join(args.output_dir, 'rear', f'rear_frame_{frame_number+1:08d}.png')
+                        
+                        if save_image_to_disk(images_received['front'], front_path):
+                            save_image_to_disk(images_received['front_left'], front_left_path)
+                            save_image_to_disk(images_received['front_right'], front_right_path)
+                            save_image_to_disk(images_received['rear'], rear_path)
+                            frame_number += 1
+                        else:
+                            print(f"[WARNING] Frame save failed, retrying...")
+                    
+                    images_received['front'] = None
+                    images_received['front_left'] = None
+                    images_received['front_right'] = None
+                    images_received['rear'] = None
+                
+                frame_ready.clear()
+            else:
+                print(f"[WARNING] Frame camera timeout - retrying tick")
+                continue
+            
+            log_file.write(f"{frame_number},{current_time:.2f},{current_speed_kmh:.2f},{accel_magnitude:.2f},{brake_input:.2f},{distance_to_pedestrian:.2f},{ttc:.2f},{status}\n")
+            
+            if frame_number % 100 == 0:
+                print(f"[INFO] Frame {frame_number}/{max_frames} | Speed: {current_speed_kmh:.1f} km/h | Distance to pedestrian: {distance_to_pedestrian:.1f}m | Status: {status}")
+            
+            if current_speed < 0.1 and emergency_braking and current_time > 5.0:
+                print(f"[INFO] Vehicle stopped. Ending simulation at frame {frame_number}")
+                break
+        
+        simulation_end = time.time()
+        
+        print(f"\n[INFO] Simulation completed: {frame_number} frames in {simulation_end - simulation_start:.2f}s")
+        
+        final_distance = calculate_distance(ego_vehicle.get_location(), jaywalking_pedestrian.get_location())
+        outcome = "UNKNOWN"
+        
+        if collision_occurred['flag']:
+            outcome = f"COLLISION (Impact velocity: {collision_occurred['velocity']:.2f} km/h)"
+        elif final_distance < 2.0:
+            outcome = f"NEAR-MISS (Final distance: {final_distance:.2f}m)"
+        else:
+            outcome = f"COLLISION AVOIDED (Final distance: {final_distance:.2f}m)"
+        
+        print(f"[RESULT] Final outcome: {outcome}")
+        
+        log_file.write(f"\n\n{'='*80}\n")
+        log_file.write(f"Simulation Summary\n")
+        log_file.write(f"{'='*80}\n")
+        log_file.write(f"Total frames: {frame_number}\n")
+        log_file.write(f"Duration: {frame_number * 0.05:.2f}s\n")
+        log_file.write(f"Pedestrian triggered: {pedestrian_triggered}\n")
+        log_file.write(f"Emergency braking activated: {emergency_braking}\n")
+        log_file.write(f"Final distance to pedestrian: {final_distance:.2f}m\n")
+        log_file.write(f"Outcome: {outcome}\n")
+
+    except Exception as e:
+        print(f"[ERROR] Exception occurred: {e}")
+        import traceback
+        traceback.print_exc()
+    
+    finally:
+        print("[INFO] Cleaning up...")
+        
+        for camera in cameras:
+            try:
+                if camera and camera.is_listening:
+                    camera.stop()
+            except:
+                pass
+        
+        try:
+            if collision_sensor and collision_sensor.is_listening:
+                collision_sensor.stop()
+        except:
+            pass
+        
+        try:
+            if lane_sensor and lane_sensor.is_listening:
+                lane_sensor.stop()
+        except:
+            pass
+        
+        time.sleep(0.5)
+        
+        if client:
+            print(f"[INFO] Destroying {len(actors)} actors...")
+            for actor in actors:
+                try:
+                    if actor and actor.is_alive:
+                        actor.destroy()
+                except:
+                    pass
+        
+        if world and original_settings:
+            print("[INFO] Restoring original settings...")
+            try:
+                world.apply_settings(original_settings)
+            except:
+                pass
+        
+        if log_file:
+            log_file.close()
+        
+        print("[INFO] Cleanup complete")
+
+if __name__ == '__main__':
+    main()

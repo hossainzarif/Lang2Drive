@@ -1,0 +1,7 @@
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 3
+USER_ADJUSTMENT_PROMPT:
+There was no pedestrian in fron of the ego vehicle. Rather another wrong way vehicle hit ego vehicle. There must be a pedestrian 50 m front of the ego vehicle start walking in the same lane of ego vehicle. Fix the code accordingly.
+
+LATEST_ISSUES_TO_FIX:
+There was no pedestrian in fron of the ego vehicle. Rather another wrong way vehicle hit ego vehicle. There must be a pedestrian 50 m front of the ego vehicle start walking in the same lane of ego vehicle. Fix the code accordingly.

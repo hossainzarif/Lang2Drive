@@ -1,0 +1,7 @@
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 2
+USER_ADJUSTMENT_PROMPT:
+Still there are no pedestrian walking or crossing in front of ego vehicle. Also it is violating red light which it should not be in this scene.
+
+LATEST_ISSUES_TO_FIX:
+Still there are no pedestrian walking or crossing in front of ego vehicle. Also it is violating red light which it should not be in this scene.

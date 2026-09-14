@@ -1,0 +1,7 @@
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 4
+USER_ADJUSTMENT_PROMPT:
+There is a pedestrian standing on the sidewalk but not walking or suddenly come and stand in front of ego vehicle when in speed.
+
+LATEST_ISSUES_TO_FIX:
+There is a pedestrian standing on the sidewalk but not walking or suddenly come and stand in front of ego vehicle when in speed.

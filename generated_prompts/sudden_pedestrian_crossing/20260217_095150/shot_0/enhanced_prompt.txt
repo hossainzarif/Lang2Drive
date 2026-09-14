@@ -1,0 +1,9 @@
+KEYWORD: Sudden Pedestrian Crossing
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 0
+
+ORIGINAL PROMPT:
+Generate Carla PythonAPI code for a four-lane city road where a pedestrian suddenly runs across the street outside of a crosswalk. Vehicles are approaching at normal urban speed and must react to avoid hitting the pedestrian. The environment should include sidewalks, nearby traffic, and realistic pedestrian behavior (running/jaywalking across lanes).
+
+ENHANCED PROMPT:
+Generate Carla PythonAPI code for a four-lane city road where a pedestrian suddenly runs across the street outside of a crosswalk. Vehicles are approaching at normal urban speed and must react to avoid hitting the pedestrian. The environment should include sidewalks, nearby traffic, and realistic pedestrian behavior (running/jaywalking across lanes).

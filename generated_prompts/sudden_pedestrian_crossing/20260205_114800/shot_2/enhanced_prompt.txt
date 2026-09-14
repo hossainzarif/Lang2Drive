@@ -1,0 +1,7 @@
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 2
+USER_ADJUSTMENT_PROMPT:
+Still there are no pedestrian crossing in the scene in front of ego vehicle. Pedestrian should cross and stand little far in the lane of ego vehicle.
+
+LATEST_ISSUES_TO_FIX:
+Still there are no pedestrian crossing in the scene in front of ego vehicle. Pedestrian should cross and stand little far in the lane of ego vehicle.

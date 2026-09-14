@@ -1,0 +1,607 @@
+{
+  "source": "3csim/scripts/scenario_files/spawn_*.py",
+  "total_unique_blueprints": 48,
+  "categories": {
+    "vehicle": 14,
+    "walker": 8,
+    "static_prop": 23,
+    "sensor": 3,
+    "other": 0
+  },
+  "blueprints": [
+    {
+      "blueprint_id": "sensor.camera.rgb",
+      "kind": "sensor",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_EMS_outgoing.py",
+        "3csim/scripts/scenario_files/spawn_ball_boy.py",
+        "3csim/scripts/scenario_files/spawn_ball_highway.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car_MISS.py",
+        "3csim/scripts/scenario_files/spawn_bus_stop_near_playground.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_v2.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_noharm.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_HIT.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISTAKE.py",
+        "3csim/scripts/scenario_files/spawn_car_reverse_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_BRIEFCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_GUITARCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_TRAVELCASE.py",
+        "3csim/scripts/scenario_files/spawn_cow_and_pedestrian_crossing.py",
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_emergency_plane.py",
+        "3csim/scripts/scenario_files/spawn_fallen_tree.py",
+        "3csim/scripts/scenario_files/spawn_loose_zoo_animals.py",
+        "3csim/scripts/scenario_files/spawn_parking_HGV.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_calling_dog.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py",
+        "3csim/scripts/scenario_files/spawn_runner_park.py",
+        "3csim/scripts/scenario_files/spawn_shoppingcart_highway.py",
+        "3csim/scripts/scenario_files/spawn_squirrel_running_across.py",
+        "3csim/scripts/scenario_files/spawn_static_EMS_obstacle.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_2.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_3.py",
+        "3csim/scripts/scenario_files/spawn_static_sign_aheadandright.py",
+        "3csim/scripts/scenario_files/spawn_static_traffic_lights_yellow.py",
+        "3csim/scripts/scenario_files/spawn_unpredicatable_pedestrian-Fix.py",
+        "3csim/scripts/scenario_files/spawn_unpredictable_bicycle-Fix.py",
+        "3csim/scripts/scenario_files/spawn_worker_falling_barrel.py"
+      ]
+    },
+    {
+      "blueprint_id": "sensor.camera.semantic_segmentation",
+      "kind": "sensor",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_EMS_outgoing.py",
+        "3csim/scripts/scenario_files/spawn_ball_boy.py",
+        "3csim/scripts/scenario_files/spawn_ball_highway.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car_MISS.py",
+        "3csim/scripts/scenario_files/spawn_bus_stop_near_playground.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_v2.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_noharm.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_HIT.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISTAKE.py",
+        "3csim/scripts/scenario_files/spawn_car_reverse_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_BRIEFCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_GUITARCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_TRAVELCASE.py",
+        "3csim/scripts/scenario_files/spawn_cow_and_pedestrian_crossing.py",
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_emergency_plane.py",
+        "3csim/scripts/scenario_files/spawn_fallen_tree.py",
+        "3csim/scripts/scenario_files/spawn_loose_zoo_animals.py",
+        "3csim/scripts/scenario_files/spawn_parking_HGV.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_calling_dog.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py",
+        "3csim/scripts/scenario_files/spawn_runner_park.py",
+        "3csim/scripts/scenario_files/spawn_shoppingcart_highway.py",
+        "3csim/scripts/scenario_files/spawn_squirrel_running_across.py",
+        "3csim/scripts/scenario_files/spawn_static_EMS_obstacle.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_2.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_3.py",
+        "3csim/scripts/scenario_files/spawn_static_sign_aheadandright.py",
+        "3csim/scripts/scenario_files/spawn_static_traffic_lights_yellow.py",
+        "3csim/scripts/scenario_files/spawn_unpredicatable_pedestrian-Fix.py",
+        "3csim/scripts/scenario_files/spawn_unpredictable_bicycle-Fix.py",
+        "3csim/scripts/scenario_files/spawn_worker_falling_barrel.py"
+      ]
+    },
+    {
+      "blueprint_id": "sensor.other.collision",
+      "kind": "sensor",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_EMS_outgoing.py",
+        "3csim/scripts/scenario_files/spawn_ball_boy.py",
+        "3csim/scripts/scenario_files/spawn_ball_highway.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car_MISS.py",
+        "3csim/scripts/scenario_files/spawn_bus_stop_near_playground.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_v2.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_noharm.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_HIT.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISTAKE.py",
+        "3csim/scripts/scenario_files/spawn_car_reverse_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_BRIEFCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_GUITARCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_TRAVELCASE.py",
+        "3csim/scripts/scenario_files/spawn_cow_and_pedestrian_crossing.py",
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_emergency_plane.py",
+        "3csim/scripts/scenario_files/spawn_fallen_tree.py",
+        "3csim/scripts/scenario_files/spawn_loose_zoo_animals.py",
+        "3csim/scripts/scenario_files/spawn_parking_HGV.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_calling_dog.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py",
+        "3csim/scripts/scenario_files/spawn_runner_park.py",
+        "3csim/scripts/scenario_files/spawn_shoppingcart_highway.py",
+        "3csim/scripts/scenario_files/spawn_squirrel_running_across.py",
+        "3csim/scripts/scenario_files/spawn_static_EMS_obstacle.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_2.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_3.py",
+        "3csim/scripts/scenario_files/spawn_static_traffic_lights_yellow.py",
+        "3csim/scripts/scenario_files/spawn_worker_falling_barrel.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.ai_cow",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_cow_and_pedestrian_crossing.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.ai_gazelle",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_loose_zoo_animals.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.ai_german_shepard",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_pedestrian_calling_dog.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.ai_gorilla",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_loose_zoo_animals.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.ai_squirrel",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_squirrel_running_across.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.barrel",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_falling_barrel.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py",
+        "3csim/scripts/scenario_files/spawn_worker_falling_barrel.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.beech_tree",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_fallen_tree.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.box03",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.cirrus_body",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_emergency_plane.py",
+        "3csim/scripts/scenario_files/spawn_unpredicatable_pedestrian-Fix.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.cirrus_prop",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_emergency_plane.py",
+        "3csim/scripts/scenario_files/spawn_unpredicatable_pedestrian-Fix.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.constructioncone",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.excavator_bottom",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.excavator_top",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.football",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_ball_boy.py",
+        "3csim/scripts/scenario_files/spawn_ball_highway.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.handtruck",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_falling_barrel.py",
+        "3csim/scripts/scenario_files/spawn_worker_falling_barrel.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.ironplank",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.plantpot06",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.shoppingcart",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_shoppingcart_highway.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.sign_ahead_right_only",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_static_sign_aheadandright.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.streetbarrier",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_fallen_tree.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.trafficcone01",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.trafficwarning",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py"
+      ]
+    },
+    {
+      "blueprint_id": "static.prop.warningconstruction",
+      "kind": "static_prop",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.carlamotors.european_hgv",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_parking_HGV.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.carlamotors.firetruck",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_static_EMS_obstacle.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.citroen.c3",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.dodge.charger_2020",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_EMS_outgoing.py",
+        "3csim/scripts/scenario_files/spawn_ball_boy.py",
+        "3csim/scripts/scenario_files/spawn_ball_highway.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car_MISS.py",
+        "3csim/scripts/scenario_files/spawn_bus_stop_near_playground.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_v2.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_noharm.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_HIT.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISTAKE.py",
+        "3csim/scripts/scenario_files/spawn_car_reverse_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_BRIEFCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_GUITARCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_TRAVELCASE.py",
+        "3csim/scripts/scenario_files/spawn_cow_and_pedestrian_crossing.py",
+        "3csim/scripts/scenario_files/spawn_dangerous_excavator.py",
+        "3csim/scripts/scenario_files/spawn_emergency_plane.py",
+        "3csim/scripts/scenario_files/spawn_fallen_tree.py",
+        "3csim/scripts/scenario_files/spawn_loose_zoo_animals.py",
+        "3csim/scripts/scenario_files/spawn_parking_HGV.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_calling_dog.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_excavator.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py",
+        "3csim/scripts/scenario_files/spawn_runner_park.py",
+        "3csim/scripts/scenario_files/spawn_shoppingcart_highway.py",
+        "3csim/scripts/scenario_files/spawn_squirrel_running_across.py",
+        "3csim/scripts/scenario_files/spawn_static_EMS_obstacle.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_2.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_3.py",
+        "3csim/scripts/scenario_files/spawn_static_sign_aheadandright.py",
+        "3csim/scripts/scenario_files/spawn_static_traffic_lights_yellow.py",
+        "3csim/scripts/scenario_files/spawn_unpredicatable_pedestrian-Fix.py",
+        "3csim/scripts/scenario_files/spawn_unpredictable_bicycle-Fix.py",
+        "3csim/scripts/scenario_files/spawn_worker_falling_barrel.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.dodge.charger_police_2020",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_fallen_tree.py",
+        "3csim/scripts/scenario_files/spawn_static_EMS_obstacle.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_2.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.ford.ambulance",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_EMS_outgoing.py",
+        "3csim/scripts/scenario_files/spawn_static_EMS_obstacle.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.ford.crown",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_static_car_crash_2.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.lincoln.mkz_2020",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_HIT.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_in_opposite_direction_MISTAKE.py",
+        "3csim/scripts/scenario_files/spawn_car_reverse_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_3.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.mercedes.coupe_2020",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_doors.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_parking_noharm.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_1.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.mercedes.sprinter",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_ball_boy.py",
+        "3csim/scripts/scenario_files/spawn_falling_barrel.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_2.py",
+        "3csim/scripts/scenario_files/spawn_worker_falling_barrel.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.mini.cooper_s_2021",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_car_with_item.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_BRIEFCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_GUITARCASE.py",
+        "3csim/scripts/scenario_files/spawn_car_with_item_TRAVELCASE.py",
+        "3csim/scripts/scenario_files/spawn_static_car_crash_3.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.mitsubishi.fusorosa",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car.py",
+        "3csim/scripts/scenario_files/spawn_bus_obscuring_car_MISS.py",
+        "3csim/scripts/scenario_files/spawn_bus_stop_near_playground.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.nissan.patrol_2021",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_ball_boy.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_v2.py"
+      ]
+    },
+    {
+      "blueprint_id": "vehicle.tesla.cybertruck",
+      "kind": "vehicle",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_ball_boy.py"
+      ]
+    },
+    {
+      "blueprint_id": "walker.pedestrian.0001",
+      "kind": "walker",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_MISS.py",
+        "3csim/scripts/scenario_files/spawn_car_forward_dropoff_v2.py"
+      ]
+    },
+    {
+      "blueprint_id": "walker.pedestrian.0002",
+      "kind": "walker",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_STOP.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_STOP.py"
+      ]
+    },
+    {
+      "blueprint_id": "walker.pedestrian.0004",
+      "kind": "walker",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_NOVAN.py",
+        "3csim/scripts/scenario_files/spawn_roadworks_with_workers_VAN.py",
+        "3csim/scripts/scenario_files/spawn_worker_falling_barrel.py"
+      ]
+    },
+    {
+      "blueprint_id": "walker.pedestrian.0005",
+      "kind": "walker",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_LEFTRIGHT.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_LEFTRIGHT.py"
+      ]
+    },
+    {
+      "blueprint_id": "walker.pedestrian.0010",
+      "kind": "walker",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_ball_boy.py"
+      ]
+    },
+    {
+      "blueprint_id": "walker.pedestrian.0030",
+      "kind": "walker",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_fallen_tree.py"
+      ]
+    },
+    {
+      "blueprint_id": "walker.pedestrian.0036",
+      "kind": "walker",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_cow_and_pedestrian_crossing.py"
+      ]
+    },
+    {
+      "blueprint_id": "walker.pedestrian.0038",
+      "kind": "walker",
+      "source_files": [
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_back_ENDALL.py",
+        "3csim/scripts/scenario_files/spawn_pedestrian_advesarial_front_ENDALL.py"
+      ]
+    }
+  ]
+}

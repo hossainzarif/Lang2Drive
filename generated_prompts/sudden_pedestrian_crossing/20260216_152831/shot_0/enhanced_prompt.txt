@@ -1,0 +1,10 @@
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 0
+USER_ADJUSTMENT_PROMPT:
+
+
+LATEST_ISSUES_TO_FIX:
+RUNTIME/COMPILATION ISSUE DETECTED:
+Exit code: -8
+
+FRAME VERIFICATION FAILED: output frames missing or invalid.

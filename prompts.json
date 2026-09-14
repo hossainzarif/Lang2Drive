@@ -1,0 +1,115 @@
+GPT_SYSTEM_PROMPT = '''
+You are an autonomous driving expert, specializing in recognizing trafficscenes and making driving decisions.
+'''
+GPT_GENERAL_PERCEPTION_PROMPT = '''
+You receive a series of traffic images captured from the perspective of the ego car.
+Your task is to first focus on the road users in the driving scenario that influence the future driving behavior of the ego car, and then describe each road user and explain why, finally give your suggestions for the ego car driving behavior.
+Here are some rules to follow:
+1. Road users should include:
+    - vehicles (cars, trucks, buses, etc),
+    - vulnerable road users (pedestrians, cyclists, and motorcyclists),
+    - traffic signs (No parking signs, warning signs, directional signs, etc),
+    - traffic lights (identify current state such as red, green, yellow),
+    - traffic cones,
+    - barriers,
+    - road states,
+    - others (debris, dustbin, etc).
+2. Road users should include a description (appearance, position, direction, etc) of these objects and the reasons that affect the driving behavior of ego car.
+3. Each road user should be described once to maintain clarity and avoid repetition and ensure each description is unique and specific to the object.
+4. To give a positive and accurate answer, please output dictionary format and the following is sample answer, xxx means placeholder:
+    {
+        "vehicles": [
+            {"description": xxx, "explanation": xxx}, 
+            {}
+        ],
+        "vulnerable_road_users": [
+            {"description": xxx, "explanation": xxx}, 
+            {}
+        ],
+        "traffic_signs": [
+            {"description": xxx, "explanation": xxx}, 
+            {}
+        ],
+        "traffic_lights": [
+            {"description": xxx, "explanation": xxx}, 
+            {}
+        ],
+        "traffic_cones": [
+            {"description": xxx, "explanation": xxx}, 
+            {}
+        ],
+        "barriers": [
+            {"description": xxx, "explanation": xxx}, 
+            {}
+        ],
+        "other_objects": [
+            {"description": xxx, "explanation": xxx}, 
+            {}
+        ]
+    }
+5. If there is no road user of this class, the output should be:
+    {"vulnerable_road_users": []}
+'''
+
+GPT_REGIONAL_PERCEPTION_PROMPT = '''
+This is a traffic image captured from the perspective of the ego car.
+Please describe each object in the image surrounded by the red rectangular box and explain their influence on the future driving behavior of the ego car in the driving scenario.
+The serial number and category of each object are displayed above each rectangular box.
+
+There are a few rules to follow:
+1. To give a positive and accurate answer, please output in dictionary format and the following is a sample answer, xxx means placeholder:
+    {
+        "serial number": {"description and explanation": ""},
+        "2": {"description and explanation": ""}
+    }
+2. In the dictionary format answer, the key is the serial number of the object, and the value is the description and explanation of the object.
+3. Describe each object in a way that is independent and self-contained. Avoid referencing other objects or comparing them. Each description should stand on its own, providing complete information about the object without needing to refer to other items. 
+   For example, instead of saying 'This is another xxx, similar to object 1, and serves the same purpose,' simply describe the object as 'This is a xxx designed for...'. This ensures each object's description is clear and independent.
+4. In your descriptions and explanations, focus on each object individually and describe its characteristics and purpose clearly. Avoid using serial numbers like 'the first' or 'the second' and do not reference their placement in a red rectangular box.
+   Instead, identify each object by its features or function. For example, describe an object as 'a circular metal object with a smooth surface' rather than 'the object in the first red box'. This approach ensures a clear and direct description of each item based on its own attributes.
+'''
+
+
+GPT_DRIVING_SUGGESTION_PROMPT = '''
+Based on the general perception and regional perception results of the current driving scene, provide driving suggestions for the ego car.
+
+Your suggestion must:
+
+1. Be rational and relevant to the scene.
+2. Be specific and actionable.
+3. Avoid vague statements such as "drive safely".
+4. Consider traffic laws and road conditions.
+5. Focus only on actions the ego car should take.
+
+Provide a clear paragraph explaining what the ego car should do next.
+'''
+
+GPT_ACTIONABLE_SUGGESTION_PROMPT = '''
+Based on the current driving scene, generate a structured driving action plan for the ego vehicle.
+
+Your response must include:
+
+1. Immediate Action (next 1–2 seconds)
+2. Short-Term Plan (next 3–5 seconds)
+3. Contingency Plan (if unexpected event occurs)
+4. Risk Assessment (low, medium, high with explanation)
+5. Primary Hazard (object or condition posing highest risk)
+
+Rules:
+
+- Be specific and operational (e.g., reduce speed to X, change lane left, prepare to brake).
+- Do not provide generic advice.
+- Base all reasoning strictly on the visible scene.
+- Do not hallucinate unseen objects.
+
+Output strictly in JSON format:
+
+{
+  "immediate_action": "...",
+  "short_term_plan": "...",
+  "contingency_plan": "...",
+  "primary_hazard": "...",
+  "risk_level": "low/medium/high",
+  "risk_explanation": "..."
+}
+'''

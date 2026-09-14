@@ -1,0 +1,50 @@
+KEYWORD: Red Light Violation
+SCENARIO_KEYWORD: red_light_violation
+
+ORIGINAL PROMPT:
+Generate Carla PythonAPI code for a traffic-light-controlled intersection where one car violates the red signal by continuing straight ahead through the intersection. Other cars are correctly stopped at the red light in their lanes. Pedestrians are waiting at the crosswalk, and the violating vehicle narrowly passes them. Ensure the scene includes traffic lights, multiple vehicles, and correct lane placement.
+
+ENHANCED PROMPT:
+Generate CARLA PythonAPI code for a traffic-light-controlled intersection scenario demonstrating a red light violation with the following specifications:
+
+**Environment Setup:**
+- Use Town03 or Town10HD with a four-way intersection containing traffic light actors
+- Set weather to clear daylight (sun_altitude_angle=70) for optimal visibility
+- Disable synchronous mode initially, then enable it with fixed_delta_seconds=0.05 for precise control
+
+**Traffic Light Configuration:**
+- Identify the traffic light group controlling the main intersection
+- Set the traffic light state to RED for the direction of the violating vehicle
+- Set perpendicular traffic lights to GREEN
+- Ensure traffic light states remain frozen throughout the scenario duration (at least 15 seconds)
+
+**Vehicle Actors:**
+- Spawn 1 violating vehicle (Tesla Model 3 or similar sedan) 50 meters before the intersection stop line, traveling at 50 km/h
+- Spawn 3-4 compliant vehicles stopped at the red light: position them 2-3 meters before their respective stop lines in adjacent lanes and opposing direction
+- Apply Traffic Manager autopilot to compliant vehicles with red light adherence enabled (vehicle.set_traffic_manager behavior, ignore_lights_percentage=0)
+- For the violating vehicle: disable autopilot and use vehicle.apply_control() with throttle=0.6, maintaining constant speed through the intersection
+- Include vehicle color variety and ensure at least one vehicle in each lane direction (left, straight, right of the violating vehicle)
+
+**Pedestrian Actors:**
+- Spawn 2-3 pedestrians at the crosswalk perpendicular to the violating vehicle's path
+- Position pedestrians 1-2 meters onto the crosswalk but still in safe zones
+- Set pedestrian animation to idle/waiting state using walker AI controller
+- Place pedestrians such that the violating vehicle passes within 3-5 meters of them
+
+**Timing and Sequencing:**
+- Initialize all compliant vehicles in stopped positions (velocity=0) at t=0
+- Begin violating vehicle movement immediately at simulation start
+- Trigger the violation between t=3 and t=5 seconds
+- Maintain scenario for 10 seconds post-violation for observation
+- Use spectator camera following the violating vehicle at offset (-8, 0, 3) in vehicle coordinates
+
+**Safety and Collision Detection:**
+- Implement collision sensor on the violating vehicle to detect any impacts
+- Log timestamps, vehicle velocities, and distances to pedestrians at moment of crossing
+- Ensure the violating vehicle's trajectory passes through the intersection center without collision but demonstrates near-miss scenario
+
+**Output Requirements:**
+- Print traffic light states for verification
+- Display violating vehicle speed at intersection entry and exit
+- Calculate and output minimum distance between violating vehicle and pedestrians
+- Include cleanup code to destroy all actors after scenario completion

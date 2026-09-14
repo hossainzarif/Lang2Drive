@@ -1,0 +1,14 @@
+KEYWORD: Red Light Violation
+SCENARIO_KEYWORD: red_light_violation
+SHOT_INDEX: 6
+
+ORIGINAL PROMPT:
+Generate Carla PythonAPI code for a traffic-light-controlled intersection where one car violates the red signal by continuing straight ahead through the intersection. Other cars are correctly stopped at the red light in their lanes. Pedestrians are waiting at the crosswalk, and the violating vehicle narrowly passes them. Ensure the scene includes traffic lights, multiple vehicles, and correct lane placement.
+
+SCENE SPECIFICATIONS:
+Success criteria: keep ego lane clear and demonstrate a true red-light run at a 4-way signalized intersection while maintaining >=20 moving vehicles per approach direction (>=80 total) visible around ego (behind, beside, and crossing approaches). Place contextual cones/barriers only on shoulders/medians/off-lane zones. No lane-blocking clutter unless prompt explicitly requests blockage.
+
+ENHANCED PROMPT:
+Generate Carla PythonAPI code for a traffic-light-controlled intersection where one car violates the red signal by continuing straight ahead through the intersection. Other cars are correctly stopped at the red light in their lanes. Pedestrians are waiting at the crosswalk, and the violating vehicle narrowly passes them. Ensure the scene includes traffic lights, multiple vehicles, and correct lane placement.
+
+SHOT_6 FIX REQUIREMENTS: Keep ego-facing traffic light group RED during approach and crossing, but restore realistic behavior for non-ego approaches. Non-ego intersection signals must cycle through normal GREEN->YELLOW->RED timing (not all-red freeze), and traffic should follow those phases naturally. Maintain dense traffic requirement: >=20 moving vehicles per direction (>=80 total) with nearby vehicles around ego.

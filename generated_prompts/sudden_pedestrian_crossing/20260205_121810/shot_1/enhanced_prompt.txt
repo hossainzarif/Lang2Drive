@@ -1,0 +1,12 @@
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 1
+USER_ADJUSTMENT_PROMPT:
+No frames. Pedestrian should cross and stand little far in the lane of ego vehicle.
+
+LATEST_ISSUES_TO_FIX:
+RUNTIME/COMPILATION ISSUE DETECTED:
+Simulation timed out after 145 seconds
+
+FRAME VERIFICATION FAILED: output frames missing or invalid.
+USER FEEDBACK FOR THIS CONTINUE-AND-FIX ATTEMPT:
+No frames. Pedestrian should cross and stand little far in the lane of ego vehicle.

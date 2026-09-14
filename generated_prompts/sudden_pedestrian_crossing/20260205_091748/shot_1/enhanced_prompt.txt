@@ -1,0 +1,17 @@
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 1
+USER_ADJUSTMENT_PROMPT:
+
+
+LATEST_ISSUES_TO_FIX:
+RUNTIME/COMPILATION ISSUE DETECTED:
+Simulation timed out after 140 seconds
+Partial STDOUT:
+INFO:  Found the required file in cache!  Carla/Maps/Nav/Town03.bin 
+INFO:  Found the required file in cache!  Carla/Maps/TM/Town03.bin 
+
+STDERR:
+WARNING: NAV: Failed to set request to go to  -2.42617 0.164033 1 
+WARNING: NAV: failed to set max speed 
+
+

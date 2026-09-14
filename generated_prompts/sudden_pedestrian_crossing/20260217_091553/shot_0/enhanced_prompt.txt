@@ -1,0 +1,12 @@
+KEYWORD: Sudden Pedestrian Crossing
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 0
+
+ORIGINAL PROMPT:
+Generate Carla PythonAPI code for a four-lane city road where a pedestrian suddenly runs across the street outside of a crosswalk. Vehicles are approaching at normal urban speed and must react to avoid hitting the pedestrian. The environment should include sidewalks, nearby traffic, and realistic pedestrian behavior (running/jaywalking across lanes).
+
+PROFILED PROMPT:
+Generate Carla PythonAPI code for a four-lane city road where a pedestrian suddenly runs across the street outside of a crosswalk. Vehicles are approaching at normal urban speed and must react to avoid hitting the pedestrian. The environment should include sidewalks, nearby traffic, and realistic pedestrian behavior (running/jaywalking across lanes).
+
+ENHANCED PROMPT:
+Generate CARLA PythonAPI code that sets up a four‑lane city road (two lanes per direction, double yellow centerline) where a pedestrian suddenly runs across the street outside of a crosswalk. Spawn the ego vehicle in the rightmost lane traveling at normal urban speed (approx. 30–35 km/h) and spawn at least two additional traffic vehicles ahead and behind in adjacent lanes to create nearby traffic. Place the pedestrian on the sidewalk on the ego’s right side, 5–8 meters from the curb, then trigger the run across all lanes at a specific time offset (e.g., 3.0 seconds after simulation start) so the pedestrian enters the ego lane when the ego is 15–20 meters away. Use a pedestrian controller to set the destination across the road, set a running speed (e.g., 4–6 m/s), and ensure the crossing is a clear jaywalk (not at any crosswalk waypoint). Include timing so the vehicles must brake or swerve to avoid impact; ensure the ego vehicle reacts (either via autopilot with traffic manager or explicit control) to avoid hitting the pedestrian. Add a forward‑facing RGB camera to the ego vehicle (e.g., 1280x720, 90–100 FOV) and ensure the pedestrian is visible entering the roadway and the near‑miss/avoidance is visible in the camera feed. Specify exact spawn transforms for ego, traffic vehicles, and pedestrian relative to a chosen road segment in a town map, and include any required synchronization (synchronous mode with fixed delta) so timing and behavior are deterministic.

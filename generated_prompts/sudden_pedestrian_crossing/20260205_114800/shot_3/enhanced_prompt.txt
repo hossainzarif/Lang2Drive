@@ -1,0 +1,25 @@
+SCENARIO_KEYWORD: sudden_pedestrian_crossing
+SHOT_INDEX: 3
+USER_ADJUSTMENT_PROMPT:
+There is lot of vehicles and only around 30 frames saved. There should be only ego vehicle and pedestrian suddenly crossing in front of ego vehicle in the lane 50 yeard front.
+
+LATEST_ISSUES_TO_FIX:
+FRAME VERIFICATION FAILED: output frames missing or invalid.
+SIMULATION LOG EXCERPT (WARNINGS/ERRORS):
+[INFO] Simulation started
+[INFO] Ego vehicle spawn: Location(x=65.516594, y=7.808423, z=0.275307)
+[INFO] Pedestrian crossing point: Location(x=93.513474, y=8.226642, z=0.001191)
+[INFO] Target standing location: Location(x=93.513474, y=8.226642, z=0.001191)
+[INFO] Max frames: 500
+[INFO] Frame 5: Pedestrian started crossing
+[INFO] Frame 5: Emergency braking activated
+[INFO] Frame 20: Speed=40.43 km/h, Location=(78.46, 8.05), Emergency_Braking=True, Ped_Standing=False
+[INFO] Frame 20: Distance to pedestrian=16.05m, TTC=1.43s
+[INFO] Frame 40: Speed=25.97 km/h, Location=(87.58, 8.18), Emergency_Braking=True, Ped_Standing=False
+[INFO] Frame 40: Distance to pedestrian=8.14m, TTC=1.13s
+[COLLISION] Frame 43: CollisionEvent(frame=176235, timestamp=66.096852, other_actor=000000001E77C090)
+[INFO] Collision detected at frame 44
+[INFO] Simulation completed: 44 frames in 14.63 seconds
+[INFO] Collision occurred: True
+USER FEEDBACK FOR THIS CONTINUE-AND-FIX ATTEMPT:
+There is lot of vehicles and only around 30 frames saved. There should be only ego vehicle and pedestrian suddenly crossing in front of ego vehicle in the lane 50 yeard front.
