@@ -1,0 +1,44 @@
+{
+  "general_perception": {
+    "vehicles": [],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [
+      {
+        "description": "An orange traffic cone positioned on the right side of the road, partially obscured by darkness.",
+        "explanation": "The presence of the traffic cone indicates a potential hazard or construction area, prompting the ego car to proceed with caution and possibly reduce speed."
+      }
+    ],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a traffic cone, typically used to indicate construction or road work ahead. Its presence suggests that the ego car should be cautious and prepared to navigate around potential obstacles or changes in the road layout."
+    },
+    "2": {
+      "description and explanation": "The object is a stop sign, which instructs vehicles to come to a complete stop before proceeding. This requires the ego car to reduce speed and ensure the intersection is clear of other vehicles or pedestrians before continuing."
+    },
+    "3": {
+      "description and explanation": "The object is a streetlight, which may indicate traffic signals or pedestrian crossings. The status of the light will influence the ego car's decision to stop or proceed, depending on whether it is red, yellow, or green."
+    },
+    "4": {
+      "description and explanation": "The object is a tree, which may obstruct visibility or create a potential hazard. The ego car should be aware of its surroundings and adjust speed accordingly to maintain safety, especially in low-light conditions."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "Reduce speed to 15 mph and activate low beam headlights.",
+      "explanation": "Given the low visibility conditions due to darkness, the ego car should reduce its speed to 15 mph to ensure better control and reaction time. Activating low beam headlights will improve visibility for the driver and make the vehicle more visible to other road users. Additionally, the ego car should remain alert for any pedestrians or obstacles that may be difficult to see in the dark."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 mph and prepare to stop.",
+    "short_term_plan": "Continue to monitor surroundings for pedestrians or obstacles while maintaining a safe distance from the curb.",
+    "contingency_plan": "If an unexpected object appears in the path, initiate emergency braking and sound the horn to alert nearby pedestrians.",
+    "primary_hazard": "Low visibility due to darkness, potential for pedestrians or cyclists to be present.",
+    "risk_level": "high",
+    "risk_explanation": "The low light conditions significantly increase the risk of not detecting pedestrians or obstacles in time, leading to potential collisions."
+  }
+}

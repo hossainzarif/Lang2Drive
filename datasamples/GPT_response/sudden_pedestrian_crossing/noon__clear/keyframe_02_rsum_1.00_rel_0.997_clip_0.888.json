@@ -1,0 +1,70 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A red fire truck positioned in the opposite lane, facing the ego car.",
+        "explanation": "The fire truck may be responding to an emergency, which could require the ego car to yield or navigate around it cautiously."
+      },
+      {
+        "description": "A white van parked on the side of the road, partially obstructing the lane.",
+        "explanation": "The parked van may limit visibility and space for the ego car, necessitating careful maneuvering to avoid potential collisions."
+      },
+      {
+        "description": "A black car in the left lane, stationary and waiting at a red light.",
+        "explanation": "The presence of the stationary car indicates that the ego car must stop and wait for the traffic light to change."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A pedestrian in the crosswalk, moving from the left side of the road to the right.",
+        "explanation": "The pedestrian's presence requires the ego car to stop or slow down to ensure their safety while crossing."
+      },
+      {
+        "description": "A group of three pedestrians standing on the sidewalk, appearing to wait to cross.",
+        "explanation": "The group may decide to cross the road, so the ego car should be prepared to stop if they begin to enter the crosswalk."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "A traffic light showing green for the ego car.",
+        "explanation": "The green light indicates that the ego car can proceed, but caution is still necessary due to other road users."
+      }
+    ],
+    "traffic_cones": [],
+    "barriers": [
+      {
+        "description": "A construction barrier on the right side of the road.",
+        "explanation": "The barrier indicates a construction zone, requiring the ego car to stay in its lane and be alert for any changes in road conditions."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "A dustbin on the sidewalk near the pedestrian group.",
+        "explanation": "The dustbin does not directly affect driving behavior but indicates urban infrastructure that may influence pedestrian movement."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "A group of pedestrians is present on the sidewalk. Their proximity to the road indicates a potential for crossing, which may require the ego car to reduce speed or prepare to stop to ensure safety."
+    },
+    "2": {
+      "description and explanation": "A red emergency vehicle is parked on the side of the road. Its presence may indicate an ongoing emergency situation, prompting the ego car to exercise caution, possibly changing lanes or slowing down to avoid any unforeseen hazards."
+    },
+    "3": {
+      "description and explanation": "A person is crossing the street in front of the ego car. This requires immediate attention, as the ego car must prioritize the safety of the pedestrian by slowing down or stopping to allow safe passage."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed to 10 mph and prepare to stop, as there are pedestrians crossing the street ahead. Maintain a safe distance from the vehicles on the left and right to avoid any potential collisions. Activate the hazard lights to alert other drivers of the situation. Once the pedestrians have safely crossed, check for any additional traffic or obstacles before proceeding cautiously."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 mph and prepare to stop.",
+    "short_term_plan": "Continue to monitor pedestrians and vehicles ahead, maintain a safe distance, and be ready to brake if a pedestrian enters the crosswalk.",
+    "contingency_plan": "If a pedestrian suddenly runs into the road, apply emergency brakes and sound the horn to alert nearby pedestrians and vehicles.",
+    "primary_hazard": "Pedestrians crossing the road unexpectedly.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of multiple pedestrians near the road increases the likelihood of an unexpected crossing, especially in low visibility conditions."
+  }
+}

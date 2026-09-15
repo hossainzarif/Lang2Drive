@@ -1,0 +1,42 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A red truck is partially overturned on the left side of the road, facing sideways.",
+        "explanation": "The overturned truck obstructs the lane, requiring the ego car to slow down and potentially maneuver around it."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "A large fallen tree is blocking the road, with branches spread across both lanes.",
+        "explanation": "The fallen tree poses a significant hazard, necessitating the ego car to stop and assess the situation before proceeding."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a fallen tree branch obstructing the road. Its presence requires the ego car to assess the situation carefully, as it may necessitate a change in speed or direction to avoid a collision. The driverless system should prioritize safety by either stopping or navigating around the obstacle, depending on the road conditions and available space."
+    },
+    "2": {
+      "description and explanation": "This object is a streetlight that appears to be leaning due to strong winds or other environmental factors. The ego car must be aware of its potential instability, which could pose a risk if it were to fall. The vehicle's navigation system should monitor the streetlight's position and adjust the route if necessary to maintain a safe distance."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "The ego car should come to a complete stop at a safe distance from the fallen tree blocking the road. Activate hazard lights to alert other drivers of the obstruction. Assess the situation for any potential hazards, such as downed power lines or other debris. Once it is safe, the vehicle should wait for emergency services to arrive or until the road is cleared before proceeding. If the situation allows, the car can also use a navigation system to find an alternative route to avoid the blockage."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 km/h and prepare to stop.",
+    "short_term_plan": "Continue to monitor the road ahead for obstacles, maintain a safe distance from the fallen tree, and be prepared to steer left or right if necessary.",
+    "contingency_plan": "If the tree shifts or additional debris falls, immediately brake and steer away from the hazard to avoid collision.",
+    "primary_hazard": "Fallen tree blocking the road.",
+    "risk_level": "high",
+    "risk_explanation": "The fallen tree presents a significant obstacle, increasing the likelihood of collision if not navigated carefully, especially in poor visibility and wet conditions."
+  }
+}

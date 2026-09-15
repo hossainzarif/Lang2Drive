@@ -1,0 +1,27 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/Vehicle-Wreck-Oil-Spill-Harazrd/almost_night_no_streetlights__clear_keyframe_01_rsum_0.00_rel_1.000_clip_1.000.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        441.0,
+        369.0,
+        569.0,
+        477.0
+      ],
+      "score": 0.770507,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        658.0,
+        386.0,
+        760.0,
+        459.0
+      ],
+      "score": 0.646928,
+      "source": "sam_refined"
+    }
+  ]
+}

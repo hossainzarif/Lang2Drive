@@ -1,0 +1,27 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/Red-Light-Violation/night__storm_keyframe_36_rsum_35.00_rel_0.875_clip_0.653.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        867.0,
+        367.0,
+        920.0,
+        413.0
+      ],
+      "score": 0.774319,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        269.0,
+        371.0,
+        552.0,
+        546.0
+      ],
+      "score": 0.620388,
+      "source": "sam_refined"
+    }
+  ]
+}

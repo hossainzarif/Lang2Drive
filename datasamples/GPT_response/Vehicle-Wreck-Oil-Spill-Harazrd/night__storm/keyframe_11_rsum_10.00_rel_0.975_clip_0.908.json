@@ -1,0 +1,60 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A blue SUV positioned to the left of the ego car, facing forward.",
+        "explanation": "This vehicle is stationary and may be part of a traffic jam, indicating that the ego car should remain cautious and prepared to stop."
+      },
+      {
+        "description": "A black sedan directly in front of the ego car, also facing forward.",
+        "explanation": "This vehicle is likely to move when traffic resumes, so the ego car should maintain a safe following distance."
+      },
+      {
+        "description": "An ambulance on the right side of the ego car, with emergency lights activated.",
+        "explanation": "The presence of an emergency vehicle suggests that the ego car should be prepared to yield or move aside if necessary."
+      },
+      {
+        "description": "A large truck further ahead in the lane, stationary.",
+        "explanation": "This truck may block visibility of the road ahead, prompting the ego car to be cautious and alert for any sudden movements from other vehicles."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [
+      {
+        "description": "Traffic cones positioned on the right side of the road.",
+        "explanation": "These cones indicate a potential hazard or construction zone, prompting the ego car to stay within its lane and drive cautiously."
+      }
+    ],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "Debris scattered on the road surface.",
+        "explanation": "This debris could pose a hazard to the ego car, necessitating careful navigation to avoid potential damage or loss of control."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This is an emergency vehicle, specifically an ambulance, which is typically used for transporting patients in need of urgent medical care. The presence of an ambulance indicates a potential emergency situation on the road. The ego car should be prepared to yield and possibly change lanes to allow the ambulance to pass safely, as it may be responding to an urgent call."
+    },
+    "2": {
+      "description and explanation": "This object is a dark-colored SUV, which is likely a passenger vehicle. Its position on the road suggests that it is either stopped or moving slowly, possibly due to traffic or an obstruction ahead. The ego car must maintain a safe following distance and be cautious of any sudden movements from this vehicle, as it may change lanes or accelerate unexpectedly."
+    },
+    "3": {
+      "description and explanation": "This object is a sedan, which appears to be stationary in the lane. The vehicle's presence indicates that traffic is likely congested or that there is a reason for vehicles to stop. The ego car should be alert to the possibility of sudden stops or lane changes from this vehicle, and it should be prepared to react accordingly to maintain safety."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should remain in its current lane and maintain a safe following distance from the vehicle ahead, as traffic appears to be at a standstill. Given the presence of emergency vehicles with flashing lights, the ego car should activate its hazard lights to alert other drivers of its presence. Additionally, the ego car should monitor the surroundings for any potential lane changes by other vehicles and be prepared to stop if necessary. If the traffic remains stationary for an extended period, the ego car may consider turning off the engine to conserve fuel while remaining alert for any changes in traffic conditions."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 mph and maintain a safe following distance from the vehicle in front.",
+    "short_term_plan": "Prepare to stop completely if traffic does not resume within the next 3 seconds. Activate hazard lights to alert vehicles behind.",
+    "contingency_plan": "If a vehicle suddenly brakes or an obstacle appears, apply brakes firmly and prepare to steer to the right if necessary to avoid a collision.",
+    "primary_hazard": "Vehicles stopped in the lane ahead, particularly the emergency vehicle with flashing lights.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of stopped vehicles and an emergency vehicle increases the likelihood of rear-end collisions and complicates navigation through the scene."
+  }
+}

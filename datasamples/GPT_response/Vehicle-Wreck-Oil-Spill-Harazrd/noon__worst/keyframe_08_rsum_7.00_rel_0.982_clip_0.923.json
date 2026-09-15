@@ -1,0 +1,68 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A blue truck with a large cargo container, positioned in the left lane, moving forward.",
+        "explanation": "The truck's size and position may limit the ego car's visibility and maneuverability, requiring caution when changing lanes."
+      },
+      {
+        "description": "An ambulance with flashing lights, located in the right lane, stationary and partially on the shoulder.",
+        "explanation": "The presence of the ambulance indicates a potential emergency situation, necessitating the ego car to slow down and possibly yield."
+      },
+      {
+        "description": "A black sedan in the middle lane, traveling at a moderate speed.",
+        "explanation": "This vehicle may influence the ego car's speed and lane choice, requiring awareness to maintain safe distances."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [
+      {
+        "description": "A warning sign indicating a slippery road ahead, positioned on the right side of the road.",
+        "explanation": "This sign alerts the ego car to reduce speed and drive cautiously due to potentially hazardous conditions."
+      }
+    ],
+    "traffic_lights": [],
+    "traffic_cones": [
+      {
+        "description": "Two orange traffic cones placed on the right side of the road.",
+        "explanation": "The cones likely indicate a construction zone or obstruction, prompting the ego car to navigate carefully around them."
+      }
+    ],
+    "barriers": [
+      {
+        "description": "A concrete barrier running along the right side of the road.",
+        "explanation": "The barrier restricts lateral movement, requiring the ego car to stay within its lane and avoid sudden maneuvers."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "A large rock on the shoulder of the road.",
+        "explanation": "The rock could pose a hazard if the ego car drifts off the road, necessitating careful lane discipline."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a large truck traveling in the same lane as the ego car. Its size and speed may influence the ego car's decision to maintain a safe following distance. The ego car may need to adjust its speed or position to ensure safe navigation, especially in adverse weather conditions."
+    },
+    "2": {
+      "description and explanation": "This object is an emergency vehicle, likely an ambulance, positioned ahead of the ego car. The presence of this vehicle may require the ego car to yield or change lanes to allow it to pass safely. The ego car should be alert to any sudden stops or maneuvers from this vehicle."
+    },
+    "3": {
+      "description and explanation": "This object is a traffic sign, which appears to be a warning sign. It serves to inform the ego car of potential hazards or changes in road conditions ahead. The ego car must interpret this sign and adjust its speed or driving behavior accordingly to ensure safety."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "Reduce speed to 30 mph and maintain a safe following distance of at least 4 seconds behind the vehicle in front. Activate hazard lights to increase visibility to other drivers. Prepare to stop if the ambulance ahead is stationary or if traffic conditions worsen. Avoid sudden lane changes and remain in the right lane unless necessary to pass, ensuring to check mirrors and blind spots before any maneuvers. Stay alert for pedestrians or animals near the roadside, especially given the reduced visibility due to rain and fog."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 30 km/h and maintain a safe following distance from the vehicle ahead.",
+    "short_term_plan": "Prepare to change lanes to the left to avoid the emergency vehicle and the cones ahead. Signal left and check mirrors.",
+    "contingency_plan": "If another vehicle unexpectedly cuts in, apply brakes gently to maintain control and avoid collision. If visibility worsens, pull over safely to the shoulder.",
+    "primary_hazard": "Emergency vehicle and traffic cones blocking the right lane.",
+    "risk_level": "high",
+    "risk_explanation": "The combination of reduced visibility due to rain and fog, along with the presence of an emergency vehicle and cones, increases the likelihood of an accident if not navigated carefully."
+  }
+}

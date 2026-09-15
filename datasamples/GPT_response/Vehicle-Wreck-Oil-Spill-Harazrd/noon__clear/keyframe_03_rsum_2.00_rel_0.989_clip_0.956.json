@@ -1,0 +1,71 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "An ambulance with a white body and yellow and red stripes, positioned in the right lane, moving slowly.",
+        "explanation": "The ambulance may be responding to an emergency, indicating that the ego car should be prepared to yield and allow it to pass."
+      },
+      {
+        "description": "A blue truck in the middle lane, moving at a moderate speed.",
+        "explanation": "The truck's presence may limit the ego car's ability to change lanes, necessitating caution and maintaining a safe following distance."
+      },
+      {
+        "description": "A black car in the left lane, traveling at a higher speed than the ego car.",
+        "explanation": "This vehicle may pose a risk of merging into the ego car's lane, requiring the ego car to monitor its speed and position closely."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A motorcyclist wearing a black helmet, positioned in the left lane, moving alongside the ego car.",
+        "explanation": "The motorcyclist's proximity requires the ego car to be vigilant to avoid potential collisions, especially in wet conditions."
+      }
+    ],
+    "traffic_signs": [
+      {
+        "description": "A warning sign indicating a slippery road ahead, positioned on the right side of the road.",
+        "explanation": "This sign alerts the ego car to reduce speed and increase following distance due to potentially hazardous driving conditions."
+      }
+    ],
+    "traffic_lights": [],
+    "traffic_cones": [
+      {
+        "description": "Traffic cones positioned on the right side of the road, indicating a construction zone.",
+        "explanation": "These cones suggest that the ego car should remain in its lane and be cautious of potential lane changes or reduced speed limits."
+      }
+    ],
+    "barriers": [
+      {
+        "description": "A concrete barrier separating the lanes, visible on the right side of the road.",
+        "explanation": "The barrier indicates that lane changes are restricted, and the ego car should maintain its current lane."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "Puddles forming on the road due to rain, affecting traction.",
+        "explanation": "The presence of water on the road surface requires the ego car to drive cautiously to prevent skidding."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This is an ambulance, which is typically used for emergency medical services. Its presence indicates that there may be an emergency situation nearby, requiring the ego car to be cautious and possibly yield to allow the ambulance to maneuver through traffic. The flashing lights and distinctive markings signal urgency, prompting the ego car to adjust its speed and position accordingly."
+    },
+    "2": {
+      "description and explanation": "This is a passenger vehicle, likely traveling in the same lane as the ego car. Its position and speed can influence the ego car's driving behavior, as it may need to maintain a safe following distance. The ego car should monitor this vehicle for any sudden changes in speed or direction, especially in adverse weather conditions, to ensure safe navigation."
+    },
+    "3": {
+      "description and explanation": "This is a tire, which may indicate a potential hazard on the road. If the tire is detached from a vehicle, it could pose a risk of collision. The ego car should be alert and possibly change lanes or adjust speed to avoid any debris or unexpected obstacles that could arise from this situation."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed to maintain a safe following distance from the vehicle in front, considering the wet road conditions that may increase stopping distance. Activate the windshield wipers to improve visibility and ensure headlights are turned on to enhance visibility for both the ego car and other drivers. If the road ahead is blocked due to the emergency vehicle (ambulance) and traffic congestion, the ego car should prepare to stop safely and wait for the situation to clear, while monitoring the surroundings for any sudden movements from other vehicles."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 30 km/h and maintain a safe following distance from the vehicle ahead.",
+    "short_term_plan": "Prepare to change lanes to the left if the traffic ahead does not clear within 3 seconds. Monitor the right lane for any vehicles approaching.",
+    "contingency_plan": "If a vehicle suddenly brakes or an obstacle appears, apply brakes smoothly and prepare to steer left to avoid collision.",
+    "primary_hazard": "Emergency vehicle (ambulance) on the right lane, potentially causing traffic disruption.",
+    "risk_level": "high",
+    "risk_explanation": "The combination of heavy rain, reduced visibility, and the presence of an emergency vehicle increases the likelihood of sudden stops or lane changes by other drivers, posing a significant risk."
+  }
+}

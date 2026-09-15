@@ -1,0 +1,36 @@
+{
+  "general_perception": {
+    "vehicles": [],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a streetlight, which is typically used to illuminate the roadway during nighttime. Its presence indicates that the area is designed for vehicular and pedestrian traffic, enhancing visibility and safety. The ego car should maintain awareness of the streetlight's position, as it may influence the decision to adjust speed or navigate safely through the area."
+    },
+    "2": {
+      "description and explanation": "The object is a tree, which serves as a natural element in the environment. Trees can obstruct visibility and may pose a hazard if they are too close to the roadway. The ego car should consider the potential for reduced sightlines and be cautious of any pedestrians or wildlife that may be present near the tree."
+    },
+    "3": {
+      "description and explanation": "The object is a building silhouette, indicating urban infrastructure. Buildings can affect traffic flow and may house businesses or residences. The ego car should be aware of potential pedestrian activity and turning vehicles as it approaches this area, adjusting its behavior accordingly to ensure safety."
+    },
+    "4": {
+      "description and explanation": "The object is a road marking, specifically lane lines that guide the ego car's positioning on the roadway. These markings are crucial for maintaining lane discipline and ensuring safe navigation. The ego car should adhere to these markings to avoid collisions and maintain proper lane usage."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed to 20 mph and activate its low beam headlights to improve visibility in the dim lighting conditions. It should remain in its lane while scanning for any pedestrians or cyclists that may be obscured by the surrounding foliage. If the road ahead is clear, the ego car can proceed cautiously, maintaining a safe distance from any potential obstacles. Additionally, the vehicle should prepare to stop if any traffic signals or signs become visible, ensuring compliance with traffic laws."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 km/h and prepare to stop.",
+    "short_term_plan": "Continue to monitor surroundings for pedestrians or cyclists while maintaining reduced speed. If the road is clear, proceed straight.",
+    "contingency_plan": "If an unexpected object or pedestrian appears, apply brakes immediately and prepare to steer left or right to avoid collision.",
+    "primary_hazard": "Low visibility due to darkness and potential obstacles on the road.",
+    "risk_level": "high",
+    "risk_explanation": "The low light conditions significantly increase the risk of not seeing pedestrians, cyclists, or other vehicles, making it difficult to react in time."
+  }
+}

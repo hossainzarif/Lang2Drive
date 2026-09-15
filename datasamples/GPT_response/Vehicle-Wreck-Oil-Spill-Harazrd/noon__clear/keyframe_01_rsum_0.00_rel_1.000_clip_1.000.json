@@ -1,0 +1,61 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "An ambulance with a white body and red and yellow markings, positioned in the right lane, moving slowly.",
+        "explanation": "The ambulance may be responding to an emergency, requiring the ego car to yield and possibly change lanes to allow it to pass safely."
+      },
+      {
+        "description": "A large blue truck in the left lane, stationary.",
+        "explanation": "The truck's presence may block the view of other road users, necessitating caution and possibly a lane change by the ego car to ensure safe navigation."
+      },
+      {
+        "description": "A black SUV in the center lane, moving at a moderate speed.",
+        "explanation": "The SUV's speed and position may influence the ego car's decision to maintain or adjust its speed to avoid a collision."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A cyclist wearing a helmet, positioned on the shoulder of the road, facing the direction of the traffic.",
+        "explanation": "The cyclist's proximity to the road may require the ego car to reduce speed and maintain a safe distance to avoid any potential accidents."
+      }
+    ],
+    "traffic_signs": [
+      {
+        "description": "A warning sign indicating a curve ahead, located on the right side of the road.",
+        "explanation": "This sign alerts the ego car to prepare for a turn, prompting a reduction in speed and increased caution."
+      }
+    ],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [
+      {
+        "description": "A concrete barrier separating the lanes, positioned on the right side of the road.",
+        "explanation": "The barrier indicates that the ego car should remain in its lane and not attempt to change lanes to the right."
+      }
+    ],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is an ambulance, characterized by its distinct markings and flashing lights. It is typically used for emergency medical services. The presence of the ambulance indicates that it may need to maneuver quickly, potentially requiring the ego car to yield or adjust its speed to allow for safe passage."
+    },
+    "2": {
+      "description and explanation": "This object is a large delivery truck, which is generally wider and longer than standard vehicles. Its size may limit the available space for the ego car to maneuver. The truck's speed and lane position could influence the ego car's decision to either overtake or maintain a safe following distance."
+    },
+    "3": {
+      "description and explanation": "This object is a passenger car, which is typically smaller and more agile than larger vehicles. Its presence in the lane ahead may indicate a need for the ego car to adjust its speed or position to ensure safe driving. The behavior of this car can significantly affect the ego car's following distance and lane change decisions."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed to match the flow of traffic while maintaining a safe following distance from the vehicle ahead. It should signal and prepare to change lanes to the left if the lane is clear, allowing for safe passage around the emergency vehicle (ambulance) on the right. The ego car must ensure that it does not encroach on the lane of the emergency vehicle and should be vigilant for any pedestrians or cyclists in the vicinity. Once the lane change is completed, the ego car should gradually accelerate to resume normal driving speed while remaining aware of surrounding vehicles."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 30 km/h and prepare to brake.",
+    "short_term_plan": "Continue to monitor the vehicles ahead, maintain a safe following distance, and prepare to change lanes to the left if the traffic ahead does not clear.",
+    "contingency_plan": "If an unexpected vehicle suddenly stops or swerves, apply brakes firmly and steer to the left to avoid collision.",
+    "primary_hazard": "The ambulance and the truck in front, which may be slowing down or stopping.",
+    "risk_level": "medium",
+    "risk_explanation": "There is a moderate risk due to the presence of multiple vehicles in close proximity, potential for sudden stops, and the need to navigate around the ambulance."
+  }
+}

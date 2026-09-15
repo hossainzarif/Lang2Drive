@@ -1,0 +1,51 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A white van positioned in the middle lane, moving forward at a moderate speed.",
+        "explanation": "The van's presence in the middle lane may require the ego car to adjust its speed or lane position to maintain a safe distance."
+      },
+      {
+        "description": "A red car on the left lane, traveling at a higher speed than the ego car.",
+        "explanation": "The red car's speed may pose a risk of merging or cutting in front of the ego car, necessitating caution and potential speed adjustment."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A cyclist wearing a dark jacket, riding in the same direction as the ego car, positioned slightly ahead on the right side.",
+        "explanation": "The cyclist's proximity and direction require the ego car to be vigilant and possibly slow down to ensure safety while passing."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [
+      {
+        "description": "Traffic cones positioned on the left side of the road, indicating a construction zone.",
+        "explanation": "The presence of traffic cones suggests a potential lane closure or detour, prompting the ego car to prepare for lane changes or reduced speed."
+      }
+    ],
+    "barriers": [
+      {
+        "description": "A concrete barrier along the left side of the road, separating the roadway from a steep drop-off.",
+        "explanation": "The barrier indicates a hazardous area, requiring the ego car to stay within its lane and maintain a safe distance from the edge."
+      }
+    ],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a cyclist riding on the road. This individual is a vulnerable road user, which means that the ego car must exercise caution when approaching. The presence of the cyclist may require the ego car to reduce speed, maintain a safe distance, and be prepared to yield if necessary. Additionally, the cyclist's movements can be unpredictable, especially in low visibility conditions, so the ego car should be alert to any sudden changes in direction or speed."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed significantly to adapt to the low visibility conditions caused by the fog. Maintain a safe following distance from the vehicle ahead, ensuring at least a three-second gap to allow for any sudden stops. Activate the low-beam headlights to enhance visibility without blinding other road users. Be prepared to stop if the cyclist ahead makes any sudden movements or if the road conditions worsen. Additionally, check for any vehicles in adjacent lanes before changing lanes, ensuring that the maneuver is safe given the reduced visibility."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 km/h and prepare to brake.",
+    "short_term_plan": "Maintain reduced speed while monitoring the cyclist ahead and the surrounding vehicles. Prepare to change lanes to the right if the cyclist does not move.",
+    "contingency_plan": "If the cyclist suddenly swerves or stops, apply brakes immediately and be ready to steer left or right to avoid collision.",
+    "primary_hazard": "Cyclist in close proximity on the road.",
+    "risk_level": "high",
+    "risk_explanation": "The visibility is low due to fog, increasing the likelihood of not seeing the cyclist's movements clearly, which poses a significant risk of collision."
+  }
+}

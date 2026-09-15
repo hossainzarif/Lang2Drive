@@ -1,0 +1,38 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/sudden_pedestrian_crossing/noon__worst_keyframe_01_rsum_0.00_rel_1.000_clip_1.000.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        733.0,
+        396.0,
+        795.0,
+        509.0
+      ],
+      "score": 0.844648,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        186.0,
+        374.0,
+        230.0,
+        503.0
+      ],
+      "score": 0.726468,
+      "source": "sam_refined"
+    },
+    {
+      "id": 3,
+      "bbox_xyxy": [
+        1093.0,
+        394.0,
+        1142.0,
+        502.0
+      ],
+      "score": 0.72431,
+      "source": "sam_refined"
+    }
+  ]
+}

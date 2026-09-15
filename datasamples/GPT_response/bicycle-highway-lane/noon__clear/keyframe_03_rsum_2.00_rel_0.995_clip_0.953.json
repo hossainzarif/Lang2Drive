@@ -1,0 +1,50 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A car is positioned in the left lane, traveling in the same direction as the ego car.",
+        "explanation": "This vehicle may influence the ego car's lane change decisions, requiring caution to avoid collisions."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A cyclist is riding in the right lane, slightly ahead of the ego car, moving in the same direction.",
+        "explanation": "The cyclist's presence requires the ego car to maintain a safe distance and be prepared to slow down or maneuver to avoid any potential accidents."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [
+      {
+        "description": "A concrete barrier is located on the right side of the road, separating the roadway from a pedestrian area.",
+        "explanation": "The barrier indicates that the ego car should remain in its lane and not veer off the road."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "Rain is visibly affecting the road surface, creating puddles.",
+        "explanation": "Wet road conditions can reduce traction, requiring the ego car to drive more cautiously and adjust speed accordingly."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a cyclist riding a bicycle on the roadway. The presence of the cyclist indicates a potential hazard for the ego car, as cyclists are more vulnerable in traffic and may require the ego car to adjust its speed or position to ensure safety. The cyclist's movements can be unpredictable, especially in adverse weather conditions like rain, which can affect visibility and road traction. The ego car should maintain a safe distance and be prepared to yield or stop if the cyclist changes lanes or slows down suddenly."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "Reduce speed to 20 mph and maintain a safe following distance of at least 5 seconds behind the cyclist. Use the windshield wipers to improve visibility and activate hazard lights to alert other drivers of potential hazards due to the rainy conditions. Be prepared to stop if the cyclist makes any sudden movements or if visibility worsens.",
+      "justification": "The current scene shows a cyclist on a wet road with reduced visibility due to rain. Slowing down and increasing the following distance will allow the ego car to react appropriately to any unexpected actions from the cyclist or other road users."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 km/h and maintain a safe following distance from the cyclist ahead.",
+    "short_term_plan": "Prepare to change lanes to the left if the cyclist slows down or stops. Monitor surrounding traffic for any vehicles approaching from behind.",
+    "contingency_plan": "If the cyclist suddenly swerves or falls, immediately apply brakes and prepare to stop, ensuring no vehicles are in the adjacent lane.",
+    "primary_hazard": "Cyclist on the road in wet conditions.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of a cyclist in rainy conditions increases the likelihood of sudden movements or loss of control, posing a significant risk to both the cyclist and the ego vehicle."
+  }
+}

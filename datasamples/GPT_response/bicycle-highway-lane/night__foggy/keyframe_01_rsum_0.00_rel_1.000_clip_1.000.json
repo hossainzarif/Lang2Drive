@@ -1,0 +1,42 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A dark-colored car traveling in the opposite direction, positioned in the left lane.",
+        "explanation": "This vehicle could potentially cross paths with the ego car, requiring caution and possibly a reduction in speed to avoid any collision."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A cyclist wearing a red jacket, riding in the same direction as the ego car, positioned in the right lane.",
+        "explanation": "The cyclist is a vulnerable road user who may change speed or direction unexpectedly, necessitating the ego car to maintain a safe distance and be prepared to stop if needed."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a cyclist wearing a red jacket. The presence of the cyclist on the road indicates a potential obstacle for the ego car. The cyclist's position and movement may require the ego car to adjust its speed or change lanes to ensure safe passage. Additionally, the cyclist's visibility in low-light conditions is a concern, necessitating increased caution from the ego car to prevent any accidents."
+    },
+    "2": {
+      "description and explanation": "The object is a vehicle traveling in the opposite direction. This vehicle's presence may influence the ego car's decision-making, particularly regarding lane positioning and speed. The ego car must remain aware of the oncoming traffic to avoid potential collisions, especially if the road conditions are compromised by weather or visibility."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "Reduce speed to 30 km/h and maintain a safe following distance of at least 3 seconds behind the cyclist ahead. Activate hazard lights to increase visibility in low-light conditions. Prepare to change lanes to the left when it is safe to do so, ensuring that no vehicles are approaching from behind. Continuously monitor the cyclist's movements and be ready to stop if they suddenly change direction or slow down."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 km/h and maintain a safe distance from the cyclist ahead.",
+    "short_term_plan": "Continue to monitor the cyclist's movements and prepare to brake if they suddenly change direction or fall.",
+    "contingency_plan": "If the cyclist swerves into the lane, immediately apply brakes and prepare to steer left to avoid collision.",
+    "primary_hazard": "Cyclist in the lane ahead.",
+    "risk_level": "medium",
+    "risk_explanation": "The cyclist is in close proximity and could pose a risk if they make an unexpected maneuver, especially in low visibility conditions."
+  }
+}

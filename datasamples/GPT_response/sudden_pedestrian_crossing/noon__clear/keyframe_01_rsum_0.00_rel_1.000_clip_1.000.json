@@ -1,0 +1,52 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A blue sedan is positioned in the left lane, moving slowly towards the intersection.",
+        "explanation": "The presence of the blue sedan may require the ego car to adjust its speed or lane position to avoid a potential collision."
+      },
+      {
+        "description": "A large truck is parked on the right side of the road, partially blocking the lane.",
+        "explanation": "The truck's position may force the ego car to change lanes or reduce speed to navigate safely around it."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "Two pedestrians are crossing the street from left to right, appearing to be in a hurry.",
+        "explanation": "The pedestrians' movement across the road requires the ego car to yield and possibly stop to ensure their safety."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "The traffic light is green, indicating that vehicles can proceed.",
+        "explanation": "The green light allows the ego car to move forward, but caution is necessary due to the pedestrians crossing."
+      }
+    ],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a pedestrian walking across the road. The presence of the pedestrian indicates that the ego car must be prepared to slow down or stop to ensure the safety of the individual. The pedestrian's movement suggests a potential crossing, which requires the ego car to assess speed and distance to avoid any collision."
+    },
+    "2": {
+      "description and explanation": "This object is another pedestrian also crossing the road. Similar to the first pedestrian, this individual requires the ego car to adjust its speed and trajectory. The close proximity of both pedestrians increases the urgency for the ego car to react appropriately, ensuring that it does not endanger the pedestrians while navigating through the intersection."
+    },
+    "3": {
+      "description and explanation": "This object is a parked vehicle on the side of the road. The parked vehicle may obstruct the view of pedestrians or other road users. The ego car must be cautious while passing this vehicle, as pedestrians may unexpectedly emerge from behind it. Additionally, the parked vehicle may influence the ego car's lane positioning and speed as it navigates through the area."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should come to a complete stop to yield to the pedestrians crossing the street. Given that there are two individuals in the crosswalk, it is crucial to ensure their safety before proceeding. After the pedestrians have completely crossed and it is safe to do so, the ego car can then resume driving by checking for any oncoming traffic and ensuring the intersection is clear."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 km/h and prepare to stop.",
+    "short_term_plan": "Continue slowing down and assess the pedestrians' movement. If they clear the road, proceed cautiously.",
+    "contingency_plan": "If a pedestrian unexpectedly steps in front of the vehicle, apply brakes immediately and come to a complete stop.",
+    "primary_hazard": "Pedestrians crossing the road.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of multiple pedestrians crossing the road poses a significant risk of collision, especially if they do not follow traffic signals or if their movements are unpredictable."
+  }
+}

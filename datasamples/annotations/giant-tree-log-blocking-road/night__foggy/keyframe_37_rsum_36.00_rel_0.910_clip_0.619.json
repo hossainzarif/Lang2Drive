@@ -1,0 +1,16 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/giant-tree-log-blocking-road/night__foggy_keyframe_37_rsum_36.00_rel_0.910_clip_0.619.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        852.0,
+        0.0,
+        1279.0,
+        314.0
+      ],
+      "score": 0.618035,
+      "source": "sam_refined"
+    }
+  ]
+}

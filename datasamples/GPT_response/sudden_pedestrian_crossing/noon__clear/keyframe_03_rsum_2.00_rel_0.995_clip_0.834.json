@@ -1,0 +1,52 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A large red truck is positioned in the left lane, moving forward.",
+        "explanation": "The truck's presence in the left lane may affect the ego car's ability to change lanes or overtake, requiring caution."
+      },
+      {
+        "description": "A white van is stationary in the right lane, facing the same direction as the ego car.",
+        "explanation": "The van could obstruct visibility of other road users or traffic signals, necessitating careful observation."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "Two pedestrians are crossing the road in front of the ego car, moving from left to right.",
+        "explanation": "Their presence directly in the path of the ego car requires immediate attention and potential braking to avoid a collision."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "The traffic light is green.",
+        "explanation": "This indicates that the ego car is permitted to proceed, but caution is still necessary due to the pedestrians crossing."
+      }
+    ],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object appears to be a storefront or a food vendor. Its presence indicates potential pedestrian activity as people may be approaching or leaving the establishment. The ego car should be cautious and prepared to stop or yield to pedestrians who may enter the roadway unexpectedly."
+    },
+    "2": {
+      "description and explanation": "This object is a large truck, likely a delivery vehicle. Its size and position in the lane suggest it may be moving forward or preparing to turn. The ego car should maintain a safe distance and be aware of the truck's potential maneuvers, as large vehicles often have wider turning radii and may obstruct visibility."
+    },
+    "3": {
+      "description and explanation": "This object is a pedestrian standing on the road. The pedestrian's presence requires the ego car to prioritize safety by reducing speed and being prepared to stop if the pedestrian decides to cross the street. The ego car must also be vigilant for any sudden movements from the pedestrian."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed significantly to ensure safety as it approaches the crosswalk where pedestrians are present. It must come to a complete stop if the pedestrians are crossing or appear to be preparing to cross the road. The driver should also activate the hazard lights to alert other vehicles of the stopped position. Once the pedestrians have safely crossed and the road is clear, the ego car can proceed cautiously, checking for any other potential hazards, such as vehicles turning or additional pedestrians."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Apply brakes to reduce speed to 10 mph.",
+    "short_term_plan": "Prepare to stop completely if pedestrians do not clear the road within 3 seconds.",
+    "contingency_plan": "If pedestrians suddenly move into the lane, execute an emergency stop and activate hazard lights.",
+    "primary_hazard": "Pedestrians crossing the road unexpectedly.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of pedestrians in the lane poses a significant risk of collision, especially in low visibility conditions."
+  }
+}

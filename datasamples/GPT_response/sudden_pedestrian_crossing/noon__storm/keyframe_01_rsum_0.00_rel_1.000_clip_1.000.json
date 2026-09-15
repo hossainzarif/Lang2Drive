@@ -1,0 +1,68 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A yellow car is positioned in the left lane, facing towards the intersection.",
+        "explanation": "The yellow car may be preparing to turn left or continue straight, which could affect the ego car's decision to proceed through the intersection."
+      },
+      {
+        "description": "A dark-colored SUV is stopped in the right lane, waiting at the traffic light.",
+        "explanation": "The SUV's position indicates it is not currently a threat, but it may start moving once the light changes, requiring the ego car to be cautious."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A pedestrian in a blue jacket and red pants is crossing the street from right to left.",
+        "explanation": "The pedestrian is in the path of the ego car and poses an immediate risk, necessitating a reduction in speed or a complete stop to avoid a collision."
+      },
+      {
+        "description": "A group of three pedestrians is waiting at the curb on the left side of the road.",
+        "explanation": "They may decide to cross the street, which could influence the ego car's speed and positioning."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "The traffic light is green for the ego car.",
+        "explanation": "The green light indicates that the ego car can proceed, but caution is still needed due to the pedestrian crossing."
+      }
+    ],
+    "traffic_cones": [
+      {
+        "description": "A traffic cone is placed on the right side of the road near the sidewalk.",
+        "explanation": "The cone may indicate a construction zone or a hazard, suggesting the ego car should maintain a safe distance from the right side."
+      }
+    ],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "There is a small debris on the road, possibly a fallen branch.",
+        "explanation": "The debris could pose a hazard to the ego car, requiring the driver to maneuver around it safely."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "A pedestrian is crossing the street, wearing red pants and appearing to be in motion. This object requires the ego car to reduce speed and prepare to stop to avoid a collision, as pedestrians have the right of way in crosswalks."
+    },
+    "2": {
+      "description and explanation": "Two individuals are standing on the sidewalk, one wearing a blue jacket and the other a yellow raincoat. Their presence indicates potential pedestrian activity, prompting the ego car to remain vigilant and ready to yield if they decide to cross the street."
+    },
+    "3": {
+      "description and explanation": "A yellow car is positioned in the lane ahead, possibly preparing to make a turn or stop. The ego car must assess the situation to determine if it needs to slow down or change lanes to maintain safety and avoid any potential obstruction."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "The ego car should reduce its speed to 10 mph and prepare to stop as a pedestrian is crossing the road ahead. Given the rainy conditions, visibility is low, and the road may be slippery. The vehicle should activate its hazard lights to alert other drivers of its reduced speed and potential stop. Maintain a safe distance from the pedestrian and be ready to yield the right of way, ensuring the pedestrian can cross safely before proceeding."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Apply brakes to reduce speed to 10 km/h.",
+    "short_term_plan": "Prepare to stop completely if the pedestrian continues to cross; monitor surrounding vehicles for sudden movements.",
+    "contingency_plan": "If the pedestrian suddenly stops or changes direction, be ready to steer left to avoid collision while maintaining braking.",
+    "primary_hazard": "Pedestrian crossing the road unexpectedly.",
+    "risk_level": "high",
+    "risk_explanation": "The pedestrian is in the path of the ego vehicle, and the wet road conditions may reduce braking effectiveness, increasing the risk of collision."
+  }
+}

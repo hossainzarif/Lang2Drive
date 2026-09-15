@@ -1,0 +1,42 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A stationary car on the left side of the road, partially obscured by trees.",
+        "explanation": "The presence of this vehicle may indicate a potential obstruction or hazard, requiring the ego car to be cautious and possibly reduce speed."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "A large fallen tree blocking the road ahead.",
+        "explanation": "This significant obstruction requires the ego car to stop and assess alternative routes, as proceeding forward is not possible."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "A fallen tree is obstructing the road, indicating a significant hazard for the ego car. The presence of this obstacle requires the vehicle to either stop or navigate around it, as proceeding forward could lead to damage or an accident. The driver must assess the situation carefully, considering alternative routes or waiting for assistance to clear the obstruction."
+    },
+    "2": {
+      "description and explanation": "Streetlights are present along the road, providing illumination in low visibility conditions. Their functionality is crucial for the ego car's sensors to detect surroundings effectively. If the lights are operational, they enhance safety by improving visibility; if not, the ego car may need to reduce speed and increase caution due to the darkness."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "The ego car should come to a complete stop at a safe distance from the fallen tree blocking the road. After stopping, the vehicle should activate its hazard lights to alert other drivers of the obstruction. The car should then assess the surroundings for alternative routes, such as turning around or finding a side street, while ensuring that it does not violate any traffic laws. If necessary, the vehicle can use its navigation system to find the nearest safe detour."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 km/h and prepare to stop.",
+    "short_term_plan": "Continue to monitor the road ahead for any possible detours or alternative routes. If the path is blocked, come to a complete stop and assess the situation.",
+    "contingency_plan": "If an unexpected vehicle approaches from behind, activate hazard lights and maintain a safe distance until the road is clear.",
+    "primary_hazard": "Fallen tree blocking the road.",
+    "risk_level": "high",
+    "risk_explanation": "The fallen tree poses an immediate obstruction, preventing safe passage and increasing the risk of collision with other vehicles or obstacles."
+  }
+}

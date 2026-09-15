@@ -1,0 +1,16 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/bicycle-highway-lane/noon__foggy_keyframe_03_rsum_2.00_rel_0.995_clip_0.976.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        0.0,
+        226.0,
+        85.0,
+        273.0
+      ],
+      "score": 0.825422,
+      "source": "sam_refined"
+    }
+  ]
+}

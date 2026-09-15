@@ -1,0 +1,66 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "An ambulance with flashing lights, positioned in the right lane, moving slowly.",
+        "explanation": "The presence of an ambulance indicates a potential emergency situation, requiring the ego car to yield and possibly slow down to allow it to pass safely."
+      },
+      {
+        "description": "A large truck in the left lane, traveling at a moderate speed.",
+        "explanation": "The truck's size and position may limit visibility and maneuverability for the ego car, necessitating caution when changing lanes or overtaking."
+      },
+      {
+        "description": "A passenger car in the middle lane, moving at a similar speed to the ego car.",
+        "explanation": "This vehicle's speed and proximity may influence the ego car's decision to maintain or adjust its speed to ensure safe following distance."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A motorcyclist on the left side of the road, slightly ahead of the ego car.",
+        "explanation": "The motorcyclist's position and potential for sudden movements require the ego car to be vigilant and maintain a safe distance."
+      }
+    ],
+    "traffic_signs": [
+      {
+        "description": "A warning sign indicating slippery road conditions due to rain.",
+        "explanation": "This sign alerts the ego car to reduce speed and increase following distance to maintain control on wet surfaces."
+      }
+    ],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [
+      {
+        "description": "A concrete barrier on the right side of the road.",
+        "explanation": "The barrier indicates the edge of the roadway, requiring the ego car to stay within its lane and avoid drifting."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "Debris on the road, possibly from previous weather conditions.",
+        "explanation": "The presence of debris could pose a hazard, necessitating the ego car to navigate carefully to avoid potential damage or loss of control."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a traffic sign indicating a speed limit. It serves to inform drivers of the maximum allowable speed on this section of the road. The ego car must adjust its speed accordingly to comply with traffic regulations and ensure safety."
+    },
+    "2": {
+      "description and explanation": "This object is an emergency vehicle, specifically an ambulance. Its presence indicates a potential need for caution, as it may be responding to an emergency situation. The ego car should be prepared to yield and possibly change lanes to allow the ambulance to pass safely."
+    },
+    "3": {
+      "description and explanation": "This object is a motorcycle. Motorcycles are smaller and more maneuverable than cars, which can make them harder to see, especially in low visibility conditions. The ego car should maintain a safe distance and be vigilant for any sudden movements or lane changes by the motorcycle."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed significantly to maintain control and increase stopping distance due to the low visibility and wet road conditions. Activate hazard lights to alert other drivers of potential difficulties. Maintain a safe distance from the vehicle in front, particularly the emergency vehicle, and be prepared to stop if necessary. Avoid sudden lane changes and instead stay in the current lane, monitoring the surroundings closely for any obstacles or changes in traffic patterns."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 30 km/h and activate hazard lights.",
+    "short_term_plan": "Maintain reduced speed while monitoring the distance to the vehicle in front. Prepare to brake if the vehicle ahead slows down or stops.",
+    "contingency_plan": "If visibility decreases further or an unexpected obstacle appears, come to a complete stop in a safe location and wait for conditions to improve.",
+    "primary_hazard": "Reduced visibility due to heavy rain and fog, along with the presence of emergency vehicles.",
+    "risk_level": "high",
+    "risk_explanation": "The combination of poor visibility, wet road conditions, and the proximity of emergency vehicles increases the likelihood of a collision or loss of control."
+  }
+}

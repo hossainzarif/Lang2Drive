@@ -1,0 +1,27 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/bicycle-highway-lane/noon__storm_keyframe_24_rsum_23.00_rel_0.942_clip_0.842.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        16.0,
+        214.0,
+        192.0,
+        266.0
+      ],
+      "score": 0.892689,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        396.0,
+        209.0,
+        426.0,
+        289.0
+      ],
+      "score": 0.819532,
+      "source": "sam_refined"
+    }
+  ]
+}

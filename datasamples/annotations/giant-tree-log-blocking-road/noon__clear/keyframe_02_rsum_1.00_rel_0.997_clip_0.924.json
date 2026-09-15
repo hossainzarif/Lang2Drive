@@ -1,0 +1,27 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/giant-tree-log-blocking-road/keyframe_02_rsum_1.00_rel_0.997_clip_0.924.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        192.0,
+        401.0,
+        508.0,
+        550.0
+      ],
+      "score": 0.917794,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        169.0,
+        647.0,
+        1111.0,
+        719.0
+      ],
+      "score": 0.390189,
+      "source": "sam_refined"
+    }
+  ]
+}

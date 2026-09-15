@@ -1,0 +1,27 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/Red-Light-Violation/keyframe_05_rsum_4.00_rel_0.986_clip_0.818.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        875.0,
+        368.0,
+        927.0,
+        414.0
+      ],
+      "score": 0.802904,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        342.0,
+        379.0,
+        572.0,
+        528.0
+      ],
+      "score": 0.435578,
+      "source": "sam_refined"
+    }
+  ]
+}

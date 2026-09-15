@@ -1,0 +1,39 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A flipped car lying on its side on the left side of the road.",
+        "explanation": "This vehicle poses a significant hazard as it obstructs part of the road, potentially forcing the ego car to maneuver around it."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "A large fallen tree blocking the road.",
+        "explanation": "This debris completely obstructs the road, requiring the ego car to stop and find an alternative route."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a fallen tree blocking the road. This obstruction poses a significant hazard to the ego car, as it prevents forward movement and requires immediate action. The ego car must either stop to avoid a collision or navigate around the obstacle if possible. The presence of the fallen tree also indicates potential adverse weather conditions, which may affect traction and visibility, necessitating a cautious approach."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "The ego car should come to a complete stop at a safe distance from the fallen tree blocking the road. Activate hazard lights to alert other drivers of the obstruction. Once stopped, assess the situation for any potential hazards, such as other vehicles or debris. If the road is impassable, wait for emergency services to clear the obstruction before proceeding. If a safe detour is available, use navigation to reroute around the blockage."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 km/h and prepare to stop.",
+    "short_term_plan": "Continue to monitor surroundings for any movement or changes. If the path is clear, proceed cautiously around the fallen tree on the left side of the road.",
+    "contingency_plan": "If the tree shifts or additional debris falls, immediately stop and activate hazard lights. Assess the situation before proceeding.",
+    "primary_hazard": "Fallen tree blocking the road.",
+    "risk_level": "high",
+    "risk_explanation": "The fallen tree poses a significant risk of collision, and the wet conditions may reduce vehicle control, increasing the likelihood of an accident."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A black sedan traveling in the opposite direction on the left lane, slightly ahead of the ego car.",
+        "explanation": "The presence of this vehicle may require the ego car to maintain a safe distance and be cautious of any sudden lane changes or turns."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A cyclist wearing a red jacket, positioned in the middle of the lane, moving in the same direction as the ego car.",
+        "explanation": "The cyclist's position and movement may necessitate the ego car to reduce speed and ensure a safe passing distance to avoid a collision."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [
+      {
+        "description": "A concrete barrier on the right side of the road, separating the lanes from the adjacent area.",
+        "explanation": "This barrier indicates that the ego car should remain in its lane and avoid any abrupt maneuvers that could lead to a collision."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "Puddles on the road surface due to rain, causing reduced traction.",
+        "explanation": "The presence of water on the road may require the ego car to drive more cautiously to prevent skidding or loss of control."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a pedestrian wearing a dark jacket and riding a bicycle. The presence of the pedestrian indicates a potential hazard for the ego car, as cyclists can maneuver unpredictably. The ego car must be cautious and prepared to yield or adjust its speed to ensure the safety of the cyclist, especially in wet conditions that may affect traction and visibility."
+    },
+    "2": {
+      "description and explanation": "This object is a gray vehicle traveling in the same direction as the ego car. The vehicle's speed and position relative to the ego car are crucial for decision-making. The ego car should maintain a safe following distance and be aware of the possibility of the vehicle changing lanes or slowing down, particularly in adverse weather conditions that may affect braking distances."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "Reduce speed to 20 mph and maintain a safe following distance of at least 3 seconds behind the cyclist ahead. Activate hazard lights to increase visibility in low-visibility conditions due to rain and fog. Prepare to stop if the cyclist makes any sudden movements or if the road conditions worsen. Avoid sudden lane changes and remain in the current lane until it is safe to pass the cyclist when the road is clear and visibility improves."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 km/h and maintain a safe following distance from the cyclist ahead.",
+    "short_term_plan": "Prepare to brake if the cyclist suddenly swerves or if the vehicle in the adjacent lane approaches too closely. Monitor the road conditions for any additional hazards.",
+    "contingency_plan": "If the cyclist falls or the vehicle in the adjacent lane makes an unexpected maneuver, initiate emergency braking and steer to the right if safe to avoid collision.",
+    "primary_hazard": "Cyclist ahead on the road.",
+    "risk_level": "medium",
+    "risk_explanation": "The presence of a cyclist in wet conditions increases the likelihood of sudden movements, and reduced visibility due to fog further complicates the situation."
+  }
+}

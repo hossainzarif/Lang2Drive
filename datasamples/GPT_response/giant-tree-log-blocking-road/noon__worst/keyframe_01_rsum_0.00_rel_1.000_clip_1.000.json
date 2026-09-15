@@ -1,0 +1,41 @@
+{
+  "general_perception": {
+    "vehicles": [],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "A large fallen tree blocking the road, partially obscured by rain and mist.",
+        "explanation": "The fallen tree presents a significant obstacle, requiring the ego car to stop or navigate around it safely."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "A fallen tree is obstructing the roadway, creating a significant hazard for the ego car. This object requires the vehicle to either stop or navigate around it, as proceeding forward is not possible. The presence of the tree indicates that the road may be unsafe, and the ego car should prioritize finding an alternate route or safely coming to a halt."
+    },
+    "2": {
+      "description and explanation": "Heavy rain is visible in the scene, which reduces visibility and can affect traction on the road. The ego car must adjust its speed and increase following distances to maintain control and ensure safety. The wet conditions may also lead to hydroplaning, necessitating cautious driving behavior."
+    },
+    "3": {
+      "description and explanation": "The blurred outlines of surrounding trees and structures indicate a dense fog or heavy precipitation, further impairing visibility. The ego car should reduce speed and be prepared for sudden obstacles, as the limited sight distance can hinder reaction times to unexpected events."
+    },
+    "4": {
+      "description and explanation": "The road markings are partially visible, suggesting that the lane boundaries may be difficult to discern due to the weather conditions. The ego car should rely on its lane-keeping assistance systems, if available, and proceed with caution to avoid straying from its intended path."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should come to a complete stop at a safe distance from the fallen tree blocking the road. Activate hazard lights to alert other drivers of the obstruction. Once stopped, assess the situation for any potential hazards, such as other vehicles or debris. If it is safe to do so, the car should then look for an alternative route using GPS navigation to avoid the blockage. Maintain a cautious speed while rerouting, especially given the wet road conditions and reduced visibility."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 mph and prepare to stop.",
+    "short_term_plan": "Continue to monitor the road ahead for any additional obstacles while maintaining a safe distance from the fallen tree. If safe, maneuver to the left lane to avoid the obstruction.",
+    "contingency_plan": "If another vehicle approaches unexpectedly or if the tree shifts, immediately apply brakes and come to a complete stop.",
+    "primary_hazard": "Fallen tree blocking the road.",
+    "risk_level": "high",
+    "risk_explanation": "The fallen tree presents a significant hazard as it completely obstructs the lane, requiring immediate action to avoid collision. Additionally, the poor visibility due to rain increases the risk of not detecting other vehicles or obstacles in time."
+  }
+}

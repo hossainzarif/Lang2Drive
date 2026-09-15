@@ -1,0 +1,54 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A red compact car positioned to the right of the ego car, facing the same direction.",
+        "explanation": "This vehicle may influence the ego car's lane change decisions or merging behavior, as it is in close proximity."
+      },
+      {
+        "description": "A dark-colored SUV in the left lane, slightly ahead of the ego car.",
+        "explanation": "The SUV's position may affect the ego car's speed and following distance, especially if it is preparing to turn or change lanes."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [
+      {
+        "description": "A no parking sign located on the left side of the road.",
+        "explanation": "This sign indicates that parking is prohibited, which may affect the ego car's decision to stop or maneuver around parked vehicles."
+      }
+    ],
+    "traffic_lights": [
+      {
+        "description": "The traffic light is green.",
+        "explanation": "A green light indicates that the ego car can proceed, but it should remain cautious of other road users who may not obey traffic signals."
+      }
+    ],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "A large puddle on the road surface due to rain.",
+        "explanation": "This puddle may affect the ego car's traction and handling, requiring it to slow down to maintain control."
+      }
+    ]
+  },
+  "regional_perception": {
+    "2": {
+      "description and explanation": "This object is a parked vehicle on the side of the road. Its presence indicates that the lane may be partially obstructed, which could require the ego car to adjust its path or speed to navigate safely around it. The parked vehicle may also pose a risk of opening doors or pedestrians entering the roadway."
+    },
+    "3": {
+      "description and explanation": "This object is another parked vehicle, similar to the previous one. It occupies space on the side of the road, which could affect the ego car's maneuvering. The ego car must remain vigilant for any potential hazards, such as pedestrians or cyclists that may emerge from behind this vehicle."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed significantly to adapt to the low visibility conditions caused by fog and rain. It should activate its windshield wipers and headlights to improve visibility and ensure it is seen by other drivers. The car should maintain a safe following distance from the vehicle in front, using a speed of no more than 20 mph, while being prepared to stop if necessary. Additionally, the ego car should remain in its lane and avoid sudden maneuvers, while being alert for pedestrians or cyclists that may be difficult to see."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 km/h and prepare to stop.",
+    "short_term_plan": "Continue to monitor traffic signals and surroundings; if the light remains green, proceed cautiously while checking for pedestrians and other vehicles.",
+    "contingency_plan": "If a pedestrian suddenly enters the crosswalk or another vehicle unexpectedly stops, apply brakes immediately and come to a complete stop.",
+    "primary_hazard": "Poor visibility due to rain and fog, which may obscure pedestrians and other vehicles.",
+    "risk_level": "high",
+    "risk_explanation": "The combination of low visibility and wet road conditions increases the likelihood of an accident, particularly with pedestrians or vehicles that may not be clearly visible."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A large blue and white bus positioned in the left lane, moving forward.",
+        "explanation": "The bus may block the view of other vehicles and pedestrians, requiring the ego car to maintain a safe distance and be cautious of potential lane changes."
+      },
+      {
+        "description": "A small white car directly in front of the ego car, stationary at a traffic light.",
+        "explanation": "The white car's position indicates that the ego car must be prepared to stop or proceed based on the traffic light state."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [
+      {
+        "description": "A directional sign indicating a left turn ahead, located on the right side of the road.",
+        "explanation": "This sign informs the ego car of the upcoming road configuration, prompting it to prepare for a potential turn."
+      }
+    ],
+    "traffic_lights": [
+      {
+        "description": "A traffic light showing green, located above the intersection.",
+        "explanation": "The green light indicates that the ego car is permitted to proceed, but it should remain vigilant for any unexpected road users."
+      }
+    ],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "A dustbin located on the sidewalk to the right of the road.",
+        "explanation": "While not directly affecting driving behavior, the dustbin's presence indicates a need for caution in case of pedestrians or cyclists navigating around it."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This is a traffic light displaying a green signal. It indicates that vehicles are allowed to proceed through the intersection. The ego car should continue driving forward, maintaining speed while being aware of other vehicles and pedestrians that may also be moving."
+    },
+    "2": {
+      "description and explanation": "This is a bus, identified by its large size and specific branding. It is currently stopped in the lane ahead of the ego car. The presence of the bus may influence the ego car's driving behavior by requiring it to slow down or change lanes to safely navigate around it, especially if passengers are boarding or alighting."
+    },
+    "3": {
+      "description and explanation": "This is a white vehicle, likely a passenger car, positioned directly in front of the ego car. Its presence may necessitate the ego car to adjust its speed accordingly, maintaining a safe following distance to avoid a collision. The ego car should also be prepared for any sudden stops or turns made by this vehicle."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should come to a complete stop at the red traffic light ahead. Once the light turns green, the ego car should proceed cautiously, ensuring to check for any pedestrians crossing the intersection and yielding to any vehicles that may be turning left from the opposite direction. Maintain a safe following distance from the vehicle in front to allow for any sudden stops."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Maintain current speed and prepare to stop as traffic light is yellow.",
+    "short_term_plan": "Continue monitoring the traffic light and vehicles ahead. If the light turns red, initiate braking to stop safely before the intersection.",
+    "contingency_plan": "If the vehicle ahead suddenly brakes or an unexpected obstacle appears, apply brakes firmly and prepare to steer if necessary to avoid collision.",
+    "primary_hazard": "The vehicle directly ahead may stop suddenly due to the yellow traffic light.",
+    "risk_level": "medium",
+    "risk_explanation": "The yellow light indicates potential for sudden stops from vehicles ahead, increasing the risk of rear-end collisions if not monitored closely."
+  }
+}

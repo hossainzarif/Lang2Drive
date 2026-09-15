@@ -1,0 +1,71 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "An ambulance with a white body and colorful markings, positioned in the right lane, moving slowly.",
+        "explanation": "The ambulance may be responding to an emergency, indicating that other vehicles should yield and provide space for it to maneuver."
+      },
+      {
+        "description": "A large blue truck in the middle lane, traveling at a moderate speed.",
+        "explanation": "The truck's size and speed may affect the ego car's ability to change lanes safely, requiring caution and awareness of its blind spots."
+      },
+      {
+        "description": "A black car in the left lane, slightly ahead of the ego car, moving at a similar speed.",
+        "explanation": "This vehicle's position may influence the ego car's lane change decisions, necessitating careful monitoring of its speed and distance."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A motorcyclist wearing a black helmet, positioned in the left lane, traveling at a higher speed than surrounding vehicles.",
+        "explanation": "The motorcyclist's speed and lane position require the ego car to be vigilant and maintain a safe distance to avoid potential collisions."
+      }
+    ],
+    "traffic_signs": [
+      {
+        "description": "A warning sign indicating a slippery road ahead, positioned on the right side of the road.",
+        "explanation": "This sign alerts the ego car to reduce speed and increase following distance due to adverse weather conditions."
+      }
+    ],
+    "traffic_lights": [],
+    "traffic_cones": [
+      {
+        "description": "Several orange traffic cones positioned on the right side of the road, indicating a lane closure.",
+        "explanation": "The cones signal the ego car to stay in its lane and prepare for potential lane changes or reduced speed due to construction or road work."
+      }
+    ],
+    "barriers": [
+      {
+        "description": "A concrete barrier separating the lanes, visible on the right side of the road.",
+        "explanation": "The barrier restricts lane changes to the right, influencing the ego car's navigation options and requiring careful lane management."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "Puddles forming on the road due to heavy rain, reducing traction.",
+        "explanation": "The presence of water on the road necessitates cautious driving to prevent hydroplaning and maintain control of the vehicle."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a black sedan vehicle traveling in the same lane as the ego car. Its presence indicates that the ego car may need to adjust its speed or position to maintain a safe following distance, especially in wet conditions that could affect braking performance."
+    },
+    "2": {
+      "description and explanation": "This object is an ambulance, which is typically associated with emergency situations. The ego car should be prepared to yield or change lanes to allow the ambulance to pass, as it may be responding to a critical situation requiring urgent attention."
+    },
+    "3": {
+      "description and explanation": "This object is a blue truck, which is larger than typical passenger vehicles. The ego car must be cautious when navigating around this truck, as its size may create blind spots and affect the flow of traffic, particularly in adverse weather conditions."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed to 30 mph to maintain control on the wet road and increase following distance from the vehicle ahead. Activate hazard lights to alert other drivers of potential difficulties due to the weather conditions. As the ambulance approaches, yield to the right, ensuring to check for any vehicles in adjacent lanes before changing lanes. Avoid sudden movements and maintain a steady trajectory to prevent skidding."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 30 km/h and maintain a safe following distance from the vehicle ahead.",
+    "short_term_plan": "Prepare to change lanes to the right if the traffic allows, while monitoring the surrounding vehicles for sudden movements.",
+    "contingency_plan": "If a vehicle suddenly brakes or swerves, apply brakes gently to avoid collision and maintain control of the vehicle.",
+    "primary_hazard": "Ambulance and surrounding vehicles potentially changing lanes or stopping suddenly.",
+    "risk_level": "high",
+    "risk_explanation": "The combination of wet road conditions, reduced visibility, and the presence of emergency vehicles increases the likelihood of sudden stops or lane changes, posing a significant risk."
+  }
+}

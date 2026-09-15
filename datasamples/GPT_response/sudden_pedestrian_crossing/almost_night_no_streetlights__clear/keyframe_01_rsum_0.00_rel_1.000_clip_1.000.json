@@ -1,0 +1,50 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A stationary car on the right side of the road, facing the same direction as the ego car.",
+        "explanation": "This vehicle may influence the ego car's behavior by potentially blocking the lane or causing the ego car to slow down if it needs to maneuver around it."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "Two pedestrians crossing the road in front of the ego car, positioned in the center of the lane.",
+        "explanation": "The presence of pedestrians requires the ego car to reduce speed and be prepared to stop to ensure their safety."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "A green traffic light ahead of the ego car.",
+        "explanation": "The green light indicates that the ego car can proceed, but caution is necessary due to the pedestrians crossing."
+      }
+    ],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "A pedestrian is crossing the street, indicating potential interaction with the ego car. The presence of the pedestrian requires the ego car to reduce speed and be prepared to stop, ensuring the safety of the individual. The pedestrian's movement direction and speed will influence the timing and manner of the ego car's response."
+    },
+    "2": {
+      "description and explanation": "A traffic signal is visible, displaying a green light. This indicates that the ego car has the right of way to proceed through the intersection. The green light suggests that the ego car can maintain its speed, but it must remain vigilant for any unexpected actions from pedestrians or other vehicles."
+    },
+    "3": {
+      "description and explanation": "A small dog is present on the road, which poses a potential hazard for the ego car. The dog’s unpredictable behavior may require the ego car to slow down or change lanes to avoid a collision. The driverless system must assess the dog's position and movement to ensure safe navigation."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "The ego car should reduce its speed significantly to ensure safety as it approaches the pedestrians crossing the road. Activate the hazard lights to alert other drivers of the potential hazard. Maintain a safe distance from the pedestrians and be prepared to stop completely if they do not clear the roadway. Once the pedestrians have safely crossed and the road is clear, the ego car can proceed with caution, ensuring to check for any other potential hazards before accelerating."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 15 mph and prepare to stop.",
+    "short_term_plan": "Continue to slow down and maintain a safe distance from the pedestrians crossing the road.",
+    "contingency_plan": "If pedestrians suddenly change direction or stop, be prepared to brake fully and activate hazard lights.",
+    "primary_hazard": "Pedestrians crossing the road.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of pedestrians in the roadway poses a significant risk, especially at night with reduced visibility. Immediate action is required to prevent a potential collision."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/sudden_pedestrian_crossing/almost_night_no_streetlights__clear_keyframe_01_rsum_0.00_rel_1.000_clip_1.000.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        689.0,
+        381.0,
+        743.0,
+        502.0
+      ],
+      "score": 0.39407,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        1242.0,
+        76.0,
+        1279.0,
+        213.0
+      ],
+      "score": 0.266749,
+      "source": "sam_refined"
+    },
+    {
+      "id": 3,
+      "bbox_xyxy": [
+        660.0,
+        473.0,
+        727.0,
+        507.0
+      ],
+      "score": 0.263288,
+      "source": "sam_refined"
+    }
+  ]
+}

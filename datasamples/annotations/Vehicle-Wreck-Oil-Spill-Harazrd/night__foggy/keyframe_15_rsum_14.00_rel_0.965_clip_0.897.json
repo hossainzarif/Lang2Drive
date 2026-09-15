@@ -1,0 +1,38 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/Vehicle-Wreck-Oil-Spill-Harazrd/night__foggy_keyframe_15_rsum_14.00_rel_0.965_clip_0.897.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        685.0,
+        364.0,
+        854.0,
+        480.0
+      ],
+      "score": 0.868204,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        452.0,
+        371.0,
+        570.0,
+        472.0
+      ],
+      "score": 0.822778,
+      "source": "sam_refined"
+    },
+    {
+      "id": 3,
+      "bbox_xyxy": [
+        34.0,
+        0.0,
+        170.0,
+        76.0
+      ],
+      "score": 0.741986,
+      "source": "sam_refined"
+    }
+  ]
+}

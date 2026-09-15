@@ -1,0 +1,51 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A red car is positioned in the left lane, moving in the same direction as the ego car.",
+        "explanation": "The presence of this vehicle may require the ego car to maintain a safe distance and be prepared for any lane changes or sudden stops."
+      },
+      {
+        "description": "A white delivery van is in the right lane, traveling at a slower speed.",
+        "explanation": "This vehicle could affect the ego car's speed and lane choice, necessitating caution when overtaking."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A pedestrian is walking on the road, slightly ahead of the ego car, wearing a dark jacket.",
+        "explanation": "The pedestrian's position on the road poses a risk, requiring the ego car to reduce speed and be ready to stop if necessary."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "Wet road surface with visible puddles due to rain.",
+        "explanation": "The wet conditions can affect vehicle traction, requiring the ego car to drive more cautiously to avoid skidding."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a red car positioned on the side of the road. Its presence indicates a potential obstacle for the ego car, especially if it is parked or stopped. The ego car may need to adjust its speed or trajectory to avoid any collision, particularly in adverse weather conditions that could affect visibility and road traction."
+    },
+    "2": {
+      "description and explanation": "The object is a pedestrian walking on the road. This individual poses a significant risk to the ego car's driving behavior, as the car must be prepared to yield or stop to ensure the pedestrian's safety. The ego car should monitor the pedestrian's movements closely to anticipate any sudden actions, such as crossing the road."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "Reduce speed to 30 km/h and maintain a safe following distance of at least 3 seconds behind the vehicle in front. Activate hazard lights to increase visibility in low-visibility conditions due to rain and fog. Prepare to stop if the pedestrian ahead does not move off the roadway, ensuring to yield to them as they are in the lane. Monitor surrounding vehicles for sudden movements and be ready to adjust your position if necessary."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 km/h and prepare to brake.",
+    "short_term_plan": "Continue to reduce speed while maintaining a safe distance from the pedestrian ahead. Prepare to stop if the pedestrian does not move.",
+    "contingency_plan": "If the pedestrian suddenly moves into the lane, apply emergency brakes and sound the horn to alert them.",
+    "primary_hazard": "Pedestrian walking in the lane.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of a pedestrian in the lane poses a significant risk, especially in low visibility conditions due to rain and fog. Immediate action is required to prevent a potential collision."
+  }
+}

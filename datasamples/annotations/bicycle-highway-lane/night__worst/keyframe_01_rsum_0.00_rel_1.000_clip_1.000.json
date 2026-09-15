@@ -1,0 +1,16 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/bicycle-highway-lane/night__worst_keyframe_01_rsum_0.00_rel_1.000_clip_1.000.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        0.0,
+        213.0,
+        163.0,
+        275.0
+      ],
+      "score": 0.479873,
+      "source": "sam_refined"
+    }
+  ]
+}

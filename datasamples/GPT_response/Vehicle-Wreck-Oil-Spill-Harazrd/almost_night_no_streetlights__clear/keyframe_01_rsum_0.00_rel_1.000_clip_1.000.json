@@ -1,0 +1,50 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "An ambulance with flashing lights, positioned in the right lane, facing forward.",
+        "explanation": "The ambulance indicates an emergency situation, requiring the ego car to yield and possibly change lanes to allow it to pass safely."
+      },
+      {
+        "description": "A large blue truck in the left lane, moving slowly.",
+        "explanation": "The truck's slow speed may affect the ego car's ability to overtake, necessitating caution and patience."
+      },
+      {
+        "description": "A smaller black car in the middle lane, also moving forward.",
+        "explanation": "This vehicle may influence the ego car's lane choice and speed, as it could be a potential obstacle or target for overtaking."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [
+      {
+        "description": "Two orange traffic cones positioned on the right side of the road.",
+        "explanation": "The cones likely indicate a construction zone or lane closure, prompting the ego car to reduce speed and be cautious."
+      }
+    ],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a large truck, likely a delivery or freight vehicle. Its size and position on the road indicate that it may be moving slower than other vehicles. The ego car should maintain a safe distance from this truck to avoid potential hazards such as sudden stops or lane changes. Additionally, the presence of the truck may require the ego car to adjust its speed and lane position to ensure safe navigation."
+    },
+    "2": {
+      "description and explanation": "This object is an emergency vehicle, possibly an ambulance or a police vehicle, characterized by its distinct markings and lights. The presence of this vehicle suggests that it may be responding to an incident, which could affect traffic flow. The ego car should be prepared to yield or change lanes if necessary, ensuring that the emergency vehicle can pass safely. Awareness of this vehicle is crucial for maintaining safety and compliance with traffic regulations."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "The ego car should reduce its speed to match the flow of traffic, maintaining a safe following distance behind the ambulance and the truck ahead. Activate the right turn signal and check for any vehicles in the adjacent lane before safely merging into that lane to pass the stopped vehicles. Ensure to yield to any oncoming traffic and be cautious of pedestrians or cyclists that may be present, especially in low-light conditions. Once clear, accelerate gently to resume normal speed while keeping an eye on the road for any further obstacles or changes in traffic conditions."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 mph and prepare to stop.",
+    "short_term_plan": "Maintain reduced speed and monitor the vehicles ahead for any sudden movements. Prepare to change lanes to the left if the road ahead is blocked.",
+    "contingency_plan": "If an unexpected vehicle suddenly stops or swerves, apply brakes firmly and sound the horn to alert surrounding vehicles.",
+    "primary_hazard": "Ambulance with flashing lights and potential blockage from other vehicles.",
+    "risk_level": "medium",
+    "risk_explanation": "The presence of an ambulance and other vehicles creates a potential for sudden stops or lane changes, increasing the risk of collision."
+  }
+}

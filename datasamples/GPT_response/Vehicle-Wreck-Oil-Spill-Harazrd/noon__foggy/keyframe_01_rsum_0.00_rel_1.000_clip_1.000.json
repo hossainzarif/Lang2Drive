@@ -1,0 +1,68 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "An ambulance with emergency lights on, positioned in the right lane, moving slowly.",
+        "explanation": "The ambulance indicates a potential emergency situation, requiring the ego car to yield and possibly change lanes to allow it to pass safely."
+      },
+      {
+        "description": "A large blue truck in the left lane, traveling at a moderate speed.",
+        "explanation": "The truck's size and speed may limit visibility and maneuverability for the ego car, necessitating caution when changing lanes or overtaking."
+      },
+      {
+        "description": "A white sedan in the center lane, moving at a slower pace than the ego car.",
+        "explanation": "The slower speed of the sedan may require the ego car to adjust its speed to maintain a safe following distance."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A motorcyclist in the left lane, slightly ahead of the ego car, wearing a helmet.",
+        "explanation": "The motorcyclist's position and speed may require the ego car to be cautious, as motorcycles can be less visible and more vulnerable in traffic."
+      }
+    ],
+    "traffic_signs": [
+      {
+        "description": "A warning sign indicating a curve ahead, positioned on the right side of the road.",
+        "explanation": "This sign alerts the ego car to prepare for a potential change in road direction, necessitating a reduction in speed."
+      }
+    ],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [
+      {
+        "description": "A concrete barrier separating the lanes, visible on the right side of the road.",
+        "explanation": "The barrier indicates a separation of traffic flow, requiring the ego car to stay within its lane and avoid any abrupt maneuvers."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "Debris scattered on the road surface, partially obstructing the right lane.",
+        "explanation": "The debris poses a hazard that may require the ego car to change lanes or slow down to avoid potential damage or loss of control."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is an ambulance, characterized by its distinct markings and emergency lights. Its presence indicates a potential need for the ego car to yield or adjust its speed, as emergency vehicles often require priority access to the road. The ego car should be prepared to stop or move aside to allow the ambulance to pass safely."
+    },
+    "2": {
+      "description and explanation": "This object is a large truck, which may be transporting goods. Its size and slower acceleration compared to smaller vehicles can influence the ego car's driving behavior by necessitating a wider following distance. The ego car should be cautious of potential blind spots and be prepared for sudden stops or lane changes from the truck."
+    },
+    "3": {
+      "description and explanation": "This object is a passenger car, which is typically smaller and more maneuverable than larger vehicles. The presence of this car may indicate varying speeds and driving behaviors. The ego car should maintain a safe distance and be alert for any sudden changes in speed or direction, especially in adverse weather conditions."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "Reduce speed to 30 mph and maintain a safe following distance of at least three seconds behind the vehicle in front. Activate hazard lights to alert other drivers of the reduced visibility conditions. Avoid sudden lane changes or aggressive maneuvers, and remain in the current lane unless absolutely necessary to avoid an obstacle. Monitor the surroundings closely for any emergency vehicles or unexpected obstacles, and be prepared to stop if conditions worsen."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 mph and maintain a safe following distance from the vehicle ahead.",
+    "short_term_plan": "Continue straight while monitoring the vehicles on both sides. Prepare to brake if the vehicle in front suddenly stops.",
+    "contingency_plan": "If a vehicle unexpectedly swerves into the lane, initiate an emergency stop and activate hazard lights.",
+    "primary_hazard": "The vehicle directly ahead, which may stop suddenly due to the fog and potential road conditions.",
+    "risk_level": "high",
+    "risk_explanation": "The dense fog significantly reduces visibility, increasing the likelihood of sudden stops or obstacles appearing unexpectedly, thus elevating the risk of collision."
+  }
+}

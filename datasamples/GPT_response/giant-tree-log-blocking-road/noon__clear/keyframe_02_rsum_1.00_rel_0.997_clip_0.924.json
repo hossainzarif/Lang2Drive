@@ -1,0 +1,40 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A red SUV positioned in the left lane, facing forward.",
+        "explanation": "The red SUV is likely navigating around the fallen tree, which may affect the ego car's ability to proceed safely."
+      }
+    ],
+    "vulnerable_road_users": [],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "A large fallen tree blocking the right lane, extending partially into the left lane.",
+        "explanation": "The fallen tree presents a significant obstacle that requires the ego car to slow down and possibly maneuver around it to avoid a collision."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a red SUV parked on the side of the road. Its presence indicates a potential obstacle for the ego car, which may need to navigate around it. The parked vehicle could also suggest that the area is not heavily trafficked, allowing for more cautious driving behavior. The ego car should maintain a safe distance and be prepared to adjust its speed to avoid any sudden movements from the parked vehicle."
+    },
+    "2": {
+      "description and explanation": "The object is a fallen tree blocking the road. This obstruction requires immediate attention from the ego car, as it poses a significant hazard. The ego car must either stop or find an alternative route to avoid a collision. The presence of the fallen tree may also indicate adverse weather conditions or recent storms, prompting the ego car to drive more cautiously and be alert for additional hazards in the environment."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should come to a complete stop to assess the situation ahead, as there is a fallen tree blocking the road. After stopping, the vehicle should activate its hazard lights to alert other drivers of the obstruction. Once it is safe, the ego car should carefully reverse to a safe distance, allowing for a potential detour. The driver should then check for alternative routes using navigation systems to avoid the blocked area and proceed only when it is safe to do so."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 mph and prepare to stop.",
+    "short_term_plan": "Continue to monitor the road ahead for any possible detours or openings. If the path is blocked, prepare to turn right to avoid the fallen tree.",
+    "contingency_plan": "If the vehicle in front suddenly brakes or swerves, apply brakes immediately and maintain a safe distance.",
+    "primary_hazard": "Fallen tree blocking the road.",
+    "risk_level": "high",
+    "risk_explanation": "The fallen tree poses a significant risk as it completely obstructs the lane, requiring immediate action to avoid a collision."
+  }
+}

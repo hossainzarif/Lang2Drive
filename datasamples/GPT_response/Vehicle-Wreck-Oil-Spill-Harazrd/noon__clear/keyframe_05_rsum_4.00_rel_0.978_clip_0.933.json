@@ -1,0 +1,68 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "An ambulance with a white body and yellow and red stripes, positioned in the right lane, moving forward.",
+        "explanation": "The ambulance may be responding to an emergency, requiring the ego car to yield and allow it to pass safely."
+      },
+      {
+        "description": "A blue truck, positioned in the middle lane, moving at a slower speed than surrounding vehicles.",
+        "explanation": "The truck's slower speed may necessitate a lane change or reduced speed for the ego car to maintain safe distance."
+      },
+      {
+        "description": "A black car in the left lane, traveling at a similar speed to the ego car.",
+        "explanation": "The proximity of the black car may require the ego car to maintain a safe following distance to avoid collisions."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A motorcyclist wearing a black helmet and jacket, positioned in the left lane, slightly ahead of the ego car.",
+        "explanation": "The motorcyclist's position and speed require the ego car to be cautious and prepared for sudden movements."
+      }
+    ],
+    "traffic_signs": [
+      {
+        "description": "A warning sign indicating a slippery road ahead, positioned on the right side of the road.",
+        "explanation": "This sign suggests that the ego car should reduce speed and drive cautiously due to potential hazards."
+      }
+    ],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [
+      {
+        "description": "A concrete barrier separating the lanes, visible on the right side of the road.",
+        "explanation": "The barrier indicates that lane changes are restricted, guiding the ego car to stay in its current lane."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "Puddles of water on the road surface due to rain, affecting traction.",
+        "explanation": "The presence of water may lead to hydroplaning, prompting the ego car to reduce speed and drive carefully."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is an emergency vehicle, likely an ambulance, characterized by its distinct color pattern and markings. The presence of this vehicle indicates a potential need for caution, as it may be responding to an emergency situation. The ego car should be prepared to yield or change lanes to allow the emergency vehicle to pass safely."
+    },
+    "2": {
+      "description and explanation": "This object is a passenger car, which appears to be traveling in the same direction as the ego car. Its position and speed may influence the ego car's driving behavior, as it may require the ego car to adjust its speed or maintain a safe following distance to avoid collisions."
+    },
+    "3": {
+      "description and explanation": "This object is a larger truck, likely a delivery or transport vehicle. Its size and slower speed compared to smaller vehicles may necessitate careful navigation by the ego car. The ego car should be aware of potential blind spots and ensure safe overtaking maneuvers when necessary."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "Reduce speed to 40 km/h and maintain a safe following distance of at least 4 seconds behind the vehicle in front. Activate hazard lights to increase visibility to other drivers. Stay in the right lane to allow emergency vehicles, such as the ambulance, to pass safely. Avoid sudden lane changes or sharp turns due to wet road conditions, and be prepared to stop if necessary."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 30 km/h and maintain a safe following distance from the vehicle in front.",
+    "short_term_plan": "Prepare to change lanes to the left if the ambulance needs to pass, while continuously monitoring surrounding traffic.",
+    "contingency_plan": "If the vehicle in front suddenly brakes or an obstacle appears, initiate emergency braking and activate hazard lights.",
+    "primary_hazard": "Ambulance approaching from behind with lights activated.",
+    "risk_level": "high",
+    "risk_explanation": "The combination of reduced visibility due to rain and the presence of emergency vehicles increases the likelihood of sudden stops or collisions."
+  }
+}

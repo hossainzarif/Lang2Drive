@@ -1,0 +1,58 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A fire truck with a red and yellow color scheme, positioned to the left of the ego car, facing the opposite direction.",
+        "explanation": "The fire truck may be responding to an emergency, which could influence the ego car to yield or stop to allow it to pass safely."
+      },
+      {
+        "description": "A white delivery van parked on the left side of the road, facing the same direction as the ego car.",
+        "explanation": "The parked van may obstruct the view of pedestrians crossing the road, requiring the ego car to proceed with caution."
+      },
+      {
+        "description": "A black sedan positioned in the right lane, waiting at a red light.",
+        "explanation": "The presence of the sedan indicates that the traffic light is red for the ego car, necessitating a stop."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "Two pedestrians, a man and a woman, crossing the street from left to right.",
+        "explanation": "The pedestrians are in the crosswalk, which requires the ego car to yield and stop to ensure their safety."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "A traffic light showing green for the direction of the ego car.",
+        "explanation": "The green light indicates that the ego car is allowed to proceed, but caution is still necessary due to the presence of pedestrians."
+      }
+    ],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "A parked emergency vehicle, likely a fire truck, is present on the side of the road. Its presence indicates a potential hazard for the ego car, as it may obstruct visibility and create a need for caution. The ego car may need to slow down or maneuver around this vehicle to ensure safety."
+    },
+    "2": {
+      "description and explanation": "Two pedestrians are crossing the street. Their movement suggests that the ego car must prioritize their safety by yielding and potentially stopping. The presence of pedestrians requires the ego car to be vigilant and prepared for sudden stops or changes in speed."
+    },
+    "3": {
+      "description and explanation": "A small delivery vehicle is parked on the side of the road. This vehicle may pose a risk of obstructing the lane or causing unexpected movements. The ego car should be cautious and may need to adjust its path to avoid any potential hazards associated with this parked vehicle."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "The ego car should come to a complete stop to yield to the pedestrians crossing the road. Ensure that the vehicle is positioned at least one car length behind the crosswalk to provide a clear view of the pedestrians and any potential oncoming traffic. After the pedestrians have safely crossed and the intersection is clear, the ego car can proceed when it is safe to do so, adhering to any traffic signals present."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 mph and prepare to stop.",
+    "short_term_plan": "Continue to monitor the pedestrians crossing the road and be ready to brake if they enter the vehicle's path.",
+    "contingency_plan": "If pedestrians suddenly stop or change direction, apply brakes firmly and sound the horn to alert them.",
+    "primary_hazard": "Pedestrians crossing the road.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of pedestrians in close proximity to the vehicle poses a significant risk, especially in low visibility conditions."
+  }
+}

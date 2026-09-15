@@ -1,0 +1,53 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A red delivery truck positioned on the left side of the road, facing the same direction as the ego car.",
+        "explanation": "The truck may obstruct the view of pedestrians and other vehicles, requiring the ego car to be cautious and possibly reduce speed."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A group of three pedestrians crossing the road from left to right, partially obscured by the rain.",
+        "explanation": "Their presence in the crosswalk indicates that the ego car must yield and be prepared to stop to avoid a collision."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "A green traffic light ahead, indicating that the ego car can proceed.",
+        "explanation": "The green light allows the ego car to continue moving, but caution is still necessary due to the pedestrians."
+      }
+    ],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "Wet road surface with puddles due to rain.",
+        "explanation": "The wet conditions may affect traction and braking distance, prompting the ego car to drive more slowly and carefully."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "A pedestrian is crossing the street, indicating a potential hazard for the ego car. The presence of the pedestrian requires the ego car to reduce speed and be prepared to stop to ensure the safety of the individual. The driver's attention must be heightened in this scenario to avoid any accidents."
+    },
+    "2": {
+      "description and explanation": "A traffic light is visible, displaying a green signal. This indicates that the ego car is permitted to proceed through the intersection. However, the driver should remain vigilant for any unexpected obstacles or pedestrians that may enter the roadway."
+    },
+    "3": {
+      "description and explanation": "A bicycle is positioned on the side of the road. This object suggests that there may be cyclists in the vicinity, which could influence the ego car's driving behavior. The driver should maintain a safe distance and be cautious, especially when changing lanes or making turns, to avoid any potential collisions."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed significantly to ensure safe navigation through the wet and potentially slippery road conditions. As pedestrians are present in the scene, the car should prepare to stop if any of them appear to be crossing the road. Maintain a safe distance from the pedestrians and be ready to yield to them if they enter the crosswalk. Additionally, activate the vehicle's headlights to improve visibility in the low-light conditions and ensure that the brake lights are functioning properly to alert any following vehicles of the reduced speed."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 15 mph and prepare to stop.",
+    "short_term_plan": "Continue to monitor pedestrians in the crosswalk and be ready to brake if they move into the lane.",
+    "contingency_plan": "If a pedestrian unexpectedly steps into the lane, apply brakes immediately and sound the horn if necessary.",
+    "primary_hazard": "Pedestrians crossing the road.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of multiple pedestrians in the crosswalk poses a significant risk, especially in low visibility conditions due to rain and nighttime."
+  }
+}

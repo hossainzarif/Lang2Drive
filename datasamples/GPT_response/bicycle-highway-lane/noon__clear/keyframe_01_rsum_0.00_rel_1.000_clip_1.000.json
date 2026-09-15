@@ -1,0 +1,53 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A white van positioned in the left lane, facing forward.",
+        "explanation": "The van may be preparing to turn or stop, which could affect the ego car's speed and lane choice."
+      },
+      {
+        "description": "A blue car in the right lane, moving forward.",
+        "explanation": "The blue car's movement indicates that the ego car may need to adjust its speed to maintain a safe following distance."
+      },
+      {
+        "description": "A yellow construction vehicle parked on the side of the road.",
+        "explanation": "This vehicle may obstruct visibility and could indicate potential road work ahead, prompting caution."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A cyclist riding in the middle of the lane, heading in the same direction as the ego car.",
+        "explanation": "The cyclist's position requires the ego car to maintain a safe distance and be prepared to yield if necessary."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": []
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a large white van parked on the side of the road. Its presence may require the ego car to adjust its path to avoid potential obstruction, especially if the road narrows or if the van is blocking visibility of oncoming traffic."
+    },
+    "2": {
+      "description and explanation": "This object is a blue car parked adjacent to the white van. The ego car must be cautious of this vehicle, as it may obstruct the view of pedestrians or cyclists and could potentially move into the lane unexpectedly."
+    },
+    "3": {
+      "description and explanation": "This object is a yellow sports car parked further down the road. The ego car should be aware of its presence, as it may indicate a potential hazard if the driver decides to exit the vehicle or if the car is left unattended in a way that could obstruct traffic."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "The ego car should reduce its speed to 20 km/h and maintain a safe distance from the cyclist ahead. It should also prepare to change lanes to the left if the cyclist continues to ride in the center of the lane, ensuring that the maneuver is executed only when it is safe to do so, without interfering with the vehicles in the adjacent lane. Additionally, the ego car should activate its turn signal to indicate the lane change to other road users."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 km/h and prepare to stop.",
+    "short_term_plan": "Continue to monitor the cyclist ahead and maintain a safe following distance. Be prepared to brake if the cyclist swerves or stops suddenly.",
+    "contingency_plan": "If the cyclist suddenly falls or veers into the lane, execute an emergency stop and activate hazard lights.",
+    "primary_hazard": "Cyclist in the lane ahead.",
+    "risk_level": "medium",
+    "risk_explanation": "The cyclist poses a medium risk due to the potential for sudden movements or stopping, which could lead to a collision if not properly monitored."
+  }
+}

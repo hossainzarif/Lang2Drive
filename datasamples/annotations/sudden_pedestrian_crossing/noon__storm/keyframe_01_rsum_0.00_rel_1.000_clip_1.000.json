@@ -1,0 +1,38 @@
+{
+  "image": "/mnt/beegfs/home/mdzarifhossa2025/mdhossa/VLM_AV/final/sudden_pedestrian_crossing/noon__storm_keyframe_01_rsum_0.00_rel_1.000_clip_1.000.png",
+  "objects": [
+    {
+      "id": 1,
+      "bbox_xyxy": [
+        539.0,
+        398.0,
+        612.0,
+        513.0
+      ],
+      "score": 0.853062,
+      "source": "sam_refined"
+    },
+    {
+      "id": 2,
+      "bbox_xyxy": [
+        32.0,
+        369.0,
+        111.0,
+        510.0
+      ],
+      "score": 0.706781,
+      "source": "sam_refined"
+    },
+    {
+      "id": 3,
+      "bbox_xyxy": [
+        223.0,
+        422.0,
+        332.0,
+        450.0
+      ],
+      "score": 0.637972,
+      "source": "sam_refined"
+    }
+  ]
+}

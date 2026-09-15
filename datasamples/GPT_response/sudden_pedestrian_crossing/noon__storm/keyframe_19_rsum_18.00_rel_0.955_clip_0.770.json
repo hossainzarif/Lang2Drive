@@ -1,0 +1,62 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "Several parked cars on the left side of the road, partially obscured by rain.",
+        "explanation": "These parked vehicles may limit the visibility of pedestrians and other road users, requiring the ego car to proceed with caution."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "Two pedestrians running across the road, one wearing a green jacket and the other in a blue shirt, both moving from left to right.",
+        "explanation": "The pedestrians are in a hurry, which could lead to unpredictable movements. The ego car must be prepared to stop or slow down to avoid a collision."
+      },
+      {
+        "description": "A cyclist on the left side of the road, appearing to be navigating through the rain.",
+        "explanation": "The cyclist may be less visible due to the weather conditions, and their path could change unexpectedly, necessitating caution from the ego car."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "Traffic light showing green.",
+        "explanation": "The green light indicates that the ego car is permitted to proceed, but caution is still necessary due to the presence of pedestrians."
+      }
+    ],
+    "traffic_cones": [
+      {
+        "description": "A traffic cone positioned on the right side of the road.",
+        "explanation": "The cone may indicate a construction zone or a temporary obstruction, prompting the ego car to be alert and possibly change lanes."
+      }
+    ],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "Puddles forming on the road due to rain.",
+        "explanation": "Puddles can affect traction and visibility, requiring the ego car to drive more slowly and carefully."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "This object is a pedestrian crossing the road. The presence of the pedestrian indicates that the ego car must be prepared to stop or slow down to ensure the safety of the individual. The pedestrian's movement suggests a potential need for the ego car to yield, as pedestrians have the right of way in most traffic scenarios."
+    },
+    "2": {
+      "description and explanation": "This object is another pedestrian also crossing the road. Similar to the first pedestrian, this individual requires the ego car to adjust its speed and position to avoid a collision. The simultaneous presence of two pedestrians increases the urgency for the ego car to react appropriately, ensuring both pedestrians can cross safely."
+    },
+    "3": {
+      "description and explanation": "This object is a construction barrier placed on the side of the road. The barrier indicates a potential hazard or obstruction in the roadway, which may require the ego car to change lanes or navigate carefully around it. The presence of the barrier also suggests that the road conditions may be altered, necessitating increased caution from the ego car."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": "The ego car should reduce its speed significantly to a maximum of 15 mph due to the heavy rain and reduced visibility. It should prepare to stop as pedestrians are crossing the road ahead. Activate the hazard lights to alert other drivers of the reduced speed and potential stop. Maintain a safe distance from the vehicles in front to allow for any sudden stops. Once the pedestrians have cleared the road and it is safe to proceed, the ego car can gradually accelerate while remaining cautious of any further pedestrians or obstacles."
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Apply brakes to reduce speed to 10 mph.",
+    "short_term_plan": "Prepare to stop completely if pedestrians continue to cross the road. Maintain a safe distance from the pedestrians.",
+    "contingency_plan": "If pedestrians unexpectedly stop or fall, immediately engage emergency braking and activate hazard lights.",
+    "primary_hazard": "Pedestrians crossing the road.",
+    "risk_level": "high",
+    "risk_explanation": "The presence of multiple pedestrians crossing in low visibility conditions increases the likelihood of a collision, necessitating immediate caution."
+  }
+}

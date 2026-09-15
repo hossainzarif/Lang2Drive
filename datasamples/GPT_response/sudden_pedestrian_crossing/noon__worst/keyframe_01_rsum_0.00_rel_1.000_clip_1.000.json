@@ -1,0 +1,68 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A yellow car is positioned in the left lane, moving slowly in the same direction as the ego car.",
+        "explanation": "The yellow car's slow speed may indicate a potential hazard, requiring the ego car to maintain a safe distance and be prepared to react."
+      },
+      {
+        "description": "A red food truck is parked on the right side of the road, partially obstructing the lane.",
+        "explanation": "The food truck may block visibility and create a need for lane changes or careful navigation around it."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A child in a blue shirt is running across the road from the right side.",
+        "explanation": "The child's sudden movement poses a significant risk, necessitating immediate braking or evasive action from the ego car."
+      },
+      {
+        "description": "Two adults are standing on the left side of the road, appearing to wait to cross.",
+        "explanation": "Their presence indicates potential crossing behavior, requiring the ego car to be cautious and prepared to stop."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [
+      {
+        "description": "The traffic light is green.",
+        "explanation": "The green light indicates that the ego car can proceed, but caution is necessary due to the presence of pedestrians."
+      }
+    ],
+    "traffic_cones": [
+      {
+        "description": "An orange traffic cone is positioned on the right side of the road.",
+        "explanation": "The cone may indicate a construction zone or hazard, prompting the ego car to stay clear of that area."
+      }
+    ],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "Heavy rain is causing reduced visibility and pooling water on the road.",
+        "explanation": "The wet conditions require the ego car to reduce speed and increase following distance to maintain control."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "A pedestrian wearing a yellow shirt is crossing the street. This individual poses a potential hazard to the ego car, as they may not be visible until the last moment due to the weather conditions. The ego car should reduce speed and be prepared to stop to ensure the safety of the pedestrian."
+    },
+    "2": {
+      "description and explanation": "A person is standing on the side of the road, possibly waiting to cross. This individual may enter the roadway unexpectedly, requiring the ego car to remain vigilant and ready to react. Maintaining a safe distance and reducing speed can help avoid any potential accidents."
+    },
+    "3": {
+      "description and explanation": "Another pedestrian is seen walking along the sidewalk. This person may not directly impact the ego car's path, but their presence indicates a busy area. The ego car should be cautious and maintain a safe speed, as pedestrians can suddenly change direction or cross the street."
+    }
+  },
+  "driving_suggestion": {
+    "driving_suggestion": {
+      "action": "Reduce speed to 15 mph and maintain a safe distance from the vehicles ahead. Activate hazard lights to increase visibility to other road users. Be prepared to stop as pedestrians are crossing the road, and ensure to yield to them. Avoid sudden maneuvers and keep an eye on the road conditions, as the heavy rain may cause slippery surfaces. If visibility worsens, consider pulling over to a safe location until conditions improve."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 10 mph and prepare to stop.",
+    "short_term_plan": "Continue to monitor pedestrians and vehicles, maintain a safe distance, and be ready to brake if necessary.",
+    "contingency_plan": "If a pedestrian suddenly enters the lane, apply brakes immediately and sound the horn to alert them.",
+    "primary_hazard": "Pedestrians crossing the road unexpectedly.",
+    "risk_level": "high",
+    "risk_explanation": "The combination of low visibility due to rain and fog, along with pedestrians in the roadway, significantly increases the risk of collision."
+  }
+}

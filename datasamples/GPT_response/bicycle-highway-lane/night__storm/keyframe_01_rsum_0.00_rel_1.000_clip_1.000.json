@@ -1,0 +1,49 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A car is positioned in the left lane, moving in the same direction as the ego car.",
+        "explanation": "The presence of this car may require the ego car to adjust its speed or position to maintain a safe distance, especially in wet conditions."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A cyclist wearing a red jacket is riding on the right side of the road, facing the ego car.",
+        "explanation": "The cyclist's position and direction indicate a potential risk for the ego car, as they may suddenly change lanes or slow down, necessitating caution from the ego car."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [
+      {
+        "description": "A concrete barrier is located on the right side of the road, separating the lanes.",
+        "explanation": "This barrier restricts the ego car from changing lanes to the right, influencing the need to navigate carefully within the left lane."
+      }
+    ],
+    "other_objects": [
+      {
+        "description": "Wet road conditions are visible, with reflections from streetlights.",
+        "explanation": "The wet surface can reduce traction, requiring the ego car to drive more cautiously to avoid skidding."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a traffic cone, typically used for road construction or maintenance. Its bright color and reflective surface make it highly visible, especially in low-light conditions. The presence of the traffic cone indicates a potential hazard or obstruction in the roadway, signaling the ego car to exercise caution. The driver may need to reduce speed or change lanes to avoid the cone, ensuring safe navigation through the area."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "Reduce speed to 30 km/h and maintain a safe following distance of at least 3 seconds behind the vehicle ahead. Activate hazard lights to increase visibility to other road users. Prepare to stop if the cyclist ahead makes any sudden movements or if visibility worsens due to rain. Keep the vehicle centered in the lane to avoid any potential collisions with the cyclist or other vehicles. Be alert for any pedestrians or obstacles that may appear on the road due to the low visibility conditions."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 30 km/h and prepare to brake.",
+    "short_term_plan": "Maintain reduced speed while monitoring the cyclist ahead. Prepare to change lanes to the left if the cyclist does not move to the side.",
+    "contingency_plan": "If the cyclist suddenly swerves or falls, immediately brake and activate hazard lights.",
+    "primary_hazard": "Cyclist on the road ahead.",
+    "risk_level": "medium",
+    "risk_explanation": "The cyclist poses a risk due to their proximity and potential for sudden movements, especially in low visibility conditions."
+  }
+}

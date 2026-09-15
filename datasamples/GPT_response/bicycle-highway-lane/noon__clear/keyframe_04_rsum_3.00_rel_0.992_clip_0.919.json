@@ -1,0 +1,48 @@
+{
+  "general_perception": {
+    "vehicles": [
+      {
+        "description": "A car is positioned in the left lane, moving in the same direction as the ego car.",
+        "explanation": "The presence of this vehicle may require the ego car to adjust its speed or position to maintain a safe distance and avoid potential collisions."
+      }
+    ],
+    "vulnerable_road_users": [
+      {
+        "description": "A cyclist is riding in the right lane, slightly ahead of the ego car, facing the same direction.",
+        "explanation": "The cyclist's position may influence the ego car to slow down or change lanes to ensure safety and avoid any risk of collision."
+      },
+      {
+        "description": "A pedestrian is walking along the roadside, near the edge of the lane.",
+        "explanation": "The pedestrian's proximity to the road may require the ego car to reduce speed and be prepared to stop if the pedestrian steps onto the road."
+      }
+    ],
+    "traffic_signs": [],
+    "traffic_lights": [],
+    "traffic_cones": [],
+    "barriers": [],
+    "other_objects": [
+      {
+        "description": "Water pooling on the road surface due to rain, creating slippery conditions.",
+        "explanation": "The wet road surface may necessitate reduced speed and increased caution to prevent skidding or loss of control."
+      }
+    ]
+  },
+  "regional_perception": {
+    "1": {
+      "description and explanation": "The object is a pedestrian walking on the road. This individual is positioned directly in the path of the ego car, which necessitates immediate attention. The presence of the pedestrian indicates a potential hazard, requiring the ego car to reduce speed or come to a complete stop to ensure safety. The pedestrian's movement and proximity to the vehicle will influence the driving behavior by prompting the need for caution and possibly altering the trajectory to avoid a collision."
+    }
+  },
+  "driving_suggestion": {
+    "suggestion": {
+      "action": "Reduce speed to 30 km/h and maintain a safe following distance of at least 3 seconds behind the cyclist ahead. Activate hazard lights to increase visibility in low-visibility conditions due to rain and fog. Prepare to stop if the cyclist makes any sudden movements or if other vehicles are present in the lane. Keep the vehicle centered in the lane and avoid sudden lane changes until it is safe to do so."
+    }
+  },
+  "actionable_suggestion": {
+    "immediate_action": "Reduce speed to 20 km/h and prepare to brake.",
+    "short_term_plan": "Maintain reduced speed while monitoring the cyclist ahead. Prepare to change lanes to the left if necessary.",
+    "contingency_plan": "If the cyclist suddenly swerves or falls, immediately apply brakes and sound the horn to alert surrounding vehicles.",
+    "primary_hazard": "Cyclist on the road ahead.",
+    "risk_level": "medium",
+    "risk_explanation": "The presence of a cyclist in wet conditions increases the risk of sudden maneuvers, and reduced visibility due to fog further complicates the situation."
+  }
+}
