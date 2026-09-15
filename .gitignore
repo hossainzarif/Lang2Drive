@@ -114,3 +114,11 @@ $RECYCLE.BIN/
 *.tar.gz
 *.rar
 *.7z
+
+# Generated scene state and local research history
+handoffs/
+intervention_report_*.json
+intervention_summary*.csv
+scenario_intervention_data*.csv
+*.lock
+!examples/verified_keyframes/manifest.csv

@@ -84,7 +84,7 @@ class TestSceneExcelUtilsNonCarla(unittest.TestCase):
             ws1.append(["Keyword", "Prompt", "Scene Specifications"])
             ws1.append(["Red Light Violation", "Prompt A", "Spec A"])
 
-            ws2 = wb.create_sheet("Ashfak")
+            ws2 = wb.create_sheet("Additional Scenes")
             ws2.append(["Keyword", "Prompt", "Scene Specifications"])
             ws2.append(["Red Light Violation", "Prompt B", "Spec B"])
             ws2.append(["Sudden Heavy Rain", "Prompt C", "Spec C"])

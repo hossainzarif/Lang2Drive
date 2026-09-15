@@ -281,10 +281,10 @@ def parse_json_response(raw_text: str) -> Dict[str, Any]:
 
 
 def apply_majority_pass_rule(criteria_results: List[Dict[str, Any]]) -> Dict[str, Any]:
-    """Compute strict-majority pass over criterion-level booleans."""
+    """Require every criterion; historical function name retained for callers."""
     total = len(criteria_results)
-    passed = sum(1 for criterion in criteria_results if bool(criterion.get("pass")))
-    overall_pass = passed > (total / 2) if total > 0 else False
+    passed = sum(1 for criterion in criteria_results if criterion.get("pass") is True)
+    overall_pass = passed == total if total > 0 else False
     return {
         "overall_pass": overall_pass,
         "criteria_total": total,

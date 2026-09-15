@@ -87,7 +87,7 @@ class TestWineHandoffRunnerNonCarla(unittest.TestCase):
                     cwd=tmp_path,
                     min_success_ratio=0.5,
                 )
-            self.assertTrue(result_ok["success"])
+            self.assertFalse(result_ok["success"])  # zero exit without frames is not a capture
             self.assertEqual(result_ok["returncode"], 0)
             self.assertIn("--output-dir", result_ok["script_args"])
             self.assertTrue(result_ok["process_success"])
@@ -107,7 +107,7 @@ class TestWineHandoffRunnerNonCarla(unittest.TestCase):
             self.assertEqual(result_fail["returncode"], 1)
             self.assertFalse(result_fail["process_success"])
 
-    def test_run_manifest_accepts_frames_when_process_fails(self):
+    def test_run_manifest_rejects_frames_when_process_fails(self):
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
             code_file = tmp_path / "scene.py"
@@ -141,7 +141,7 @@ class TestWineHandoffRunnerNonCarla(unittest.TestCase):
 
             self.assertFalse(result["process_success"])
             self.assertTrue(result["frames_ok"])
-            self.assertTrue(result["success"])
+            self.assertFalse(result["success"])
             self.assertIn("note", result)
 
     def test_writes_simulation_result_json_contract(self):

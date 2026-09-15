@@ -1,7 +1,0 @@
-SCENARIO_KEYWORD: sudden_pedestrian_crossing
-SHOT_INDEX: 1
-USER_ADJUSTMENT_PROMPT:
-There was a pedestrian going on the sidewalk but no pedestrian crossing in front of the ego vehicle we are following. It should happen in first few seconds of the scene and pedestrian should stand a while in front of the ego vehicle.
-
-LATEST_ISSUES_TO_FIX:
-There was a pedestrian going on the sidewalk but no pedestrian crossing in front of the ego vehicle we are following. It should happen in first few seconds of the scene and pedestrian should stand a while in front of the ego vehicle.

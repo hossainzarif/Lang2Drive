@@ -244,7 +244,7 @@ def run_manifest(
 
     frame_stats = _collect_frame_stats(output_dir, duration_seconds, min_success_ratio)
     frames_ok = bool(frame_stats["frames_ok"])
-    success = bool(process_success or frames_ok)
+    success = bool(process_success and frames_ok)
 
     payload.update(
         {
@@ -262,7 +262,7 @@ def run_manifest(
     if frames_ok and not process_success:
         payload["note"] = (
             "Process exited non-zero or timed out, but frame coverage met threshold; "
-            "marking simulation as success."
+            "capture remains failed because the process did not exit cleanly."
         )
 
     payload["finished_at"] = datetime.now().isoformat()
@@ -309,7 +309,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> int:
+def _main_unlocked() -> int:
     args = parse_args()
 
     handoff_dir = Path(args.handoff_dir).resolve()
@@ -348,6 +348,16 @@ def main() -> int:
 
     print("[FAILED] Simulation failed. Check simulation_result.json for details.")
     return 1
+
+
+def main() -> int:
+    from scene_utils.matrix_resume import simulator_lock
+    try:
+        with simulator_lock(BASE_DIR / 'handoffs' / '.simulator.lock'):
+            return _main_unlocked()
+    except RuntimeError as exc:
+        print(f'[ERROR] {exc}')
+        return 2
 
 
 if __name__ == "__main__":

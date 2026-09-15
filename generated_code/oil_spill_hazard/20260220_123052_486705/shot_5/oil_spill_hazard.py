@@ -12,6 +12,7 @@ Enhancements: More emergency vehicles, wider spill zone, enhanced debris.
 from __future__ import annotations
 
 import argparse
+import json
 import math
 import random
 import sys
@@ -1666,43 +1667,39 @@ def main() -> None:
             raise
 
         finally:
-            clear_camera_buffers()
-            log("[INFO] Cleanup started", log_file)
-
+            cleanup_errors = []
             for actor in actors_to_cleanup:
-                if actor is None:
-                    continue
-                if actor.type_id.startswith("sensor."):
+                if actor is not None and actor.type_id.startswith('sensor.'):
                     try:
                         actor.stop()
-                    except Exception:
-                        pass
-
-            if client is not None and actors_to_cleanup:
-                destroy_cmds = [
-                    carla.command.DestroyActor(actor.id)
-                    for actor in actors_to_cleanup if actor is not None
-                ]
-                if destroy_cmds:
-                    try:
-                        client.apply_batch(destroy_cmds)
-                    except Exception:
-                        pass
-
+                    except Exception as exc:
+                        cleanup_errors.append('sensor stop: ' + str(exc))
             if traffic_manager is not None:
                 try:
                     traffic_manager.set_synchronous_mode(False)
-                except Exception:
-                    pass
-
+                except Exception as exc:
+                    cleanup_errors.append('traffic manager: ' + str(exc))
+            if client is not None and actors_to_cleanup:
+                try:
+                    commands = [carla.command.DestroyActor(actor.id) for actor in actors_to_cleanup if actor is not None]
+                    for response in client.apply_batch_sync(commands, True):
+                        if response.error:
+                            cleanup_errors.append(str(response.error))
+                except Exception as exc:
+                    cleanup_errors.append('actor destruction: ' + str(exc))
             if world is not None and original_settings is not None:
                 try:
                     world.apply_settings(original_settings)
-                except Exception:
-                    pass
+                except Exception as exc:
+                    cleanup_errors.append('world settings: ' + str(exc))
+            (output_root / 'cleanup_status.json').write_text(
+                json.dumps({'complete': not cleanup_errors, 'errors': cleanup_errors}, indent=2),
+                encoding='utf-8',
+            )
+            if cleanup_errors:
+                raise RuntimeError('Cleanup failed: ' + '; '.join(cleanup_errors))
+            log('[INFO] Cleanup complete', log_file)
 
-            log("[INFO] Cleanup complete", log_file)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

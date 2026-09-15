@@ -79,13 +79,16 @@ class TestAgenticVisualEvaluatorNonCarla(unittest.TestCase):
         )
         self.assertIn("summary", parsed_fenced)
 
-    def test_majority_pass_rule(self):
+    def test_all_criteria_required(self):
         pass_case = apply_majority_pass_rule(
-            [{"pass": True}, {"pass": False}, {"pass": True}, {"pass": True}]
+            [{"pass": True}, {"pass": True}, {"pass": True}, {"pass": True}]
         )
         self.assertTrue(pass_case["overall_pass"])
-        self.assertEqual(pass_case["criteria_passed"], 3)
+        self.assertEqual(pass_case["criteria_passed"], 4)
 
+        self.assertFalse(apply_majority_pass_rule([{'pass': True}, {'pass': True}, {'pass': False}])['overall_pass'])
+        self.assertFalse(apply_majority_pass_rule([{'pass': 'false'}])['overall_pass'])
+        self.assertFalse(apply_majority_pass_rule([])['overall_pass'])
         fail_case = apply_majority_pass_rule(
             [{"pass": True}, {"pass": False}, {"pass": False}, {"pass": False}]
         )

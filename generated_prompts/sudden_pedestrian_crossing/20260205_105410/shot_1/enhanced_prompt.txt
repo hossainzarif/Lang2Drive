@@ -1,7 +1,0 @@
-SCENARIO_KEYWORD: sudden_pedestrian_crossing
-SHOT_INDEX: 1
-USER_ADJUSTMENT_PROMPT:
-
-
-LATEST_ISSUES_TO_FIX:
-FRAME VERIFICATION FAILED: output frames missing or invalid.

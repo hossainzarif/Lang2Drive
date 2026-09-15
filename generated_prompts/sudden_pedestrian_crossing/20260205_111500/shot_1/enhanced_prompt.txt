@@ -1,7 +1,0 @@
-SCENARIO_KEYWORD: sudden_pedestrian_crossing
-SHOT_INDEX: 1
-USER_ADJUSTMENT_PROMPT:
-The scene is sudden pedesterian crossing while the vehicles are on green light going there way, which should make the ego vehicle should stop for pedesterian. But there was no pedesterian and not crossing suddenly in front of ego vehicle in the scene.
-
-LATEST_ISSUES_TO_FIX:
-The scene is sudden pedesterian crossing while the vehicles are on green light going there way, which should make the ego vehicle should stop for pedesterian. But there was no pedesterian and not crossing suddenly in front of ego vehicle in the scene.

@@ -14,7 +14,7 @@ from typing import Iterable, Optional
 
 
 DEFAULT_CARLA_APP_PATH = Path(
-    os.getenv("CARLA_APP_PATH", "/Users/ashfak/Applications/Sikarugir/CARLA.app")
+    os.getenv("CARLA_APP_PATH", "/Applications/CARLA.app")
 )
 DEFAULT_WINE_PYTHON_EXE = os.getenv(
     "CARLA_WINE_PYTHON_EXE", r"C:\Program Files\Python310\python.exe"

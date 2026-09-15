@@ -35,7 +35,7 @@ def generate_scenario_keyword(keyword: str) -> str:
 def read_unique_scenes_from_excel(excel_path: Path) -> List[Dict[str, Any]]:
     scenes = read_scenes_excel_shared(excel_path)
     for scene in scenes:
-        scene["scenario_keyword"] = generate_scenario_keyword(scene["keyword"])
+        scene["scenario_keyword"] = scene.get("scenario_id") or generate_scenario_keyword(scene["keyword"])
     return scenes
 
 
@@ -191,7 +191,7 @@ def cmd_list_scenes(args: argparse.Namespace) -> int:
     limit = args.limit if args.limit is not None else len(scenes)
     for scene in scenes[:limit]:
         print(
-            f"{scene['serial']:>2}. {scene['keyword']} "
+            f"{scene['serial']:>2}. {scene.get('display_name', scene['keyword'])} "
             f"({scene['sheet']}!A{scene['row']}) -> {scene['scenario_keyword']}"
         )
     print(f"Total scenes: {len(scenes)}")
@@ -451,8 +451,8 @@ def cmd_mark_ready(args: argparse.Namespace) -> int:
         "scene_keyword": manifest.get("scene_keyword"),
         "scenario_keyword": manifest.get("scenario_keyword"),
         "code_file": str(code_file.resolve()),
-        "wine_command": 'cd "C:\\Program Files\\WindowsNoEditor\\VLM-AV" && 02_run_latest_scene.cmd',
-        "wine_command_matrix20": 'cd "C:\\Program Files\\WindowsNoEditor\\VLM-AV" && 04_run_scene_matrix20.cmd',
+        "wine_command": '02_run_latest_scene.cmd',
+        "wine_command_matrix8": '04_run_scene_matrix8.cmd ' + str(manifest_path),
     }
     print(json.dumps(payload, indent=2))
     return 0

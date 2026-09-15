@@ -133,7 +133,7 @@ class AgenticSceneGenerator:
     def read_unique_scenes_from_excel(self) -> List[Dict[str, Any]]:
         scenes = read_scenes_excel_shared(self.excel_path)
         for scene in scenes:
-            scene["scenario_keyword"] = self.generate_scenario_keyword(scene["keyword"])
+            scene["scenario_keyword"] = scene.get("scenario_id") or self.generate_scenario_keyword(scene["keyword"])
         return scenes
 
     def _select_scenes(self, scenes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:

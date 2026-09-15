@@ -201,6 +201,10 @@ def read_unique_scenes_from_excel(excel_path: Path) -> List[Dict[str, Any]]:
                 "sheet": sheet_name,
                 "row": row_idx,
             }
+            for field, header in [('scenario_id', 'Scenario ID'), ('display_name', 'Paper Name'), ('hazard_family', 'Hazard Family')]:
+                col = _first_matching_col(header_map, [header])
+                if col and sheet.cell(row_idx, col).value:
+                    scene[field] = str(sheet.cell(row_idx, col).value).strip()
             scenes.append(scene)
             seen_keywords.add(keyword)
 

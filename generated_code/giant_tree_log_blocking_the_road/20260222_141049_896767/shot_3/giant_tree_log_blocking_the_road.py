@@ -15,13 +15,14 @@ Success Criteria: Fallen tree is clearly recognizable as a tree (not barrels/box
 
 V3 Mesh Compliance Notes:
 - Uses `static.prop.mesh` / `mesh_path` for primary custom-object staging where relevant.
-- Includes reference breadcrumb to SCENE_GENERATION_REFERENCE.md §9.
-- Source manifest (seed lineage): /Users/ashfak/Applications/Sikarugir/CARLA.app/Contents/SharedSupport/prefix/drive_c/Program Files/WindowsNoEditor/VLM-AV/handoffs/20260220_123040_646317/giant_tree_log_blocking_the_road/manifest.json
+- Includes reference breadcrumb to SCENE_GENERATION_REFERENCE.md.
+- Source manifest (seed lineage): handoffs/20260220_123040_646317/giant_tree_log_blocking_the_road/manifest.json
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import math
 import random
 import sys
@@ -73,7 +74,7 @@ SCENE_PROMPT = "Generate Carla PythonAPI code for a suburban road where a massiv
 SCENE_SPECIFICATIONS = "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction at event onset, with >=80 active vehicles in broader scene. CRITICAL: Spawn majority of vehicles NEAR ego vehicle location (within 100m radius), not randomly across map. Vehicles must be visible behind, beside, and in oncoming lanes near ego.\nCamera Contract: Save synchronized front, front_left, front_right, rear, and drone_follow streams using matched frame ids.\nEvent Contract: Use static.prop.beech_tree blueprint to create a REAL fallen tree across the lane. Spawn the tree rotated 90 degrees (roll=90) so it lies horizontally across the road like a fallen trunk. Add multiple beech_tree props end-to-end for a massive log appearance. Surround with debris (dirtdebris, plantpot, bush props). Add warning cones on approach side.\nSuccess Criteria: Fallen tree is clearly recognizable as a tree (not barrels/boxes). Blockage spans full lane width. Ego and nearby traffic visibly brake and adjust path. Dense traffic visible around ego from all directions."
 VERSION_TAG = "V3"
 COMPLIANCE_UPDATE_PROFILE = "mesh-staticmeshfactory-sync"
-SOURCE_MANIFEST_POSIX = "/Users/ashfak/Applications/Sikarugir/CARLA.app/Contents/SharedSupport/prefix/drive_c/Program Files/WindowsNoEditor/VLM-AV/handoffs/20260220_123040_646317/giant_tree_log_blocking_the_road/manifest.json"
+SOURCE_MANIFEST_POSIX = "handoffs/20260220_123040_646317/giant_tree_log_blocking_the_road/manifest.json"
 SOURCE_RUN_ID = "20260220_123040_646317"
 SOURCE_SHOT_INDEX = 2
 EVENT_MODE = "fallen_tree_log"
@@ -379,7 +380,7 @@ def set_vehicle_attributes(bp: carla.ActorBlueprint, role_name: str = "autopilot
             bp.set_attribute('driver_id', random.choice(ids))
 
 
-# Mesh helpers per SCENE_GENERATION_REFERENCE.md §9 (StaticMeshFactory / static.prop.mesh)
+# Mesh helpers per SCENE_GENERATION_REFERENCE.md (StaticMeshFactory / static.prop.mesh)
 def mesh_content_path(category: str, subcategory: str, mesh_name: str) -> str:
     return f"/Game/Carla/Static/{category}/{subcategory}/{mesh_name}.{mesh_name}"
 
@@ -1888,7 +1889,7 @@ def stage_mesh_event(world, bp_lib, ego, actors_to_cleanup, log_file, center_wp_
 
     # Always log the compliance hint for maintainers.
     log(f"[V3][MESH] {MESH_EVENT_HINT}", log_file)
-    log('[V3][MESH] Reference: SCENE_GENERATION_REFERENCE.md §9', log_file)
+    log('[V3][MESH] Reference: SCENE_GENERATION_REFERENCE.md', log_file)
 
     if EVENT_MODE == 'fallen_tree_log':
         lane_w = max(3.4, float(getattr(center_wp, 'lane_width', 3.5)))
@@ -2389,28 +2390,37 @@ def main() -> None:
             raise
 
         finally:
-            log('[INFO] Cleanup start', log_file)
+            cleanup_errors = []
             for actor in actors_to_cleanup:
-                try:
-                    if 'sensor.camera' in actor.type_id:
+                if actor is not None and actor.type_id.startswith('sensor.'):
+                    try:
                         actor.stop()
-                except Exception:
-                    pass
-            for actor in reversed(actors_to_cleanup):
-                try:
-                    actor.destroy()
-                except Exception:
-                    pass
-            if world is not None and original_settings is not None:
-                try:
-                    world.apply_settings(original_settings)
-                except Exception:
-                    pass
+                    except Exception as exc:
+                        cleanup_errors.append('sensor stop: ' + str(exc))
             if traffic_manager is not None:
                 try:
                     traffic_manager.set_synchronous_mode(False)
-                except Exception:
-                    pass
+                except Exception as exc:
+                    cleanup_errors.append('traffic manager: ' + str(exc))
+            if client is not None and actors_to_cleanup:
+                try:
+                    commands = [carla.command.DestroyActor(actor.id) for actor in actors_to_cleanup if actor is not None]
+                    for response in client.apply_batch_sync(commands, True):
+                        if response.error:
+                            cleanup_errors.append(str(response.error))
+                except Exception as exc:
+                    cleanup_errors.append('actor destruction: ' + str(exc))
+            if world is not None and original_settings is not None:
+                try:
+                    world.apply_settings(original_settings)
+                except Exception as exc:
+                    cleanup_errors.append('world settings: ' + str(exc))
+            (output_root / 'cleanup_status.json').write_text(
+                json.dumps({'complete': not cleanup_errors, 'errors': cleanup_errors}, indent=2),
+                encoding='utf-8',
+            )
+            if cleanup_errors:
+                raise RuntimeError('Cleanup failed: ' + '; '.join(cleanup_errors))
             log('[INFO] Cleanup complete', log_file)
 
 

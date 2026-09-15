@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "source": "Lang2Drive ICRA manuscript, Figure 1",
+  "scenarios": [
+    {
+      "scenario_id": "bicycle_in_highway_lane",
+      "display_name": "Bicycle in highway lane",
+      "hazard_family": "road_user",
+      "hazard_family_label": "Road-User Interactions & Traffic-Rule Violations",
+      "keyword": "Bicycle in Highway Lane",
+      "prompt": "Generate Carla PythonAPI code for a highway scene where a cyclist enters the rightmost lane of a high-speed road and continues riding. Cars traveling at highway speed must detect the bicycle and adjust by braking, overtaking, or changing lanes. The scenario should include at least one bicycle actor, highway traffic flow, and lane discipline from surrounding vehicles",
+      "scene_specifications": "Road Context: Town04 highway corridor with at least two lanes per direction and long drivable spline continuity.\nTraffic Density: Minimum traffic density: >=20 moving vehicles in each travel direction (ego direction and opposite), plus >=20 nearby vehicles across adjacent lanes/merge context. CRITICAL: Spawn vehicles concentrated behind and beside ego vehicle. Vehicles in left lanes must be visibly passing ego. Vehicles behind ego must be visible in rear camera.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Use Town04 highway segment only. Spawn MULTIPLE bicycles (3-5) ahead of ego in the rightmost highway lane, lane-aligned on road spline, riding in a group/cluster. Ego vehicle must be positioned directly behind the bicycle group, following closely. Other vehicles on adjacent left lanes should be passing ego and bicycles on the left side.\nSuccess Criteria: Multiple bicycles visible ahead of ego in same lane. Ego follows closely behind bicycle group. Left-lane traffic passes ego and bikes. Dense traffic visible behind and beside ego."
+    },
+    {
+      "scenario_id": "pedestrian_dropping_objects",
+      "display_name": "Pedestrian dropping objects",
+      "hazard_family": "road_user",
+      "hazard_family_label": "Road-User Interactions & Traffic-Rule Violations",
+      "keyword": "Pedestrian Dropping Objects",
+      "prompt": "Generate Carla PythonAPI code where a pedestrian drops a suitcase into the lane; vehicles must detect the obstacle and perform a controlled stop or bypass.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Pedestrian Dropping Objects. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Pedestrian Dropping Objects must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "red_light_violation",
+      "display_name": "Red-light violation",
+      "hazard_family": "road_user",
+      "hazard_family_label": "Road-User Interactions & Traffic-Rule Violations",
+      "keyword": "Red Light Violation",
+      "prompt": "Generate Carla PythonAPI code for a traffic-light-controlled intersection where one car violates the red signal by continuing straight ahead through the intersection. Other cars are correctly stopped at the red light in their lanes. Pedestrians are waiting at the crosswalk, and the violating vehicle narrowly passes them. Ensure the scene includes traffic lights, multiple vehicles, and correct lane placement.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Trigger controlled red-light violation at a signalized intersection while cross-traffic keeps lawful green flow.\nSuccess Criteria: Violation vehicle enters on red and creates near-conflict with ego path; event is visible in front and side cameras."
+    },
+    {
+      "scenario_id": "scooter_swerving_in_traffic_lane",
+      "display_name": "Scooter swerving in traffic lane",
+      "hazard_family": "road_user",
+      "hazard_family_label": "Road-User Interactions & Traffic-Rule Violations",
+      "keyword": "Scooter Swerving in Traffic Lane",
+      "prompt": "Generate Carla PythonAPI code for a scooter weaving into a traffic lane; surrounding cars must perform gentle lane changes or braking to maintain clearance.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Scooter Swerving in Traffic Lane. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Scooter Swerving in Traffic Lane must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "sudden_pedestrian_crossing",
+      "display_name": "Sudden pedestrian crossing",
+      "hazard_family": "road_user",
+      "hazard_family_label": "Road-User Interactions & Traffic-Rule Violations",
+      "keyword": "Sudden Pedestrian Crossing",
+      "prompt": "Generate Carla PythonAPI code for a four-lane city road where a pedestrian suddenly runs across the street outside of a crosswalk. Vehicles are approaching at normal urban speed and must react to avoid hitting the pedestrian. The environment should include sidewalks, nearby traffic, and realistic pedestrian behavior (running/jaywalking across lanes).",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Pedestrian enters travel lane abruptly from occluded edge/median in front of ego.\nSuccess Criteria: Crossing event is visible with clear temporal onset and braking/yield response."
+    },
+    {
+      "scenario_id": "sudden_pedestrian_protest_march",
+      "display_name": "Sudden pedestrian protest march",
+      "hazard_family": "road_user",
+      "hazard_family_label": "Road-User Interactions & Traffic-Rule Violations",
+      "keyword": "Sudden Pedestrian Protest March",
+      "prompt": "Generate Carla PythonAPI code for a city avenue where a group of pedestrians suddenly march across the road carrying signs. Vehicles must stop completely until the crowd passes. The environment should include sidewalks, banners, and urban traffic flow.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Sudden Pedestrian Protest March. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Sudden Pedestrian Protest March must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "ambulance_stuck_at_railroad_crossing",
+      "display_name": "Ambulance stuck at crossing",
+      "hazard_family": "traffic_control",
+      "hazard_family_label": "Traffic-Control & Infrastructure Disruptions",
+      "keyword": "Ambulance Stuck at Railroad Crossing",
+      "prompt": "Generate Carla PythonAPI code for a railroad crossing where an ambulance is stopped due to a passing train. Cars behind must yield and wait, while the train passes. Afterward, traffic flow resumes normally. The scene should include railroad tracks, barriers, and flashing signals.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Ambulance Stuck at Railroad Crossing. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Ambulance Stuck at Railroad Crossing must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "drawbridge_lifting_midcrossing",
+      "display_name": "Drawbridge lifting mid-crossing",
+      "hazard_family": "traffic_control",
+      "hazard_family_label": "Traffic-Control & Infrastructure Disruptions",
+      "keyword": "Drawbridge Lifting Mid-Crossing",
+      "prompt": "Generate Carla PythonAPI code for a drawbridge starting to rise mid-crossing; vehicles must stop before the gap and reroute.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Drawbridge Lifting Mid-Crossing. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Drawbridge Lifting Mid-Crossing must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "emergency_vehicle_priority",
+      "display_name": "Emergency vehicle priority",
+      "hazard_family": "traffic_control",
+      "hazard_family_label": "Traffic-Control & Infrastructure Disruptions",
+      "keyword": "Emergency Vehicle Priority",
+      "prompt": "Generate Carla PythonAPI code for a city street where an ambulance with flashing lights and siren activated approaches from behind. Multiple cars ahead must yield the right of way by slowing down and pulling over to the side of the road. The ambulance should maintain high priority and continue forward at a faster speed while traffic reacts appropriately.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Emergency vehicle with active light pattern approaches intersection and requests right-of-way.\nSuccess Criteria: Other traffic yields and ego behavior reflects priority rules."
+    },
+    {
+      "scenario_id": "sudden_blackout",
+      "display_name": "Sudden blackout",
+      "hazard_family": "traffic_control",
+      "hazard_family_label": "Traffic-Control & Infrastructure Disruptions",
+      "keyword": "Sudden Blackout",
+      "prompt": "Generate Carla PythonAPI code for a nighttime urban road where a sudden power outage turns off all streetlights and traffic signals. Vehicles must rely on headlights, slow down, and cautiously approach intersections. Pedestrians cross with extra caution in low visibility.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Sudden Blackout. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Sudden Blackout must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "traffic_light_malfunction_all_greenall_red",
+      "display_name": "Traffic-light malfunction",
+      "hazard_family": "traffic_control",
+      "hazard_family_label": "Traffic-Control & Infrastructure Disruptions",
+      "keyword": "Traffic Light Malfunction (All Green/All Red)",
+      "prompt": "Generate Carla PythonAPI code for an intersection with all-green signal malfunction; vehicles must treat it as all-way stop with right-of-way rules.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Drive malfunction phase where all approaches are forced green or forced red for a visible interval.\nSuccess Criteria: Abnormal signal state is obvious and induces traffic confusion/queuing behavior."
+    },
+    {
+      "scenario_id": "wrong_turn_into_construction_zone",
+      "display_name": "Wrong turn into construction zone",
+      "hazard_family": "traffic_control",
+      "hazard_family_label": "Traffic-Control & Infrastructure Disruptions",
+      "keyword": "Wrong Turn into Construction Zone",
+      "prompt": "Generate Carla PythonAPI code for a driver mistakenly entering a closed construction zone. Barriers, cones, and equipment block the lane, forcing the car to stop abruptly while other vehicles continue normally. The environment should include flashing warning lights and signage.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Wrong Turn into Construction Zone. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Wrong Turn into Construction Zone must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "fallen_power_lines",
+      "display_name": "Fallen power lines",
+      "hazard_family": "obstruction",
+      "hazard_family_label": "Roadway Obstructions & Structural Debris",
+      "keyword": "Fallen Power Lines",
+      "prompt": "Generate Carla PythonAPI code for a suburban street where live power lines hang dangerously low after a storm. Vehicles stop at a safe distance, and pedestrians keep away. Include utility poles, sparks, and storm aftermath visuals.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Fallen Power Lines. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Fallen Power Lines must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "floating_rocks_on_the_road",
+      "display_name": "Landslide rocks on the road",
+      "hazard_family": "obstruction",
+      "hazard_family_label": "Roadway Obstructions & Structural Debris",
+      "keyword": "Floating Rocks on the Road",
+      "prompt": "Generate Carla PythonAPI code for a surreal scene where several large rocks are levitating above the roadway, slowly moving across the lanes. Cars must drive underneath or around the floating obstacles, treating them like moving objects suspended in mid-air.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Floating Rocks on the Road. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Floating Rocks on the Road must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "giant_tree_log_blocking_the_road",
+      "display_name": "Giant tree log blocking the road",
+      "hazard_family": "obstruction",
+      "hazard_family_label": "Roadway Obstructions & Structural Debris",
+      "keyword": "Giant Tree Log Blocking the Road",
+      "prompt": "Generate Carla PythonAPI code for a suburban road where a massive fallen tree log completely blocks one lane. Vehicles must brake, slow, or swerve into the opposite lane (if safe) to continue forward. Include roadside vegetation, traffic flow, and hazard placement with proper collision behavior.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction at event onset, with >=80 active vehicles in broader scene. CRITICAL: Spawn majority of vehicles NEAR ego vehicle location (within 100m radius), not randomly across map. Vehicles must be visible behind, beside, and in oncoming lanes near ego.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Use static.prop.beech_tree blueprint to create a REAL fallen tree across the lane. Spawn the tree rotated 90 degrees (roll=90) so it lies horizontally across the road like a fallen trunk. Add multiple beech_tree props end-to-end for a massive log appearance. Surround with debris (dirtdebris, plantpot, bush props). Add warning cones on approach side.\nSuccess Criteria: Fallen tree is clearly recognizable as a tree (not barrels/boxes). Blockage spans full lane width. Ego and nearby traffic visibly brake and adjust path. Dense traffic visible around ego from all directions."
+    },
+    {
+      "scenario_id": "landslide_debris",
+      "display_name": "Landslide debris",
+      "hazard_family": "obstruction",
+      "hazard_family_label": "Roadway Obstructions & Structural Debris",
+      "keyword": "Landslide Debris",
+      "prompt": "Generate Carla PythonAPI code for a mountain road where rocks and mud from a landslide partially cover one lane. Vehicles must detect the debris, reduce speed, and carefully navigate around it. The environment should include cliffs, warning signs, and foggy mountain conditions.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Landslide Debris. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Landslide Debris must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "overhead_sign_collapse",
+      "display_name": "Overhead sign collapse",
+      "hazard_family": "obstruction",
+      "hazard_family_label": "Roadway Obstructions & Structural Debris",
+      "keyword": "Overhead Sign Collapse",
+      "prompt": "Generate Carla PythonAPI code for an overhead sign collapsing ahead; vehicles must brake, hazard-mark the area, and pass single-file around debris.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Overhead Sign Collapse. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Overhead Sign Collapse must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "tunnel_blockage_from_stalled_vehicles",
+      "display_name": "Tunnel blockage from stalled vehicles",
+      "hazard_family": "obstruction",
+      "hazard_family_label": "Roadway Obstructions & Structural Debris",
+      "keyword": "Tunnel Blockage from Stalled Vehicles",
+      "prompt": "Generate Carla PythonAPI code for a tunnel with several stalled cars; vehicles should reduce speed, keep lane, and queue safely with low headway variance.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Tunnel Blockage from Stalled Vehicles. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Tunnel Blockage from Stalled Vehicles must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "floating_traffic_cones",
+      "display_name": "Flying traffic cones",
+      "hazard_family": "dynamic_object",
+      "hazard_family_label": "Dynamic Object Intrusions",
+      "keyword": "Floating Traffic Cones",
+      "prompt": "Generate Carla PythonAPI code for a surreal scene where traffic cones levitate above the road, shifting unpredictably. Vehicles must weave around the moving cones while continuing forward.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Floating Traffic Cones. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Floating Traffic Cones must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "zero_gravity_street",
+      "display_name": "Overhead car crash",
+      "hazard_family": "dynamic_object",
+      "hazard_family_label": "Dynamic Object Intrusions",
+      "keyword": "Zero Gravity Street",
+      "prompt": "Generate Carla PythonAPI code for a surreal scene where gravity is reduced, causing parked cars and small objects (cones, signs) to slowly float upward. Meanwhile, one vehicle continues to drive normally along the road despite the floating environment.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Zero Gravity Street. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Zero Gravity Street must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "ladder_falling_from_truck",
+      "display_name": "Ladder falling from vehicle",
+      "hazard_family": "dynamic_object",
+      "hazard_family_label": "Dynamic Object Intrusions",
+      "keyword": "Ladder Falling from Truck",
+      "prompt": "Tesla Model 3 follows a moving truck on a straight Town04 road. A recognizable four-meter ladder rides visibly on top of the truck cargo body, slides rearward after three seconds, falls behind the truck, rotates diagonally and lands across the ego lane. Preserve active surrounding traffic and a clear front-camera view. Capture 20 seconds at 20 FPS. Ego uses a scripted braking baseline for visual capture.",
+      "scene_specifications": "Camera Contract: Save synchronized 1280x720 front RGB frames at 20 FPS.\nEvent Contract: Stage a recognizable four-meter ladder on a truck, then slide and release it diagonally into the ego lane. Use scripted kinematic motion and log measured poses.\nSuccess Criteria: The ladder is visible on the truck, releases continuously, and lands ahead of ego. Preserve surrounding traffic, complete frame capture, and checked cleanup."
+    },
+    {
+      "scenario_id": "giant_rolling_sphere",
+      "display_name": "Giant rolling sphere",
+      "hazard_family": "dynamic_object",
+      "hazard_family_label": "Dynamic Object Intrusions",
+      "keyword": "Giant Rolling Sphere",
+      "prompt": "Generate Carla PythonAPI code for a scenario where a giant spherical object (like a boulder or sci-fi orb) rolls down the street toward cars. Vehicles in its path must stop or swerve to avoid collision, while pedestrians scatter. The sphere should be spawned at a height and allowed to roll with physics.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Giant Rolling Sphere. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Giant Rolling Sphere must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "runaway_shopping_cart",
+      "display_name": "Runaway shopping cart",
+      "hazard_family": "dynamic_object",
+      "hazard_family_label": "Dynamic Object Intrusions",
+      "keyword": "Runaway Shopping Cart",
+      "prompt": "Generate Carla PythonAPI code for a supermarket parking lot road where a runaway shopping cart rolls into traffic. Vehicles must slow or swerve to avoid hitting it. Include parked cars, sidewalks, and pedestrians nearby.",
+      "scene_specifications": "Road Context: Town04 highway corridor with at least two lanes per direction and long drivable spline continuity.\nTraffic Density: Minimum traffic density: >=20 moving vehicles in each travel direction (ego direction and opposite), plus >=20 nearby vehicles across adjacent lanes/merge context; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Runaway Shopping Cart. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Runaway Shopping Cart must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "sudden_obstacle_drop",
+      "display_name": "Sudden obstacle drop",
+      "hazard_family": "dynamic_object",
+      "hazard_family_label": "Dynamic Object Intrusions",
+      "keyword": "Sudden Obstacle Drop",
+      "prompt": "Generate Carla PythonAPI code for a delivery truck traveling ahead of a car that suddenly drops a large box or crate into the lane. The following vehicle must detect the obstacle and take evasive action by braking or steering around it. The road should include realistic traffic flow, lane markings, and at least one obstacle actor representing the dropped object.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Sudden Obstacle Drop. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Sudden Obstacle Drop must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "oncoming_flying_tire",
+      "display_name": "Tire flying from opposite",
+      "hazard_family": "dynamic_object",
+      "hazard_family_label": "Dynamic Object Intrusions",
+      "keyword": "Oncoming Flying Tire",
+      "prompt": "Generate CARLA PythonAPI code for a Tesla Model 3 ego vehicle driving forward on a straight Town04 highway while a physical Wheel_Shape tire travels toward ego from the opposite direction in the same lane at the ego vehicle's current ground speed. Keep the front-camera event corridor visible and preserve active surrounding traffic.",
+      "scene_specifications": "Road Context: Forward-visible straight Town04 highway segment.\nCamera Contract: Save synchronized front stream only.\nEgo Vehicle Contract: Ego is a Tesla Model 3 and continues moving forward without braking for the hazard.\nTire Asset Contract: Use Wheel_Shape through static.prop.mesh with an 18 kg physics-enabled body.\nMotion Contract: Move the tire opposite ego in the same lane at the ego vehicle's current ground speed (1.0x), producing approximately twice-ego closing speed. Translation is the accepted behavior; no avoidance requirement is included.\nSuccess Criteria: Front frames and motion logs show real tire displacement toward and past the ego vehicle across the eight weather-time conditions."
+    },
+    {
+      "scenario_id": "bridge_icing_patch",
+      "display_name": "Bridge icing patch",
+      "hazard_family": "environmental",
+      "hazard_family_label": "Environmental & Road-Surface Hazards",
+      "keyword": "Bridge Icing Patch",
+      "prompt": "Generate Carla PythonAPI code for a bridge deck icing patch; approaching vehicles should decelerate smoothly and limit throttle/steer inputs while crossing.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Bridge Icing Patch. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Bridge Icing Patch must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "flash_floods",
+      "display_name": "Flash flood",
+      "hazard_family": "environmental",
+      "hazard_family_label": "Environmental & Road-Surface Hazards",
+      "keyword": "Flash Floods",
+      "prompt": "Generate Carla PythonAPI code for a scenario where a sudden flash flood causes water to rush across a city street. Vehicles must slow down or stop, with some attempting to drive through shallow sections. Pedestrians wait safely on elevated sidewalks. The environment should include realistic water physics and reduced visibility from heavy rain.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Create river-like flowing flood crossing the roadway. Must show visible water-like surface on road (use high wetness=100 + precipitation_deposits=100 + reflective surface). Spawn floating/stalled vehicles IN the flood zone with physics enabled so they appear swept by current. Ego vehicle must also enter flood water and show floating/drifting behavior (disable autopilot, apply lateral force via physics). Include heavy rain and severe visibility drop.\nSuccess Criteria: Flood flow is visibly directional with water-like road surface (not rain-only). Vehicles including ego appear to float/drift in flood zone. Stalled vehicles scattered in flood area."
+    },
+    {
+      "scenario_id": "flooded_underpass",
+      "display_name": "Flooded underpass",
+      "hazard_family": "environmental",
+      "hazard_family_label": "Environmental & Road-Surface Hazards",
+      "keyword": "Flooded Underpass",
+      "prompt": "Generate Carla PythonAPI code for a city underpass where accumulated rainwater makes it impassable. Cars approaching must slow and reroute to avoid the submerged lane. The environment should include warning signs, traffic rerouting, and water simulation.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Flooded Underpass. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Flooded Underpass must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    },
+    {
+      "scenario_id": "oil_spill_hazard",
+      "display_name": "Oil spill hazard",
+      "hazard_family": "environmental",
+      "hazard_family_label": "Environmental & Road-Surface Hazards",
+      "keyword": "Oil Spill Hazard",
+      "prompt": "Generate Carla PythonAPI code for a highway where an oil spill creates a slippery patch in one lane. Vehicles approaching at speed must detect reduced traction, slow down, and avoid sudden steering. The scene should include hazard markers, reflective road surface, and traffic flow.",
+      "scene_specifications": "Road Context: Town04 highway corridor with at least two lanes per direction and long drivable spline continuity.\nTraffic Density: Minimum traffic density: >=20 moving vehicles in each travel direction (ego direction and opposite), plus >=20 nearby vehicles across adjacent lanes/merge context; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Stage a large overturned truck with broad oil-spill zone, dense cones, warning signs, and emergency response vehicles.\nSuccess Criteria: Oil spill looks visually distinct; ego and surrounding traffic show hazard-aware speed/lane behavior around spill area."
+    },
+    {
+      "scenario_id": "sudden_heavy_rain",
+      "display_name": "Sudden heavy rain",
+      "hazard_family": "environmental",
+      "hazard_family_label": "Environmental & Road-Surface Hazards",
+      "keyword": "Sudden Heavy Rain",
+      "prompt": "Generate Carla PythonAPI code for a scenario where the weather transitions abruptly from clear skies to heavy rainfall. The environment should have reduced visibility, wet/slippery roads, and active windshield wipers on vehicles if possible. Cars must continue driving but adjust their behavior, such as slowing down and increasing following distance.",
+      "scene_specifications": "Road Context: Signalized urban 4-way intersection baseline, two lanes per direction, with active cross-traffic in all approaches.\nTraffic Density: Minimum traffic density: >=20 moving vehicles per approach direction (north/south/east/west equivalent) at event onset, with >=80 active vehicles in broader scene; fail run if thresholds are not met after retries.\nCamera Contract: Save synchronized front stream only (single front camera) using matched frame ids.\nEvent Contract: Primary event: Sudden Heavy Rain. Ensure clear onset, peak, and resolution phases between 20%-75% of timeline.\nSuccess Criteria: Sudden Heavy Rain must be visually unambiguous and must cause observable behavior change in ego and nearby traffic."
+    }
+  ]
+}

@@ -8,6 +8,10 @@ Camera Contract: Save synchronized front, front_left, front_right, rear, and dro
 Event Contract: Use static.prop.beech_tree blueprint to create a REAL fallen tree across the lane. Spawn the tree rotated 90 degrees (roll=90) so it lies horizontally across the road like a fallen trunk. Add multiple beech_tree props end-to-end for a massive log appearance. Surround with debris (dirtdebris, plantpot, bush props). Add warning cones on approach side.
 Success Criteria: Fallen tree is clearly recognizable as a tree (not barrels/boxes). Blockage spans full lane width. Ego and nearby traffic visibly brake and adjust path. Dense traffic visible around ego from all directions.
 
+OUTPUT CAMERA DEFAULT:
+- Default capture is FRONT camera only.
+- Only generate 5-angle capture (`front`, `front_left`, `front_right`, `rear`, `drone_follow`) when the user or scene specification explicitly asks for all views / multi-angle capture.
+
 ================================================================================
 === MANDATORY REQUIREMENTS (ALL SCENARIOS MUST IMPLEMENT THESE) ===
 ================================================================================
@@ -54,7 +58,7 @@ Success Criteria: Fallen tree is clearly recognizable as a tree (not barrels/box
 - Spawn objects so they are camera-visible and distributed across approaches/shoulders/median (not only one side).
 - Ensure dense traffic is visibly present around ego throughout the run: include moving actors behind ego, beside ego, and crossing approaches in front.
 - Keep a near-ego moving-traffic target active (recommended minimum around ego at any time: behind>=6, beside>=8, crossing>=8 when map allows).
-- Timing/staging must ensure core scene event + traffic flow + object context are visible at the same time in at least front and drone views.
+- Timing/staging must ensure core scene event + traffic flow + object context are clearly visible in the front view (and optional drone view if multi-angle capture is explicitly requested).
 
 1.9 STATIC MESH SPAWNING VIA `static.prop.mesh` (PREFERRED FOR TREES, ROCKS, DEBRIS)
 - CARLA's built-in StaticMeshFactory blueprint `static.prop.mesh` can spawn ANY UE4 static mesh
@@ -73,25 +77,19 @@ Success Criteria: Fallen tree is clearly recognizable as a tree (not barrels/box
         return f'/Game/Carla/Static/Vegetation/Trees/{mesh_name}.{mesh_name}'
 - This works in stock packaged CARLA — no source rebuild or plugin needed.
 
-2. FIVE CAMERAS (4 DRIVER-POV + 1 DRONE DOCUMENTATION VIEW)
-Create exactly 5 RGB cameras attached to the primary vehicle:
+2. CAMERA OUTPUT (DEFAULT FRONT ONLY; 5 ANGLES ONLY IF EXPLICITLY REQUESTED)
+Default requirement: create ONE RGB camera attached to the primary vehicle.
 
 FRONT (hood-cam view - centered on windshield, showing engine hood at bottom):
   Location(x=0.8, y=0.0, z=1.4), Rotation(pitch=8)
 
-FRONT_LEFT (driver's eye-level view - looking through left window):
-  Location(x=-0.1, y=-0.4, z=1.2), Rotation(yaw=-60)
+Default camera settings: 1280x720 resolution, FOV=110, sensor.camera.rgb
 
-FRONT_RIGHT (driver's eye-level view - looking through right window):
-  Location(x=-0.1, y=0.4, z=1.2), Rotation(yaw=60)
-
-REAR (rearview mirror perspective - from driver's eye level looking back):
-  Location(x=-0.2, y=0.3, z=1.25), Rotation(yaw=180, pitch=5)
-
-DRONE_FOLLOW (top-behind documentation view following ego and environment):
-  Location(x=-12.0, y=0.0, z=12.0), Rotation(pitch=-25, yaw=0, roll=0)
-
-All cameras: 1280x720 resolution, FOV=110, sensor.camera.rgb
+If (and only if) the user or scene specification explicitly requests all 5 angles, additionally create:
+- FRONT_LEFT: Location(x=-0.1, y=-0.4, z=1.2), Rotation(yaw=-60)
+- FRONT_RIGHT: Location(x=-0.1, y=0.4, z=1.2), Rotation(yaw=60)
+- REAR: Location(x=-0.2, y=0.3, z=1.25), Rotation(yaw=180, pitch=5)
+- DRONE_FOLLOW: Location(x=-12.0, y=0.0, z=12.0), Rotation(pitch=-25, yaw=0, roll=0)
 
 3. IMAGE SAVING - BGR TO RGB CONVERSION (CRITICAL!)
 CARLA outputs images in BGRA format. You MUST convert to RGB before saving:
@@ -113,15 +111,15 @@ def save_image_to_disk(image, output_path):
 4. SYNCHRONOUS MODE AND CAMERA SYNCHRONIZATION
 - settings.synchronous_mode = True
 - settings.fixed_delta_seconds = 0.05 (20 FPS)
-- Use threading.Event() to synchronize all 5 cameras per frame
-- Wait until ALL 5 cameras have captured before saving
+- For default front-only capture, use a simple per-frame front-camera callback buffer.
+- If multi-angle capture is explicitly requested, use threading.Event() to synchronize all requested cameras per frame before saving.
 
 Example synchronization pattern:
 
 import threading
 
-# Shared state for 5-camera synchronization
-images_received = {'front': None, 'front_left': None, 'front_right': None, 'rear': None, 'drone_follow': None}
+# Shared state (default front-camera-only capture)
+images_received = {'front': None}
 # WARNING: Do NOT reassign images_received inside main()!
 # Use images_received[key] = None to clear, not images_received = {...}
 images_lock = threading.Lock()
@@ -131,16 +129,11 @@ def make_camera_callback(camera_name):
     def callback(image):
         with images_lock:
             images_received[camera_name] = image
-            if all(img is not None for img in images_received.values()):
-                frame_ready.set()
+            frame_ready.set()
     return callback
 
-# Attach callbacks to all 5 cameras
+# Attach callback to front camera (default)
 front_camera.listen(make_camera_callback('front'))
-front_left_camera.listen(make_camera_callback('front_left'))
-front_right_camera.listen(make_camera_callback('front_right'))
-rear_camera.listen(make_camera_callback('rear'))
-drone_follow_camera.listen(make_camera_callback('drone_follow'))
 
 # CRITICAL: Camera warm-up - tick world several times BEFORE main loop to initialize cameras
 print("[INFO] Warming up cameras...")
@@ -154,10 +147,6 @@ world.tick()
 if frame_ready.wait(timeout=1.0):
     with images_lock:
         save_image_to_disk(images_received['front'], front_path)
-        save_image_to_disk(images_received['front_left'], front_left_path)
-        save_image_to_disk(images_received['front_right'], front_right_path)
-        save_image_to_disk(images_received['rear'], rear_path)
-        save_image_to_disk(images_received['drone_follow'], drone_follow_path)
     frame_number += 1
 else:
     # Camera timeout - log warning but continue simulation
@@ -165,29 +154,18 @@ else:
 frame_ready.clear()
 with images_lock:
     images_received['front'] = None
-    images_received['front_left'] = None
-    images_received['front_right'] = None
-    images_received['rear'] = None
-    images_received['drone_follow'] = None
+    # If multi-angle capture is explicitly requested, clear those keys too.
 
 5. OUTPUT STRUCTURE
-Create this exact folder structure:
+Default output folder structure (front camera only):
 
 scenes/giant_tree_log_blocking_the_road/
 ├── front/
 │   └── front_frame_00000001.png, front_frame_00000002.png, ...
-├── front_left/
-│   └── front_left_frame_00000001.png, front_left_frame_00000002.png, ...
-├── front_right/
-│   └── front_right_frame_00000001.png, front_right_frame_00000002.png, ...
-├── rear/
-│   └── rear_frame_00000001.png, rear_frame_00000002.png, ...
-├── drone_follow/
-│   └── drone_follow_frame_00000001.png, drone_follow_frame_00000002.png, ...
 └── giant_tree_log_blocking_the_road_simulation.log
 
 - Frame numbering: 8 digits, starting at 00000001
-- All 5 cameras save with the SAME frame number per tick
+- If multi-angle capture is explicitly requested, all requested cameras must save with the SAME frame number per tick
 
 ================================================================================
 === SCENARIO-SPECIFIC GUIDANCE ===
@@ -247,7 +225,7 @@ PATH CLARITY RULES (Apply based on scenario type):
 TIMING AND SPACING:
 - Allow the scenario to unfold naturally over 5-15 seconds of simulation time
 - Spawn distance: obstacles/actors should be 30-80 meters ahead at scenario start
-- All critical elements should be visible from driver POV and drone_follow cameras
+- All critical elements should be visible from the front camera (and drone_follow too only if multi-angle capture is explicitly requested)
 
 FOR RED LIGHT VIOLATION SCENARIOS:
 - CRITICAL: The TARGET traffic light (the one the violator approaches) MUST be RED
@@ -333,33 +311,45 @@ FOR OTHER TRAFFIC VIOLATION SCENARIOS (Wrong-Way Driver, etc.):
   * Behind the primary vehicle (following at safe distance)
 - Freeze traffic lights to prevent cycling: tl.freeze(True)
 
-FOR WEATHER SCENARIOS (Rain, Fog, Sandstorm, Snow, etc.):
+FOR WEATHER SCENARIOS (Rain and Fog):
 - Use carla.WeatherParameters to configure conditions
 - Key parameters: cloudiness, precipitation, fog_density, fog_distance, sun_altitude_angle
 - May implement gradual weather transition over time
+- REQUIRED FOR ALL SCENES: support modular time+weather control so a separate matrix
+  runner can execute 8 combinations after scene finalization.
+- Standalone scene script must remain single-run and accept one environment per run.
+- Required CLI args (environment contract):
+  --time-preset, --weather-preset, --sun-altitude, --sun-azimuth, --streetlights,
+  --cloudiness, --precipitation, --precipitation-deposits, --wind-intensity,
+  --fog-density, --fog-distance, --wetness
+- Standard time presets (shared JSON spec):
+  * noon (alt=45.0, azm=240.0)
+  * night (alt=-88.0, azm=320.0)
+- Standard weather presets (shared JSON spec): clear (Clear), storm (Heavy Rainy), worst (Stormy), foggy (Foggy)
+- If no presets are provided, preserve the scene's intended default look
 
-FOR PEDESTRIAN/ANIMAL SCENARIOS (Crossing, Jaywalking, etc.):
+FOR PEDESTRIAN SCENARIOS (Crossing and Dropped Objects):
 - Spawn pedestrians with walker.pedestrian.* blueprints
 - Use controller.ai.walker for AI movement
 - Configure walking path to cross vehicle's trajectory
 - Time the crossing to create the intended scenario
 
-FOR VEHICLE BEHAVIOR SCENARIOS (Swerving, Jackknifing, Wheelie, etc.):
+FOR VEHICLE BEHAVIOR SCENARIOS (Lane Intrusion and Swerving):
 - Spawn the specific vehicle type mentioned
 - Apply erratic vehicle controls for reckless behavior
 - Other traffic should react realistically
 
-FOR ROAD OBSTACLE SCENARIOS (Debris, Pothole, Objects, etc.):
+FOR ROAD OBSTACLE SCENARIOS (Debris and Dropped Objects):
 - Spawn static props or actors as obstacles
 - Position in or near the vehicle's path
 - Timing is critical for reaction opportunity
 
-FOR INFRASTRUCTURE SCENARIOS (Bridge Collapse, Sinkhole, etc.):
+FOR INFRASTRUCTURE SCENARIOS (Drawbridge and Signal Disruption):
 - Use available props and static meshes
 - May need creative approximation for complex effects
 - Block vehicle path dramatically
 
-FOR SURREAL/ADVERSARIAL SCENARIOS (Floating Objects, Giant Sphere, UFO, etc.):
+FOR DYNAMIC OBJECT INTRUSIONS (Flying Cones and Giant Rolling Sphere):
 - Use creative physics manipulation where possible
 - Spawn props and manipulate their transforms
 - These test VLM's ability to handle unknown situations
@@ -374,7 +364,8 @@ FOR SURREAL/ADVERSARIAL SCENARIOS (Floating Objects, Giant Sphere, UFO, etc.):
 - Log progress every 200 frames: speed, position, scenario status
 - Include collision detection where relevant to the scenario
 - Duration configurable via --duration argument (default 25 seconds)
-- At 20 FPS, 25 seconds = 500 frames per camera = 2500 total images (5 cameras)
+- At 20 FPS, 25 seconds = 500 front-camera images by default
+- If 5-angle capture is explicitly requested, 25 seconds = 2500 total images
 - Hard-cap frame budget in code:
   max_frames = min(int(args.duration * 20), 500)
 - Keep scenarios concise: complete all critical scene actions within first 20-25 seconds
@@ -385,9 +376,24 @@ COMMAND LINE ARGUMENTS:
 --port: CARLA server port (default 2000)
 --duration: Simulation duration in seconds (default 25)
 --output-dir: Output directory (default ./scenes/giant_tree_log_blocking_the_road)
+--time-preset: Standard time preset key (default scene_default)
+--weather-preset: Standard weather preset key (default scene_default)
+--sun-altitude: Optional explicit sun altitude override
+--sun-azimuth: Optional explicit sun azimuth override
+--streetlights: Optional streetlights mode override (auto|on|off)
+--cloudiness / --precipitation / --precipitation-deposits / --wind-intensity
+--fog-density / --fog-distance / --wetness: Optional explicit weather overrides
 
 ================================================================================
 
 Return a complete, runnable Python script with NO markdown formatting.
-The script must implement the exact scenario described while using the 5-camera
-setup (4 driver-POV + drone_follow) with proper BGR to RGB conversion.
+The script must implement the exact scenario described while using front-camera-only
+capture by default (unless multi-angle capture is explicitly requested), with
+proper BGR to RGB conversion. The script must remain standalone and single-run,
+while exposing the environment CLI contract above so a separate matrix runner can
+generate 8 time×weather output folders later.
+
+CLEANUP EVIDENCE:
+- Stop sensors, disable Traffic Manager synchronous mode, destroy actors with checked responses, and restore world settings.
+- Write cleanup_status.json into the output root with {"complete": true, "errors": []} only after every cleanup operation succeeds.
+- On failure write complete=false with the actual errors and exit nonzero. The matrix stops if cleanup cannot be verified.
