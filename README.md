@@ -63,7 +63,7 @@ Completed variants are revalidated before skipping. Failed or incomplete attempt
 ## Examples and human-verified frames
 
 - [Generation artifacts](ARTIFACT_INDEX.md): retained prompt/code examples and their runtime requirements.
-- [Human-verified keyframes](examples/verified_keyframes/README.md): a manifest of the human-reviewed collection and five original preview images spanning the hazard families.
+- [Human-verified keyframes](examples/verified_keyframes/README.md): a manifest of the human-reviewed collection and consolidated human-review sheets for three scenes.
 
 ## Verification
 

@@ -4,7 +4,7 @@ This collection indexes **1,200 human-verified frames** from **30 source scenari
 
 [JSON manifest](manifest.json) · [CSV manifest](manifest.csv)
 
-The manifest covers the verified collection. Five original PNGs are included below; the full image set is not stored in this repository.
+The manifest covers the verified collection. Three consolidated scene-review sheets are included below; the full image set is not stored in this repository.
 
 ## Manifest fields
 
@@ -26,26 +26,26 @@ Source folder aliases `storm` and `worst` correspond to Heavy Rainy and Stormy, 
 
 The collection covers 29 of Figure 1's 30 scenarios and also includes `wrongway_driver`, whose `paper_display_name` is null. No verified frames for `zero_gravity_street` (Overhead car crash) are included. The source IDs `floating_rocks_on_the_road` and `zero_gravity_street` map to Landslide rocks on the road and Overhead car crash in the paper. Counts describe this collection, rather than establishing identity with any experimental split.
 
-## Representative preview
+## Scene-wise human verification
 
-For each hazard family, the preview uses the first available paper scenario by stable scenario ID under Noon-Clear, then the middle frame in temporal order. These are original, unmodified images with checksums recorded in the manifest.
+Each consolidated review sheet shows **eight weather-time conditions in rows** and **five temporally ordered keyframes per row**, allowing the scene progression and environmental variation to be inspected together. Numbers beneath the images identify the source frames.
 
-### Flying traffic cones
-
-![Flying traffic cones](preview/floating_traffic_cones__front_frame_00000100.png)
-
-### Bridge icing patch
-
-![Bridge icing patch](preview/bridge_icing_patch__front_frame_00000080.png)
-
-### Fallen power lines
-
-![Fallen power lines](preview/fallen_power_lines__front_frame_00000110.png)
+These are the consolidated images used for human review. Their row labels preserve source aliases: `storm` means **Heavy Rainy**, and `worst` means **Stormy**. Where a row says “400 source frames,” that is the source sequence length; five selected frames are displayed. The manifest checksums refer to the individual source PNGs, not these JPEG review sheets.
 
 ### Bicycle in highway lane
 
-![Bicycle in highway lane](preview/bicycle_in_highway_lane__front_frame_00000200.png)
+[Open full-resolution review sheet](preview/bicycle_in_highway_lane.jpg)
 
-### Ambulance stuck at crossing
+![Bicycle in highway lane: human verification across eight weather-time conditions](preview/bicycle_in_highway_lane.jpg)
 
-![Ambulance stuck at crossing](preview/ambulance_stuck_at_railroad_crossing__front_frame_00000200.png)
+### Red-light violation
+
+[Open full-resolution review sheet](preview/red_light_violation.jpg)
+
+![Red-light violation: human verification across eight weather-time conditions](preview/red_light_violation.jpg)
+
+### Ladder falling from vehicle
+
+[Open full-resolution review sheet](preview/ladder_falling_from_truck.jpg)
+
+![Ladder falling from vehicle: human verification across eight weather-time conditions](preview/ladder_falling_from_truck.jpg)
