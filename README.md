@@ -12,15 +12,7 @@ Lang2Drive transforms natural-language corner-case descriptions into CARLA scena
 4. **Evaluate and refine:** inspect the front-camera event and execution evidence; use structured feedback to revise unsuccessful attempts.
 5. **Vary conditions:** capture the finalized scene under four weather conditions at Noon and Night.
 
-The [scenario catalog](scene_catalog.json) follows Figure 1's 30 scenarios in five hazard families. The [generation guide](SCENE_GENERATION_REFERENCE.md) explains the agent workflow, manifests, refinement, and runtime requirements.
 
-| Hazard family | Scenarios |
-| --- | ---: |
-| Road-User Interactions & Traffic-Rule Violations | 6 |
-| Traffic-Control & Infrastructure Disruptions | 6 |
-| Roadway Obstructions & Structural Debris | 6 |
-| Dynamic Object Intrusions | 7 |
-| Environmental & Road-Surface Hazards | 5 |
 
 ## Data Samples
 
