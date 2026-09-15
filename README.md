@@ -22,67 +22,13 @@ The [scenario catalog](scene_catalog.json) follows Figure 1's 30 scenarios in fi
 | Dynamic Object Intrusions | 7 |
 | Environmental & Road-Surface Hazards | 5 |
 
-### Setup
+## Data Samples
 
-Use Python 3.10+ and a separately installed CARLA runtime with a matching CARLA Python API. Run the simulation commands in the Python environment that can connect to that runtime.
+Each scene is captured across **8 conditions** (4 weather × 2 time-of-day). The examples below show the ego-camera front view for selected scenarios.
 
-```bash
-python -m pip install -r requirements-generation.txt
-python agent_skill_scene_loop.py list-scenes
-```
+![Overhead Car Crash and Emergency Vehicle Priority — 8 weather/time conditions](appfirst.png)
 
-For macOS preparation with a CARLA Wine bundle, set `CARLA_APP_PATH` to the bundle's location. Execute simulation commands in Windows/Wine. Native Windows or Linux installations can run them directly with their matching CARLA Python environment.
-
-### Prepare a scene
-
-```bash
-python agent_skill_scene_loop.py prepare --scene-serial 1
-```
-
-The command prints the new manifest, prompt, and code paths. Preparation copies an available seed or creates a placeholder; it does not by itself complete code generation. Use the full prompt and scene specification to implement the script, then run the explicit readiness, simulation, and review commands in the [generation guide](SCENE_GENERATION_REFERENCE.md).
-
-### Eight weather-time conditions
-
-| Public label | Stable configuration key |
-| --- | --- |
-| Clear | `clear` |
-| Heavy Rainy | `storm` |
-| Stormy | `worst` |
-| Foggy | `foggy` |
-
-Each weather is paired with `noon` and `night`. Existing directory keys are retained for compatibility; the numerical presets are defined in [the matrix specification](scene_utils/time_weather_matrix_spec.json).
-
-After baseline review, run the resumable matrix using an explicit manifest:
-
-```cmd
-04_run_scene_matrix8.cmd "path\to\manifest.json"
-```
-
-Completed variants are revalidated before skipping. Failed or incomplete attempts are preserved before retry. The runner stops when cleanup is unverified. Capture integrity and visual acceptance are separate checks.
-
-# Lang2Drive
-
-**Agentic Prompt-to-Scene Generation and Vision-Language Reasoning for Safety-Critical Autonomous Driving**
-
-Lang2Drive transforms natural-language corner-case descriptions into CARLA scenarios through a Text Scene Agent, Code Agent, and Evaluator Agent. A shared handoff manifest carries the scene specification, execution outputs, and feedback between refinement attempts.
-
-## Scene generation
-
-1. **Specify:** choose a scene and its constraints from the scenario workbook.
-2. **Generate:** prepare the code-generation prompt and implement a standalone CARLA script, reusing a relevant seed when available.
-3. **Execute:** check readiness, then run the script against CARLA.
-4. **Evaluate and refine:** inspect the front-camera event and execution evidence; use structured feedback to revise unsuccessful attempts.
-5. **Vary conditions:** capture the finalized scene under four weather conditions at Noon and Night.
-
-The [scenario catalog](scene_catalog.json) follows Figure 1's 30 scenarios in five hazard families. The [generation guide](SCENE_GENERATION_REFERENCE.md) explains the agent workflow, manifests, refinement, and runtime requirements.
-
-| Hazard family | Scenarios |
-| --- | ---: |
-| Road-User Interactions & Traffic-Rule Violations | 6 |
-| Traffic-Control & Infrastructure Disruptions | 6 |
-| Roadway Obstructions & Structural Debris | 6 |
-| Dynamic Object Intrusions | 7 |
-| Environmental & Road-Surface Hazards | 5 |
+![Wrong Way Driver and Flash Flood — 8 weather/time conditions](app1-2-1.png)
 
 ### Setup
 
@@ -175,7 +121,7 @@ Selects the most representative and diverse frames from each scenario using **CL
 python VLM_AV/keyframe_selection.py
 ```
 
-> **Note:** For `evaluation_20260909`, keyframes are already pre-selected and organised into `<scenario>/<time__weather>/` subfolders. Skip this stage and go directly to Stage 2.
+> **Note:** For the evaluation set, keyframes are already pre-selected and organised into `<scenario>/<time__weather>/` subfolders. Skip this stage and go directly to Stage 2.
 
 ---
 
@@ -194,7 +140,7 @@ Detects objects in each keyframe using **YOLOv8** and refines detections into ti
 **Directory layout handled automatically:**
 - Flat folder of images → processes as a single scenario.
 - `root/<scenario>/<images>` → one level deep.
-- `root/<scenario>/<time__weather>/<images>` → two levels deep (matches `evaluation_20260909` structure).
+- `root/<scenario>/<time__weather>/<images>` → two levels deep (matches evaluation set structure).
 
 **Outputs** (under `--out_dir`):
 
@@ -215,10 +161,10 @@ bash run_box.sh
 `run_box.sh` contents:
 ```bash
 python region_box.py \
-  --root_dir /raid/scratch/mdhossa2025/mdhossa/VLM_AV/evaluation_20260909 \
-  --out_dir  /raid/scratch/mdhossa2025/mdhossa/VLM_AV/evaluation_final \
+  --root_dir /path/to/VLM_AV/evaluation_set \
+  --out_dir  /path/to/VLM_AV/evaluation_final \
   --sam_type vit_b \
-  --sam_ckpt /raid/scratch/mdhossa2025/mdhossa/VLM_AV/sam_vit_b_01ec64.pth \
+  --sam_ckpt /path/to/VLM_AV/sam_vit_b_01ec64.pth \
   --device cuda \
   --top_k 3
 ```
@@ -276,11 +222,11 @@ bash run_gpt.sh
 `run_gpt.sh` contents:
 ```bash
 python run_preannotation.py \
-  --input_dir     /raid/scratch/mdhossa2025/mdhossa/VLM_AV/evaluation_20260909 \
-  --input_dir_regional /raid/scratch/mdhossa2025/mdhossa/VLM_AV/evaluation_final/overlays \
-  --output_dir    /raid/scratch/mdhossa2025/mdhossa/VLM_AV/evaluation_final/GPT_response \
-  --prompts       /raid/scratch/mdhossa2025/mdhossa/VLM_AV/prompts.json \
-  --model         gpt-5.6-luna
+  --input_dir          /path/to/VLM_AV/evaluation_set \
+  --input_dir_regional /path/to/VLM_AV/evaluation_final/overlays \
+  --output_dir         /path/to/VLM_AV/evaluation_final/GPT_response \
+  --prompts            /path/to/VLM_AV/prompts.json \
+  --model              gpt-4o
 ```
 
 | Argument | Description |
@@ -293,4 +239,3 @@ python run_preannotation.py \
 | `--overwrite` | Re-process frames that already have a saved JSON |
 
 Existing outputs are skipped automatically unless `--overwrite` is passed. If no regional overlay is found for a frame, `regional_perception` is set to `null` in the output.
-
